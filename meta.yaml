@@ -1,0 +1,32 @@
+package:
+  name: hqm
+  version: "0.0.1"
+
+source:
+  path: ./
+
+build:
+  number: 0
+  script: "$PYTHON -m pip install ."
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - pennylane
+
+test:
+  imports:
+    - hqm
+
+about:
+  home: https://github.com/alessandrosebastianelli/hybrid_quantum_models/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Hybrid Quantum Models - HQM"

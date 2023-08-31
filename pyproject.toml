@@ -1,0 +1,29 @@
+[build-system]
+requires = [
+            "numpy==1.23.5", 
+            "pennylane==0.28.0"
+            ]
+
+[project]
+name = "hqm"
+version = "0.0.1"
+authors = [
+  { name="Alessandro Sebastianelli", email="alessandro.sebastianelli1995@gmail.com" },
+]
+description = "Hybrid Quantum Models - HQM"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "numpy==1.23.5", 
+  "pennylane==0.28.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/alessandrosebastianelli/hybrid_quantum_models"
+"Bug Tracker" = "https://github.com/alessandrosebastianelli/hybrid_quantum_models/issues"
