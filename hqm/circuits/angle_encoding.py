@@ -1,17 +1,25 @@
+import sys
+sys.path += ['.', './layers/']
+
+from layers.ai_interface import ai_interface
 import pennylane as qml
 
 class BasicEntangledCircuit:
     
-    def __init__(self, n_qubits, n_layers, dev=None):
+    def __init__(self, n_qubits, n_layers, framework, dev=None):
         
         if dev is None: dev = qml.device("default.qubit", wires=n_qubits)
         
         self.n_qubits     = n_qubits
         self.n_layers     = n_layers
+        self.framework    = framework
         self.dev          = dev
         self.weight_shape = {"weights": (n_layers, n_qubits)}
         self.circuit      = self.__circ(self.dev, self.n_qubits)
-        self.torch_layer  = qml.qnn.TorchLayer(self.circuit, self.weight_shape)
+        self.qlayer       = ai_interface(circuit=self.circuit, 
+                                         weight_shape=self.weight_shape, 
+                                         n_qubits=self.n_qubits, 
+                                         framework=self.framework)
 
     @staticmethod
     def __circ(dev, n_qubits):
@@ -25,17 +33,21 @@ class BasicEntangledCircuit:
     
 class StronglyEntangledCircuit:
 
-    def __init__(self, n_qubits, n_layers, dev=None) -> None:
+    def __init__(self, n_qubits, n_layers, framework, dev=None) -> None:
         
         if dev is None: dev = qml.device("default.qubit", wires=n_qubits)
 
         self.n_qubits     = n_qubits
         self.n_layers     = n_layers
+        self.framework    = framework
         self.dev          = dev
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
         self.circuit      = self.__circ(self.dev, self.n_qubits)
-        self.torch_layer  = qml.qnn.TorchLayer(self.circuit, self.weight_shape)
-    
+        self.qlayer       = ai_interface(circuit=self.circuit, 
+                                         weight_shape=self.weight_shape, 
+                                         n_qubits=self.n_qubits, 
+                                         framework=self.framework)
+            
     @staticmethod
     def __circ(dev, n_qubits):
         @qml.qnode(dev)
