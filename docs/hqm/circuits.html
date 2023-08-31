@@ -63,9 +63,11 @@
 
                         <div class="docstring"><h1 id="quantum-circuits">Quantum Circuits</h1>
 
+<p>This package contains the implementations for basic, advanced and custom quantum circuits based on PennyLane. The implementation consists of wrappers that encapsulate PennyLane circuits in order to make them compatible with Keras or Pytorch. </p>
+
 <h2 id="angle-encoding">Angle Encoding</h2>
 
-<p>This section relates to circuits that use the angle embedding as features embedding strategy. This is done by means of the PennyLane operator <em>AngleEmbedding</em>.</p>
+<p>This section relates to circuits that use angle embedding as a feature embedding strategy. This is done by means of the PennyLane operator <em>AngleEmbedding</em>.</p>
 
 <p>This operator encodes $N$ features into the rotation angles of $n$ qubits, where $N\leq n$. The length of features has to be smaller or equal to the number of qubits. If there are fewer entries in features than rotations, the circuit does not apply the remaining rotation gates.</p>
 
