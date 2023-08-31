@@ -5,7 +5,7 @@ import sys
 sys.path += ['.', './layers/']
 
 
-class HybridMLP(torch.nn.Module):
+class BasicMLP(torch.nn.Module):
     def __init__(self, circuit):
         super().__init__()
 
