@@ -16,26 +16,34 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>
+        <div>            <a class="pdoc-button module-list-button" href="../regression.html">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg>                &nbsp;hqm.regression</a>
+
             <img src="logo.png" class="logo" alt="project logo"/>
 
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
 
 
-            <h2>Packages</h2>
-            <ul>
-                    <li><a href="hqm/circuits.html">circuits</a></li>
-                    <li><a href="hqm/classification.html">classification</a></li>
-                    <li><a href="hqm/layers.html">layers</a></li>
-                    <li><a href="hqm/regression.html">regression</a></li>
-                    <li><a href="hqm/utils.html">utils</a></li>
-            </ul>
-                    <h2>All Functions</h2>
-                    <ul>
-                            <li><a href="hqm/layers/ai_interface.html#ai_interface">ai_interface</a></li>
-                            <li><a href="hqm/utils/printer.html#print_circuit">print_circuit</a></li>
-                    </ul>
+
+            <h2>Functions</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="class" href="#BasicMLP">BasicMLP</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#BasicMLP.__init__">BasicMLP</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BasicMLP.forward">forward</a>
+                        </li>
+                </ul>
+
+            </li>
+    </ul>
 
 
 
@@ -49,28 +57,218 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-hqm    </h1>
+<a href="./../../hqm.html">hqm</a><wbr>.<a href="./../regression.html">regression</a><wbr>.HybridMLP    </h1>
 
-                        <div class="docstring"><p></p>
-</div>
+                
+                        <input id="mod-HybridMLP-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <input id="mod-hqm-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <label class="view-source-button" for="mod-HybridMLP-view-source"><span>View Source</span></label>
 
-                        <label class="view-source-button" for="mod-hqm-view-source"><span>View Source</span></label>
-
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="sd">   .. include:: ../README.md</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a><span class="kn">from</span> <span class="nn">.circuits</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a><span class="kn">from</span> <span class="nn">.classification</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos">7</span></a><span class="kn">from</span> <span class="nn">.layers</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">8</span></a><span class="kn">from</span> <span class="nn">.regression</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">9</span></a><span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">torch</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">import</span> <span class="nn">sys</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;./layers/&#39;</span><span class="p">]</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="k">class</span> <span class="nc">BasicMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    
 </span></pre></div>
 
 
             </section>
+                <section id="BasicMLP">
+                            <input id="BasicMLP-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BasicMLP</span><wbr>(<span class="base">torch.nn.modules.module.Module</span>):
+
+                <label class="view-source-button" for="BasicMLP-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BasicMLP"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP-9"><a href="#BasicMLP-9"><span class="linenos"> 9</span></a><span class="k">class</span> <span class="nc">BasicMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span id="BasicMLP-10"><a href="#BasicMLP-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
+</span><span id="BasicMLP-11"><a href="#BasicMLP-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="BasicMLP-12"><a href="#BasicMLP-12"><span class="linenos">12</span></a>
+</span><span id="BasicMLP-13"><a href="#BasicMLP-13"><span class="linenos">13</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="BasicMLP-14"><a href="#BasicMLP-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="BasicMLP-15"><a href="#BasicMLP-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
+</span><span id="BasicMLP-16"><a href="#BasicMLP-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
+</span><span id="BasicMLP-17"><a href="#BasicMLP-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+</span><span id="BasicMLP-18"><a href="#BasicMLP-18"><span class="linenos">18</span></a>
+</span><span id="BasicMLP-19"><a href="#BasicMLP-19"><span class="linenos">19</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="BasicMLP-20"><a href="#BasicMLP-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP-21"><a href="#BasicMLP-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP-22"><a href="#BasicMLP-22"><span class="linenos">22</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP-23"><a href="#BasicMLP-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Base class for all neural network modules.</p>
+
+<p>Your models should also subclass this class.</p>
+
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call <code><a href="#BasicMLP.to">to()</a></code>, etc.</p>
+
+<div class="pdoc-alert pdoc-alert-note">
+
+<p>As per the example above, an <code><a href="#BasicMLP.__init__">__init__()</a></code> call to the parent class
+must be made before assignment on the child.</p>
+
+</div>
+
+<p>:ivar training: Boolean represents whether this module is in training or
+                evaluation mode.
+:vartype training: bool</p>
+</div>
+
+
+                            <div id="BasicMLP.__init__" class="classattr">
+                                        <input id="BasicMLP.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="name">BasicMLP</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">circuit</span>, </span><span class="param"><span class="n">in_dim</span>, </span><span class="param"><span class="n">ou_dim</span></span>)</span>
+
+                <label class="view-source-button" for="BasicMLP.__init__-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BasicMLP.__init__"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP.__init__-10"><a href="#BasicMLP.__init__-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
+</span><span id="BasicMLP.__init__-11"><a href="#BasicMLP.__init__-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="BasicMLP.__init__-12"><a href="#BasicMLP.__init__-12"><span class="linenos">12</span></a>
+</span><span id="BasicMLP.__init__-13"><a href="#BasicMLP.__init__-13"><span class="linenos">13</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="BasicMLP.__init__-14"><a href="#BasicMLP.__init__-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="BasicMLP.__init__-15"><a href="#BasicMLP.__init__-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
+</span><span id="BasicMLP.__init__-16"><a href="#BasicMLP.__init__-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
+</span><span id="BasicMLP.__init__-17"><a href="#BasicMLP.__init__-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+</div>
+
+
+                            </div>
+                            <div id="BasicMLP.forward" class="classattr">
+                                        <input id="BasicMLP.forward-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">forward</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="BasicMLP.forward-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BasicMLP.forward"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP.forward-19"><a href="#BasicMLP.forward-19"><span class="linenos">19</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="BasicMLP.forward-20"><a href="#BasicMLP.forward-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP.forward-21"><a href="#BasicMLP.forward-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP.forward-22"><a href="#BasicMLP.forward-22"><span class="linenos">22</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="BasicMLP.forward-23"><a href="#BasicMLP.forward-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Defines the computation performed at every call.</p>
+
+<p>Should be overridden by all subclasses.</p>
+
+<div class="pdoc-alert pdoc-alert-note">
+
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+
+</div>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt>torch.nn.modules.module.Module</dt>
+                                <dd id="BasicMLP.register_buffer" class="function">register_buffer</dd>
+                <dd id="BasicMLP.register_parameter" class="function">register_parameter</dd>
+                <dd id="BasicMLP.add_module" class="function">add_module</dd>
+                <dd id="BasicMLP.register_module" class="function">register_module</dd>
+                <dd id="BasicMLP.get_submodule" class="function">get_submodule</dd>
+                <dd id="BasicMLP.get_parameter" class="function">get_parameter</dd>
+                <dd id="BasicMLP.get_buffer" class="function">get_buffer</dd>
+                <dd id="BasicMLP.get_extra_state" class="function">get_extra_state</dd>
+                <dd id="BasicMLP.set_extra_state" class="function">set_extra_state</dd>
+                <dd id="BasicMLP.apply" class="function">apply</dd>
+                <dd id="BasicMLP.cuda" class="function">cuda</dd>
+                <dd id="BasicMLP.ipu" class="function">ipu</dd>
+                <dd id="BasicMLP.xpu" class="function">xpu</dd>
+                <dd id="BasicMLP.cpu" class="function">cpu</dd>
+                <dd id="BasicMLP.type" class="function">type</dd>
+                <dd id="BasicMLP.float" class="function">float</dd>
+                <dd id="BasicMLP.double" class="function">double</dd>
+                <dd id="BasicMLP.half" class="function">half</dd>
+                <dd id="BasicMLP.bfloat16" class="function">bfloat16</dd>
+                <dd id="BasicMLP.to_empty" class="function">to_empty</dd>
+                <dd id="BasicMLP.to" class="function">to</dd>
+                <dd id="BasicMLP.register_backward_hook" class="function">register_backward_hook</dd>
+                <dd id="BasicMLP.register_full_backward_hook" class="function">register_full_backward_hook</dd>
+                <dd id="BasicMLP.register_forward_pre_hook" class="function">register_forward_pre_hook</dd>
+                <dd id="BasicMLP.register_forward_hook" class="function">register_forward_hook</dd>
+                <dd id="BasicMLP.state_dict" class="function">state_dict</dd>
+                <dd id="BasicMLP.register_load_state_dict_post_hook" class="function">register_load_state_dict_post_hook</dd>
+                <dd id="BasicMLP.load_state_dict" class="function">load_state_dict</dd>
+                <dd id="BasicMLP.parameters" class="function">parameters</dd>
+                <dd id="BasicMLP.named_parameters" class="function">named_parameters</dd>
+                <dd id="BasicMLP.buffers" class="function">buffers</dd>
+                <dd id="BasicMLP.named_buffers" class="function">named_buffers</dd>
+                <dd id="BasicMLP.children" class="function">children</dd>
+                <dd id="BasicMLP.named_children" class="function">named_children</dd>
+                <dd id="BasicMLP.modules" class="function">modules</dd>
+                <dd id="BasicMLP.named_modules" class="function">named_modules</dd>
+                <dd id="BasicMLP.train" class="function">train</dd>
+                <dd id="BasicMLP.eval" class="function">eval</dd>
+                <dd id="BasicMLP.requires_grad_" class="function">requires_grad_</dd>
+                <dd id="BasicMLP.zero_grad" class="function">zero_grad</dd>
+                <dd id="BasicMLP.share_memory" class="function">share_memory</dd>
+                <dd id="BasicMLP.extra_repr" class="function">extra_repr</dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
     </main>
 <script>
     function escapeHTML(html) {
@@ -124,7 +322,7 @@ hqm    </h1>
                 script.async = true;
                 script.onload = () => resolve(window.pdocSearch);
                 script.onerror = (e) => reject(e);
-                script.src = "search.js";
+                script.src = "../../search.js";
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
         } catch (e) {
@@ -166,7 +364,7 @@ hqm    </h1>
             }
             for (let result of results.slice(0, 10)) {
                 let doc = result.doc;
-                let url = `${doc.modulename.replaceAll(".", "/")}.html`;
+                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
                 if (doc.qualname) {
                     url += `#${doc.qualname}`;
                 }
