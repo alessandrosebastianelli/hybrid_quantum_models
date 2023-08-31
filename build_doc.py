@@ -19,3 +19,6 @@ shutil.copy2("./docs_assets/logo.png", "./docs/hqm/logo.png")
 
 for p in glob.glob("./docs/hqm/*/"):
     shutil.copy2("./docs_assets/logo.png", p+"/logo.png")
+
+for fld in glob.glob("./docs_assets/*/"):
+    os.system(f"cp -r {fld} {fld.replace('docs_assets', 'docs')}")
