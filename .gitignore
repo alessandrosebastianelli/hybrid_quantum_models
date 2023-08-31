@@ -1,1 +1,7 @@
+.eggs
+.pytest_cache
 __pycache__
+hqm.egg-info
+build
+dist
+tmp
