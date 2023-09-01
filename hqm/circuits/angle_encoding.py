@@ -6,15 +6,16 @@ import sys
 
 sys.path += ['.', './layers/']
 
+from .circuit import QuantumCircuit
 from hqm.layers.ai_interface import ai_interface
 
-class BasicEntangledCircuit:
+class BasicEntangledCircuit(QuantumCircuit):
     '''
         This class implements a torch/keras quantum layer using a basic entangler
         circuit. 
     '''
     
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.device = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
         '''
             BasicEntangledCircuit constructor.  
 
@@ -35,27 +36,14 @@ class BasicEntangledCircuit:
             --------  
             Nothing, a BasicEntangledCircuit object will be created.  
         '''
-
-        # Checking for exceptions  
-        if aiframework not in ['torch', 'keras']: raise Exception(f"Accepted values for framerwork are 'torch' or 'keras', found {aiframework}")
-        if n_qubits < 1: raise Exception(f"Number of qubits must be greater or equal than 1, found {n_qubits}")
-        if n_layers < 1: raise Exception(f"Number of layers must be greater or equal than 1, found {n_layers}")
-
-        # Set dev to 'default.qubit' if dev is None  
-        if dev is None: 
-            dev = qml.device("default.qubit", wires=n_qubits)
-            warnings.warn(f"Dev has been set to None, setting it to {dev}")
-
-        self.n_qubits     = n_qubits
-        self.n_layers     = n_layers
-        self.aiframework  = aiframework
-        self.dev          = dev
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+               
         self.weight_shape = {"weights": (n_layers, n_qubits)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
         self.qlayer       = ai_interface(circuit      = self.circuit, 
                                          weight_shape = self.weight_shape, 
                                          n_qubits     = self.n_qubits, 
-                                         framework    = self.aiframework)
+                                         aiframework  = self.aiframework)
 
     @staticmethod
     def circ(dev : qml.device, n_qubits : int) -> FunctionType:
@@ -101,13 +89,13 @@ class BasicEntangledCircuit:
     
         return qnode
     
-class StronglyEntangledCircuit:
+class StronglyEntangledCircuit(QuantumCircuit):
     '''
         This class implements a torch/keras quantum layer using a strongly entangler
         circuit.
     '''
 
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.device = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
         '''
             StronglyEntangledCircuit constructor.  
 
@@ -127,28 +115,15 @@ class StronglyEntangledCircuit:
             Returns:  
             --------  
             Nothing, a StronglyEntangledCircuit object will be created.  
-        '''
-
-        # Checking for exceptions  
-        if aiframework not in ['torch', 'keras']: raise Exception(f"Accepted values for framerwork are 'torch' or 'keras', found {aiframework}")
-        if n_qubits < 1: raise Exception(f"Number of qubits must be greater or equal than 1, found {n_qubits}")
-        if n_layers < 1: raise Exception(f"Number of layers must be greater or equal than 1, found {n_layers}")
-
-        # Set dev to 'default.qubit' if dev is None  
-        if dev is None: 
-            dev = qml.device("default.qubit", wires=n_qubits)
-            warnings.warn(f"Dev has been set to None, setting it to {dev}")
-
-        self.n_qubits     = n_qubits
-        self.n_layers     = n_layers
-        self.aiframework  = aiframework
-        self.dev          = dev
+        '''        
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+        
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
         self.qlayer       = ai_interface(circuit      = self.circuit, 
                                          weight_shape = self.weight_shape, 
                                          n_qubits     = self.n_qubits, 
-                                         framework    = self.aiframework)
+                                         aiframework  = self.aiframework)
         
     @staticmethod
     def circ(dev : qml.device, n_qubits : int) -> FunctionType:
