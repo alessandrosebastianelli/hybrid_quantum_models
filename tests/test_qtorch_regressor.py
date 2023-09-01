@@ -1,12 +1,10 @@
 import sys
 sys.path += ['.', './hqm/']
 
-
 from hqm.circuits.angle_encoding import BasicEntangledCircuit, StronglyEntangledCircuit
-from hqm.regression.HybridMLP import BasicMLP
+from hqm.regression.hmlp import BasicHybridMLPRegressor, MultiHybridMLPRegressor, MultiHybridMultiMLPRegressor
 from hqm.utils.printer import print_circuit
 
-from sklearn.datasets import make_moons
 import matplotlib.pyplot as plt
 import pennylane as qml
 import numpy as np
@@ -23,9 +21,14 @@ n_layers = 2
 in_dim   = 48
 ou_dim   = 48
 
-qcircuit = BasicEntangledCircuit(n_qubits=n_qubits, n_layers=n_layers, aiframework='torch')
-print_circuit(qcircuit)
-model = BasicMLP(qcircuit, in_dim=in_dim, ou_dim=ou_dim)
+dev = qml.device("default.qubit", wires=n_qubits)
+
+qcircuits = [
+    BasicEntangledCircuit(n_qubits=n_qubits, n_layers=n_layers, aiframework='torch', dev=dev),
+    StronglyEntangledCircuit(n_qubits=n_qubits, n_layers=n_layers, aiframework='torch', dev=dev),
+]
+
+model = MultiHybridMultiMLPRegressor(qcircuits, in_dims=[in_dim, n_qubits], ou_dim=ou_dim)
 
 
 
@@ -53,8 +56,6 @@ y    = torch.tensor(y).float()
 
 opt  = torch.optim.Adam(model.parameters(), lr=0.002)
 loss = torch.nn.L1Loss()
-
-
 
 BATCH_SIZE = 16
 batches = DATASET_SIZE // BATCH_SIZE

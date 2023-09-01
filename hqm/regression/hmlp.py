@@ -8,7 +8,7 @@ import torch
 class BasicHybridMLPRegressor(torch.nn.Module):
     '''
         This class implements a basic hybrid multilayer perceptron for regression purposes.
-        BasicHybridMLPRegressor is composed of a quantum layers stacked between two fully connected layers.
+        BasicHybridMLPRegressor is composed of quantum layers stacked between two fully connected layers.
         The size of fully connected layers is set by means of in_dim and ou_dim.
     '''
 

@@ -16,11 +16,11 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>            <a class="pdoc-button module-list-button" href="../regression.html">
+        <div>            <a class="pdoc-button module-list-button" href="../circuits.html">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-</svg>                &nbsp;hqm.regression</a>
+</svg>                &nbsp;hqm.circuits</a>
 
             <img src="logo.png" class="logo" alt="project logo"/>
 
@@ -32,13 +32,10 @@
             <h2>Functions</h2>
                 <ul class="memberlist">
             <li>
-                    <a class="class" href="#BasicMLP">BasicMLP</a>
+                    <a class="class" href="#QuantumCircuit">QuantumCircuit</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#BasicMLP.__init__">BasicMLP</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#BasicMLP.forward">forward</a>
+                                <a class="function" href="#QuantumCircuit.__init__">QuantumCircuit</a>
                         </li>
                 </ul>
 
@@ -57,216 +54,189 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../../hqm.html">hqm</a><wbr>.<a href="./../regression.html">regression</a><wbr>.HybridMLP    </h1>
+<a href="./../../hqm.html">hqm</a><wbr>.<a href="./../circuits.html">circuits</a><wbr>.circuit    </h1>
 
                 
-                        <input id="mod-HybridMLP-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <input id="mod-circuit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <label class="view-source-button" for="mod-HybridMLP-view-source"><span>View Source</span></label>
+                        <label class="view-source-button" for="mod-circuit-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">torch</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">import</span> <span class="nn">sys</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;./layers/&#39;</span><span class="p">]</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="k">class</span> <span class="nc">BasicMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">warnings</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="n">quantumcircuit</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;quantumcircuit&quot;</span><span class="p">)</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="k">class</span> <span class="nc">QuantumCircuit</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">quantumcircuit</span><span class="p">]):</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="sd">        Basic QuantumCircuit object.</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">    &#39;&#39;&#39;</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">            QuantumCircuit parent class.  </span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            -----------</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">            - n_layers : int  </span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">                number of layers for the quantum circuit  </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">            - aiframework : str  </span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">                string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">                a compatible trainable layer for the framework.   </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            - dev : qml.device  </span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            </span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">            --------  </span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="c1"># Checking for exceptions  </span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>  <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
 </span></pre></div>
 
 
             </section>
-                <section id="BasicMLP">
-                            <input id="BasicMLP-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                <section id="QuantumCircuit">
+                            <input id="QuantumCircuit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">BasicMLP</span><wbr>(<span class="base">torch.nn.modules.module.Module</span>):
+    <span class="name">QuantumCircuit</span><wbr>(<span class="base">typing.Generic[~quantumcircuit]</span>):
 
-                <label class="view-source-button" for="BasicMLP-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="QuantumCircuit-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#BasicMLP"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP-9"><a href="#BasicMLP-9"><span class="linenos"> 9</span></a><span class="k">class</span> <span class="nc">BasicMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="BasicMLP-10"><a href="#BasicMLP-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
-</span><span id="BasicMLP-11"><a href="#BasicMLP-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="BasicMLP-12"><a href="#BasicMLP-12"><span class="linenos">12</span></a>
-</span><span id="BasicMLP-13"><a href="#BasicMLP-13"><span class="linenos">13</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="BasicMLP-14"><a href="#BasicMLP-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="BasicMLP-15"><a href="#BasicMLP-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
-</span><span id="BasicMLP-16"><a href="#BasicMLP-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
-</span><span id="BasicMLP-17"><a href="#BasicMLP-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
-</span><span id="BasicMLP-18"><a href="#BasicMLP-18"><span class="linenos">18</span></a>
-</span><span id="BasicMLP-19"><a href="#BasicMLP-19"><span class="linenos">19</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span><span id="BasicMLP-20"><a href="#BasicMLP-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP-21"><a href="#BasicMLP-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP-22"><a href="#BasicMLP-22"><span class="linenos">22</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP-23"><a href="#BasicMLP-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <a class="headerlink" href="#QuantumCircuit"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="QuantumCircuit-7"><a href="#QuantumCircuit-7"><span class="linenos"> 7</span></a><span class="k">class</span> <span class="nc">QuantumCircuit</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">quantumcircuit</span><span class="p">]):</span>
+</span><span id="QuantumCircuit-8"><a href="#QuantumCircuit-8"><span class="linenos"> 8</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit-9"><a href="#QuantumCircuit-9"><span class="linenos"> 9</span></a><span class="sd">        Basic QuantumCircuit object.</span>
+</span><span id="QuantumCircuit-10"><a href="#QuantumCircuit-10"><span class="linenos">10</span></a><span class="sd">    &#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit-11"><a href="#QuantumCircuit-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="QuantumCircuit-12"><a href="#QuantumCircuit-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit-13"><a href="#QuantumCircuit-13"><span class="linenos">13</span></a><span class="sd">            QuantumCircuit parent class.  </span>
+</span><span id="QuantumCircuit-14"><a href="#QuantumCircuit-14"><span class="linenos">14</span></a>
+</span><span id="QuantumCircuit-15"><a href="#QuantumCircuit-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
+</span><span id="QuantumCircuit-16"><a href="#QuantumCircuit-16"><span class="linenos">16</span></a><span class="sd">            -----------</span>
+</span><span id="QuantumCircuit-17"><a href="#QuantumCircuit-17"><span class="linenos">17</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="QuantumCircuit-18"><a href="#QuantumCircuit-18"><span class="linenos">18</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
+</span><span id="QuantumCircuit-19"><a href="#QuantumCircuit-19"><span class="linenos">19</span></a><span class="sd">            - n_layers : int  </span>
+</span><span id="QuantumCircuit-20"><a href="#QuantumCircuit-20"><span class="linenos">20</span></a><span class="sd">                number of layers for the quantum circuit  </span>
+</span><span id="QuantumCircuit-21"><a href="#QuantumCircuit-21"><span class="linenos">21</span></a><span class="sd">            - aiframework : str  </span>
+</span><span id="QuantumCircuit-22"><a href="#QuantumCircuit-22"><span class="linenos">22</span></a><span class="sd">                string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="QuantumCircuit-23"><a href="#QuantumCircuit-23"><span class="linenos">23</span></a><span class="sd">                a compatible trainable layer for the framework.   </span>
+</span><span id="QuantumCircuit-24"><a href="#QuantumCircuit-24"><span class="linenos">24</span></a><span class="sd">            - dev : qml.device  </span>
+</span><span id="QuantumCircuit-25"><a href="#QuantumCircuit-25"><span class="linenos">25</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
+</span><span id="QuantumCircuit-26"><a href="#QuantumCircuit-26"><span class="linenos">26</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
+</span><span id="QuantumCircuit-27"><a href="#QuantumCircuit-27"><span class="linenos">27</span></a><span class="sd">            </span>
+</span><span id="QuantumCircuit-28"><a href="#QuantumCircuit-28"><span class="linenos">28</span></a><span class="sd">            Returns:  </span>
+</span><span id="QuantumCircuit-29"><a href="#QuantumCircuit-29"><span class="linenos">29</span></a><span class="sd">            --------  </span>
+</span><span id="QuantumCircuit-30"><a href="#QuantumCircuit-30"><span class="linenos">30</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
+</span><span id="QuantumCircuit-31"><a href="#QuantumCircuit-31"><span class="linenos">31</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit-32"><a href="#QuantumCircuit-32"><span class="linenos">32</span></a>        <span class="c1"># Checking for exceptions  </span>
+</span><span id="QuantumCircuit-33"><a href="#QuantumCircuit-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit-34"><a href="#QuantumCircuit-34"><span class="linenos">34</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit-35"><a href="#QuantumCircuit-35"><span class="linenos">35</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit-36"><a href="#QuantumCircuit-36"><span class="linenos">36</span></a>
+</span><span id="QuantumCircuit-37"><a href="#QuantumCircuit-37"><span class="linenos">37</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
+</span><span id="QuantumCircuit-38"><a href="#QuantumCircuit-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span id="QuantumCircuit-39"><a href="#QuantumCircuit-39"><span class="linenos">39</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="QuantumCircuit-40"><a href="#QuantumCircuit-40"><span class="linenos">40</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit-41"><a href="#QuantumCircuit-41"><span class="linenos">41</span></a>
+</span><span id="QuantumCircuit-42"><a href="#QuantumCircuit-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
+</span><span id="QuantumCircuit-43"><a href="#QuantumCircuit-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
+</span><span id="QuantumCircuit-44"><a href="#QuantumCircuit-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>  <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="QuantumCircuit-45"><a href="#QuantumCircuit-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Base class for all neural network modules.</p>
-
-<p>Your models should also subclass this class.</p>
-
-<p>Modules can also contain other Modules, allowing to nest them in
-a tree structure. You can assign the submodules as regular attributes::</p>
-
-<pre><code>import torch.nn as nn
-import torch.nn.functional as F
-
-class Model(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.conv1 = nn.Conv2d(1, 20, 5)
-        self.conv2 = nn.Conv2d(20, 20, 5)
-
-    def forward(self, x):
-        x = F.relu(self.conv1(x))
-        return F.relu(self.conv2(x))
-</code></pre>
-
-<p>Submodules assigned in this way will be registered, and will have their
-parameters converted too when you call <code><a href="#BasicMLP.to">to()</a></code>, etc.</p>
-
-<div class="pdoc-alert pdoc-alert-note">
-
-<p>As per the example above, an <code><a href="#BasicMLP.__init__">__init__()</a></code> call to the parent class
-must be made before assignment on the child.</p>
-
-</div>
-
-<p>:ivar training: Boolean represents whether this module is in training or
-                evaluation mode.
-:vartype training: bool</p>
+            <div class="docstring"><p>Basic QuantumCircuit object.</p>
 </div>
 
 
-                            <div id="BasicMLP.__init__" class="classattr">
-                                        <input id="BasicMLP.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="QuantumCircuit.__init__" class="classattr">
+                                        <input id="QuantumCircuit.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">BasicMLP</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">circuit</span>, </span><span class="param"><span class="n">in_dim</span>, </span><span class="param"><span class="n">ou_dim</span></span>)</span>
+        <span class="name">QuantumCircuit</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">n_layers</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">aiframework</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dev</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;pennylane.devices&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/home/alessandro/anaconda3/envs/quantum-torch/lib/python3.10/site-packages/pennylane/devices/__init__.py&#39;</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
-                <label class="view-source-button" for="BasicMLP.__init__-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="QuantumCircuit.__init__-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#BasicMLP.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP.__init__-10"><a href="#BasicMLP.__init__-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">):</span>
-</span><span id="BasicMLP.__init__-11"><a href="#BasicMLP.__init__-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="BasicMLP.__init__-12"><a href="#BasicMLP.__init__-12"><span class="linenos">12</span></a>
-</span><span id="BasicMLP.__init__-13"><a href="#BasicMLP.__init__-13"><span class="linenos">13</span></a>        <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="BasicMLP.__init__-14"><a href="#BasicMLP.__init__-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="BasicMLP.__init__-15"><a href="#BasicMLP.__init__-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qlayer</span>
-</span><span id="BasicMLP.__init__-16"><a href="#BasicMLP.__init__-16"><span class="linenos">16</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">ou_dim</span><span class="p">)</span>
-</span><span id="BasicMLP.__init__-17"><a href="#BasicMLP.__init__-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+    <a class="headerlink" href="#QuantumCircuit.__init__"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="QuantumCircuit.__init__-11"><a href="#QuantumCircuit.__init__-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="QuantumCircuit.__init__-12"><a href="#QuantumCircuit.__init__-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit.__init__-13"><a href="#QuantumCircuit.__init__-13"><span class="linenos">13</span></a><span class="sd">            QuantumCircuit parent class.  </span>
+</span><span id="QuantumCircuit.__init__-14"><a href="#QuantumCircuit.__init__-14"><span class="linenos">14</span></a>
+</span><span id="QuantumCircuit.__init__-15"><a href="#QuantumCircuit.__init__-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
+</span><span id="QuantumCircuit.__init__-16"><a href="#QuantumCircuit.__init__-16"><span class="linenos">16</span></a><span class="sd">            -----------</span>
+</span><span id="QuantumCircuit.__init__-17"><a href="#QuantumCircuit.__init__-17"><span class="linenos">17</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="QuantumCircuit.__init__-18"><a href="#QuantumCircuit.__init__-18"><span class="linenos">18</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
+</span><span id="QuantumCircuit.__init__-19"><a href="#QuantumCircuit.__init__-19"><span class="linenos">19</span></a><span class="sd">            - n_layers : int  </span>
+</span><span id="QuantumCircuit.__init__-20"><a href="#QuantumCircuit.__init__-20"><span class="linenos">20</span></a><span class="sd">                number of layers for the quantum circuit  </span>
+</span><span id="QuantumCircuit.__init__-21"><a href="#QuantumCircuit.__init__-21"><span class="linenos">21</span></a><span class="sd">            - aiframework : str  </span>
+</span><span id="QuantumCircuit.__init__-22"><a href="#QuantumCircuit.__init__-22"><span class="linenos">22</span></a><span class="sd">                string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="QuantumCircuit.__init__-23"><a href="#QuantumCircuit.__init__-23"><span class="linenos">23</span></a><span class="sd">                a compatible trainable layer for the framework.   </span>
+</span><span id="QuantumCircuit.__init__-24"><a href="#QuantumCircuit.__init__-24"><span class="linenos">24</span></a><span class="sd">            - dev : qml.device  </span>
+</span><span id="QuantumCircuit.__init__-25"><a href="#QuantumCircuit.__init__-25"><span class="linenos">25</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
+</span><span id="QuantumCircuit.__init__-26"><a href="#QuantumCircuit.__init__-26"><span class="linenos">26</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
+</span><span id="QuantumCircuit.__init__-27"><a href="#QuantumCircuit.__init__-27"><span class="linenos">27</span></a><span class="sd">            </span>
+</span><span id="QuantumCircuit.__init__-28"><a href="#QuantumCircuit.__init__-28"><span class="linenos">28</span></a><span class="sd">            Returns:  </span>
+</span><span id="QuantumCircuit.__init__-29"><a href="#QuantumCircuit.__init__-29"><span class="linenos">29</span></a><span class="sd">            --------  </span>
+</span><span id="QuantumCircuit.__init__-30"><a href="#QuantumCircuit.__init__-30"><span class="linenos">30</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
+</span><span id="QuantumCircuit.__init__-31"><a href="#QuantumCircuit.__init__-31"><span class="linenos">31</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="QuantumCircuit.__init__-32"><a href="#QuantumCircuit.__init__-32"><span class="linenos">32</span></a>        <span class="c1"># Checking for exceptions  </span>
+</span><span id="QuantumCircuit.__init__-33"><a href="#QuantumCircuit.__init__-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit.__init__-34"><a href="#QuantumCircuit.__init__-34"><span class="linenos">34</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit.__init__-35"><a href="#QuantumCircuit.__init__-35"><span class="linenos">35</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit.__init__-36"><a href="#QuantumCircuit.__init__-36"><span class="linenos">36</span></a>
+</span><span id="QuantumCircuit.__init__-37"><a href="#QuantumCircuit.__init__-37"><span class="linenos">37</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
+</span><span id="QuantumCircuit.__init__-38"><a href="#QuantumCircuit.__init__-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span id="QuantumCircuit.__init__-39"><a href="#QuantumCircuit.__init__-39"><span class="linenos">39</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="QuantumCircuit.__init__-40"><a href="#QuantumCircuit.__init__-40"><span class="linenos">40</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="QuantumCircuit.__init__-41"><a href="#QuantumCircuit.__init__-41"><span class="linenos">41</span></a>
+</span><span id="QuantumCircuit.__init__-42"><a href="#QuantumCircuit.__init__-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
+</span><span id="QuantumCircuit.__init__-43"><a href="#QuantumCircuit.__init__-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
+</span><span id="QuantumCircuit.__init__-44"><a href="#QuantumCircuit.__init__-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>  <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="QuantumCircuit.__init__-45"><a href="#QuantumCircuit.__init__-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+            <div class="docstring"><p>QuantumCircuit parent class.  </p>
+
+<h2 id="parameters">Parameters:  </h2>
+
+<ul>
+<li>n_qubits : int <br />
+number of qubits for the quantum circuit  </li>
+<li>n_layers : int <br />
+number of layers for the quantum circuit  </li>
+<li>aiframework : str <br />
+string representing the AI framework in use, can be 'torch' or 'keras'. This will create <br />
+a compatible trainable layer for the framework.   </li>
+<li>dev : qml.device <br />
+PennyLane device on wich run quantum operations (dafault : None). When None it will be set
+to 'default.qubit'  </li>
+</ul>
+
+<h2 id="returns">Returns:  </h2>
+
+<p>Nothing, a QuantumCircuit object will be created.</p>
 </div>
 
 
-                            </div>
-                            <div id="BasicMLP.forward" class="classattr">
-                                        <input id="BasicMLP.forward-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">forward</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="BasicMLP.forward-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#BasicMLP.forward"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="BasicMLP.forward-19"><a href="#BasicMLP.forward-19"><span class="linenos">19</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span><span id="BasicMLP.forward-20"><a href="#BasicMLP.forward-20"><span class="linenos">20</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP.forward-21"><a href="#BasicMLP.forward-21"><span class="linenos">21</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP.forward-22"><a href="#BasicMLP.forward-22"><span class="linenos">22</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="BasicMLP.forward-23"><a href="#BasicMLP.forward-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Defines the computation performed at every call.</p>
-
-<p>Should be overridden by all subclasses.</p>
-
-<div class="pdoc-alert pdoc-alert-note">
-
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code>Module</code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-
-</div>
-</div>
-
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt>torch.nn.modules.module.Module</dt>
-                                <dd id="BasicMLP.register_buffer" class="function">register_buffer</dd>
-                <dd id="BasicMLP.register_parameter" class="function">register_parameter</dd>
-                <dd id="BasicMLP.add_module" class="function">add_module</dd>
-                <dd id="BasicMLP.register_module" class="function">register_module</dd>
-                <dd id="BasicMLP.get_submodule" class="function">get_submodule</dd>
-                <dd id="BasicMLP.get_parameter" class="function">get_parameter</dd>
-                <dd id="BasicMLP.get_buffer" class="function">get_buffer</dd>
-                <dd id="BasicMLP.get_extra_state" class="function">get_extra_state</dd>
-                <dd id="BasicMLP.set_extra_state" class="function">set_extra_state</dd>
-                <dd id="BasicMLP.apply" class="function">apply</dd>
-                <dd id="BasicMLP.cuda" class="function">cuda</dd>
-                <dd id="BasicMLP.ipu" class="function">ipu</dd>
-                <dd id="BasicMLP.xpu" class="function">xpu</dd>
-                <dd id="BasicMLP.cpu" class="function">cpu</dd>
-                <dd id="BasicMLP.type" class="function">type</dd>
-                <dd id="BasicMLP.float" class="function">float</dd>
-                <dd id="BasicMLP.double" class="function">double</dd>
-                <dd id="BasicMLP.half" class="function">half</dd>
-                <dd id="BasicMLP.bfloat16" class="function">bfloat16</dd>
-                <dd id="BasicMLP.to_empty" class="function">to_empty</dd>
-                <dd id="BasicMLP.to" class="function">to</dd>
-                <dd id="BasicMLP.register_backward_hook" class="function">register_backward_hook</dd>
-                <dd id="BasicMLP.register_full_backward_hook" class="function">register_full_backward_hook</dd>
-                <dd id="BasicMLP.register_forward_pre_hook" class="function">register_forward_pre_hook</dd>
-                <dd id="BasicMLP.register_forward_hook" class="function">register_forward_hook</dd>
-                <dd id="BasicMLP.state_dict" class="function">state_dict</dd>
-                <dd id="BasicMLP.register_load_state_dict_post_hook" class="function">register_load_state_dict_post_hook</dd>
-                <dd id="BasicMLP.load_state_dict" class="function">load_state_dict</dd>
-                <dd id="BasicMLP.parameters" class="function">parameters</dd>
-                <dd id="BasicMLP.named_parameters" class="function">named_parameters</dd>
-                <dd id="BasicMLP.buffers" class="function">buffers</dd>
-                <dd id="BasicMLP.named_buffers" class="function">named_buffers</dd>
-                <dd id="BasicMLP.children" class="function">children</dd>
-                <dd id="BasicMLP.named_children" class="function">named_children</dd>
-                <dd id="BasicMLP.modules" class="function">modules</dd>
-                <dd id="BasicMLP.named_modules" class="function">named_modules</dd>
-                <dd id="BasicMLP.train" class="function">train</dd>
-                <dd id="BasicMLP.eval" class="function">eval</dd>
-                <dd id="BasicMLP.requires_grad_" class="function">requires_grad_</dd>
-                <dd id="BasicMLP.zero_grad" class="function">zero_grad</dd>
-                <dd id="BasicMLP.share_memory" class="function">share_memory</dd>
-                <dd id="BasicMLP.extra_repr" class="function">extra_repr</dd>
-
-            </div>
-                                </dl>
                             </div>
                 </section>
     </main>
