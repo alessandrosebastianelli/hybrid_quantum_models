@@ -1,11 +1,11 @@
 import pennylane as qml
 
-def ai_interface(circuit, weight_shape, n_qubits, framework):
+def ai_interface(circuit, weight_shape, n_qubits, aiframework):
     
-    if framework == 'torch':
+    if aiframework == "torch":
         qlayer = qml.qnn.TorchLayer(circuit, weight_shape)
-    elif framework == 'keras':
+    elif aiframework == "keras":
         qlayer = qml.qnn.KerasLayer(circuit, weight_shape, output_dim=n_qubits)
     else:
-        raise Exception('Framerwork can be only torch or keras!')
+        raise Exception(f"Framerwork can be only torch or keras, found {aiframework}!")
     return qlayer
