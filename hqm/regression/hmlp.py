@@ -14,20 +14,20 @@ class BasicHybridMLPRegressor(torch.nn.Module):
 
     def __init__(self, qcircuit : QuantumCircuit, in_dim : int, ou_dim : int) -> None:
         '''
-            BasicHybridMLPRegressor constructor.
+            BasicHybridMLPRegressor constructor.  
 
-            Parameters:
-            -----------
-            - qcircuit : hqm.circuits.circuit.QuantumCircuit
-                hqm quantum circuit to be stacked between two fully connected layers
-            - in_dim : int
-                integer representing the input size for the first fully connected layer
-            - ou_dim : int
-                integer representing the output size of the hybrid model
+            Parameters:  
+            -----------  
+            - qcircuit : hqm.circuits.circuit.QuantumCircuit  
+                hqm quantum circuit to be stacked between two fully connected layers  
+            - in_dim : int  
+                integer representing the input size for the first fully connected layer  
+            - ou_dim : int  
+                integer representing the output size of the hybrid model  
             
-            Returns:
-            --------
-            Nothing, a BasicHybridMLPRegressor object will be created.  
+            Returns:  
+            --------  
+            Nothing, a BasicHybridMLPRegressor object will be created.    
         '''
         super().__init__()
 
@@ -41,18 +41,18 @@ class BasicHybridMLPRegressor(torch.nn.Module):
         self.tanh = torch.nn.Tanh()
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
-        '''
-            Torch forward method
+        ''' 
+            Torch forward method  
 
-            Parameters:
-            -----------
-            - x : torch.Tensor
-                input for the torch model
+            Parameters:  
+            -----------  
+            - x : torch.Tensor  
+                input for the torch model  
 
-            Returns:
-            --------
-            - out : torch.Tensor
-                output from the torch model
+            Returns:  
+            --------  
+            - out : torch.Tensor  
+                output from the torch model  
         '''
         x = self.fc_1(x)
         x = self.tanh(x)
@@ -71,20 +71,20 @@ class MultiHybridMLPRegressor(torch.nn.Module):
 
     def __init__(self, qcircuits : list, in_dim : int, ou_dim : int) -> None:
         '''
-            MultiHybridMLPRegressor constructor.
+            MultiHybridMLPRegressor constructor.  
 
-            Parameters:
-            -----------
-            - qcircuits : list
-                list of hqm quantum circuits to be stacked between two fully connected layers
-            - in_dim : int
-                integer representing the input size for the first fully connected layer
-            - ou_dim : int
-                integer representing the output size of the hybrid model
+            Parameters:  
+            -----------  
+            - qcircuits : list  
+                list of hqm quantum circuits to be stacked between two fully connected layers  
+            - in_dim : int  
+                integer representing the input size for the first fully connected layer  
+            - ou_dim : int  
+                integer representing the output size of the hybrid model  
             
-            Returns:
-            --------
-            Nothing, a MultiHybridMLPRegressor object will be created.  
+            Returns:  
+            --------  
+            Nothing, a MultiHybridMLPRegressor object will be created.    
         '''
         super().__init__()
 
@@ -101,17 +101,17 @@ class MultiHybridMLPRegressor(torch.nn.Module):
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
-            Torch forward method
+            Torch forward method  
 
-            Parameters:
-            -----------
-            - x : torch.Tensor
-                input for the torch model
+            Parameters:  
+            -----------  
+            - x : torch.Tensor  
+                input for the torch model  
 
-            Returns:
-            --------
-            - out : torch.Tensor
-                output from the torch model
+            Returns:  
+            --------  
+            - out : torch.Tensor  
+                output from the torch model  
         '''
         x = self.fc_1(x)
         x = self.tanh(x)
@@ -131,20 +131,20 @@ class MultiHybridMultiMLPRegressor(torch.nn.Module):
 
     def __init__(self, qcircuits : list, in_dims : list, ou_dim : list) -> None:
         '''
-            MultiHybridMultiMLPRegressor constructor.
+            MultiHybridMultiMLPRegressor constructor.  
 
-            Parameters:
-            -----------
-            - qcircuits : list
-                list of hqm quantum circuits to be stacked between two fully connected layers
-            - in_dims: list
-                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)
-            - ou_dim : list
-                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)
+            Parameters:  
+            -----------  
+            - qcircuits : list  
+                list of hqm quantum circuits to be stacked between two fully connected layers  
+            - in_dims: list  
+                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)  
+            - ou_dim : list  
+                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)  
             
-            Returns:
-            --------
-            Nothing, a MultiHybridMLPRegressor object will be created.  
+            Returns:  
+            --------  
+            Nothing, a MultiHybridMLPRegressor object will be created.    
         '''
         super().__init__()
 
@@ -163,17 +163,17 @@ class MultiHybridMultiMLPRegressor(torch.nn.Module):
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
-            Torch forward method
+            Torch forward method  
 
-            Parameters:
-            -----------
-            - x : torch.Tensor
-                input for the torch model
+            Parameters:  
+            -----------  
+            - x : torch.Tensor  
+                input for the torch model  
 
-            Returns:
-            --------
-            - x : torch.Tensor
-                output from the torch model
+            Returns:  
+            --------  
+            - x : torch.Tensor  
+                output from the torch model  
         '''
         
         for fc, qc in zip(self.fcs, self.qcs):

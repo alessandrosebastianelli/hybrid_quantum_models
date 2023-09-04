@@ -14,20 +14,20 @@ class HybridLeNet5(torch.nn.Module):
 
     def __init__(self, qcircuit : QuantumCircuit, in_shape : tuple, ou_dim : int) -> None:
         '''
-            HybridLeNet5 constructor.
+            HybridLeNet5 constructor.  
 
-            Parameters:
-            -----------
-            - qcircuit : hqm.circuits.circuit.QuantumCircuit
-                hqm quantum circuit to be stacked between two fully connected layers
-            - in_shape : tuple
-                tuple representing the shape of the input image
-            - ou_dim : int
-                integer representing the output size of the hybrid model
+            Parameters:  
+            -----------  
+            - qcircuit : hqm.circuits.circuit.QuantumCircuit  
+                hqm quantum circuit to be stacked between two fully connected layers  
+            - in_shape : tuple  
+                tuple representing the shape of the input image  
+            - ou_dim : int  
+                integer representing the output size of the hybrid model  
             
-            Returns:
-            --------
-            Nothing, a HybridLeNet5 object will be created.  
+            Returns:  
+            --------  
+            Nothing, a HybridLeNet5 object will be created.    
         '''
         super().__init__()
 
@@ -67,23 +67,23 @@ class HybridLeNet5(torch.nn.Module):
     
     def size_flat_features(self, s : int, kernel_size : int, padding : int, stride : int) -> int:
         '''
-            Get the number of features in a batch of tensor 'x'-
+            Get the number of features in a batch of tensor 'x'.  
 
-            Parameters:
-            -----------
-            - s : int
-                integer represeting the size of one axis of the image
-            - kernel_size : int
-                integer represeting the size of the convolutional kernel
-            - padding : int
-                integer represeting the padding size
-            - stride : int
-                integer representing the stride size
-
-            Returns:
-            --------
-            - size : int
-                size after conv2D and Maxpool
+            Parameters:  
+            -----------  
+            - s : int  
+                integer represeting the size of one axis of the image  
+            - kernel_size : int  
+                integer represeting the size of the convolutional kernel  
+            - padding : int  
+                integer represeting the padding size  
+            - stride : int  
+                integer representing the stride size  
+  
+            Returns:  
+            --------  
+            - size : int  
+                size after conv2D and Maxpool  
         '''
 
         size = [(s - kernel_size + 2 * padding)/stride] + 1
@@ -91,17 +91,17 @@ class HybridLeNet5(torch.nn.Module):
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
-            Torch forward method
+            Torch forward method  
 
-            Parameters:
+            Parameters:  
             -----------
-            - x : torch.Tensor
-                input for the torch model
+            - x : torch.Tensor  
+                input for the torch model  
 
-            Returns:
-            --------
-            - out : torch.Tensor
-                output from the torch model
+            Returns:  
+            --------  
+            - out : torch.Tensor  
+                output from the torch model  
         '''
         x = self.max_pool1(self.relu(self.conv_1(x)))
         x = self.max_pool2(self.relu(self.conv_2(x)))
