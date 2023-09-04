@@ -104,20 +104,20 @@
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="sd">            BasicHybridMLPClassifier constructor.</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="sd">            BasicHybridMLPClassifier constructor.  </span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">            -----------</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">            -----------  </span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers  </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="sd">            - ou_dim : int   </span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="sd">            </span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="sd">            Returns:</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="sd">            --------</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.  </span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="sd">            --------  </span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.    </span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>
@@ -133,17 +133,17 @@
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            Torch forward method</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            -----------</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">                input for the torch model</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            -----------  </span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">            Returns:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            --------</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">                output from the torch model</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            --------  </span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            - out : torch.Tensor  </span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -162,20 +162,20 @@
 </span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            MultiHybridMLPClassifier constructor.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            MultiHybridMLPClassifier constructor.  </span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            -----------</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            -----------  </span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            - ou_dim : int  </span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            Returns:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            --------</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.  </span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            --------  </span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.    </span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
@@ -193,17 +193,17 @@
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            Torch forward method</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            -----------</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">                input for the torch model</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            -----------  </span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            Returns:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            --------</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">                output from the torch model</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            --------  </span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">            - out : torch.Tensor   </span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -223,20 +223,20 @@
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dims</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.  </span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            -----------</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            - in_dims: list</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            - ou_dim : list</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            -----------  </span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            - in_dims: list  </span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)  </span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            - ou_dim : list  </span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)  </span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            </span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            Returns:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            --------</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.  </span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            --------  </span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.    </span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
@@ -256,17 +256,17 @@
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            Torch forward method</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            -----------</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">                input for the torch model</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            Returns:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            --------</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">                output from the torch model</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            -----------  </span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">            - x : torch.Tensor   </span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">                input for the torch model  </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd"> </span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            Returns:  </span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            --------  </span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="k">for</span> <span class="n">fc</span><span class="p">,</span> <span class="n">qc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fcs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qcs</span><span class="p">):</span>
@@ -302,20 +302,20 @@
 </span><span id="BasicHybridMLPClassifier-15"><a href="#BasicHybridMLPClassifier-15"><span class="linenos">15</span></a>
 </span><span id="BasicHybridMLPClassifier-16"><a href="#BasicHybridMLPClassifier-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BasicHybridMLPClassifier-17"><a href="#BasicHybridMLPClassifier-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicHybridMLPClassifier-18"><a href="#BasicHybridMLPClassifier-18"><span class="linenos">18</span></a><span class="sd">            BasicHybridMLPClassifier constructor.</span>
+</span><span id="BasicHybridMLPClassifier-18"><a href="#BasicHybridMLPClassifier-18"><span class="linenos">18</span></a><span class="sd">            BasicHybridMLPClassifier constructor.  </span>
 </span><span id="BasicHybridMLPClassifier-19"><a href="#BasicHybridMLPClassifier-19"><span class="linenos">19</span></a>
-</span><span id="BasicHybridMLPClassifier-20"><a href="#BasicHybridMLPClassifier-20"><span class="linenos">20</span></a><span class="sd">            Parameters:</span>
-</span><span id="BasicHybridMLPClassifier-21"><a href="#BasicHybridMLPClassifier-21"><span class="linenos">21</span></a><span class="sd">            -----------</span>
-</span><span id="BasicHybridMLPClassifier-22"><a href="#BasicHybridMLPClassifier-22"><span class="linenos">22</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="BasicHybridMLPClassifier-23"><a href="#BasicHybridMLPClassifier-23"><span class="linenos">23</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers</span>
-</span><span id="BasicHybridMLPClassifier-24"><a href="#BasicHybridMLPClassifier-24"><span class="linenos">24</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="BasicHybridMLPClassifier-25"><a href="#BasicHybridMLPClassifier-25"><span class="linenos">25</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="BasicHybridMLPClassifier-26"><a href="#BasicHybridMLPClassifier-26"><span class="linenos">26</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="BasicHybridMLPClassifier-27"><a href="#BasicHybridMLPClassifier-27"><span class="linenos">27</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="BasicHybridMLPClassifier-20"><a href="#BasicHybridMLPClassifier-20"><span class="linenos">20</span></a><span class="sd">            Parameters:  </span>
+</span><span id="BasicHybridMLPClassifier-21"><a href="#BasicHybridMLPClassifier-21"><span class="linenos">21</span></a><span class="sd">            -----------  </span>
+</span><span id="BasicHybridMLPClassifier-22"><a href="#BasicHybridMLPClassifier-22"><span class="linenos">22</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="BasicHybridMLPClassifier-23"><a href="#BasicHybridMLPClassifier-23"><span class="linenos">23</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers  </span>
+</span><span id="BasicHybridMLPClassifier-24"><a href="#BasicHybridMLPClassifier-24"><span class="linenos">24</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="BasicHybridMLPClassifier-25"><a href="#BasicHybridMLPClassifier-25"><span class="linenos">25</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="BasicHybridMLPClassifier-26"><a href="#BasicHybridMLPClassifier-26"><span class="linenos">26</span></a><span class="sd">            - ou_dim : int   </span>
+</span><span id="BasicHybridMLPClassifier-27"><a href="#BasicHybridMLPClassifier-27"><span class="linenos">27</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="BasicHybridMLPClassifier-28"><a href="#BasicHybridMLPClassifier-28"><span class="linenos">28</span></a><span class="sd">            </span>
-</span><span id="BasicHybridMLPClassifier-29"><a href="#BasicHybridMLPClassifier-29"><span class="linenos">29</span></a><span class="sd">            Returns:</span>
-</span><span id="BasicHybridMLPClassifier-30"><a href="#BasicHybridMLPClassifier-30"><span class="linenos">30</span></a><span class="sd">            --------</span>
-</span><span id="BasicHybridMLPClassifier-31"><a href="#BasicHybridMLPClassifier-31"><span class="linenos">31</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.  </span>
+</span><span id="BasicHybridMLPClassifier-29"><a href="#BasicHybridMLPClassifier-29"><span class="linenos">29</span></a><span class="sd">            Returns:  </span>
+</span><span id="BasicHybridMLPClassifier-30"><a href="#BasicHybridMLPClassifier-30"><span class="linenos">30</span></a><span class="sd">            --------  </span>
+</span><span id="BasicHybridMLPClassifier-31"><a href="#BasicHybridMLPClassifier-31"><span class="linenos">31</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.    </span>
 </span><span id="BasicHybridMLPClassifier-32"><a href="#BasicHybridMLPClassifier-32"><span class="linenos">32</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="BasicHybridMLPClassifier-33"><a href="#BasicHybridMLPClassifier-33"><span class="linenos">33</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="BasicHybridMLPClassifier-34"><a href="#BasicHybridMLPClassifier-34"><span class="linenos">34</span></a>
@@ -331,17 +331,17 @@
 </span><span id="BasicHybridMLPClassifier-44"><a href="#BasicHybridMLPClassifier-44"><span class="linenos">44</span></a>
 </span><span id="BasicHybridMLPClassifier-45"><a href="#BasicHybridMLPClassifier-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="BasicHybridMLPClassifier-46"><a href="#BasicHybridMLPClassifier-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicHybridMLPClassifier-47"><a href="#BasicHybridMLPClassifier-47"><span class="linenos">47</span></a><span class="sd">            Torch forward method</span>
+</span><span id="BasicHybridMLPClassifier-47"><a href="#BasicHybridMLPClassifier-47"><span class="linenos">47</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="BasicHybridMLPClassifier-48"><a href="#BasicHybridMLPClassifier-48"><span class="linenos">48</span></a>
-</span><span id="BasicHybridMLPClassifier-49"><a href="#BasicHybridMLPClassifier-49"><span class="linenos">49</span></a><span class="sd">            Parameters:</span>
-</span><span id="BasicHybridMLPClassifier-50"><a href="#BasicHybridMLPClassifier-50"><span class="linenos">50</span></a><span class="sd">            -----------</span>
-</span><span id="BasicHybridMLPClassifier-51"><a href="#BasicHybridMLPClassifier-51"><span class="linenos">51</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="BasicHybridMLPClassifier-52"><a href="#BasicHybridMLPClassifier-52"><span class="linenos">52</span></a><span class="sd">                input for the torch model</span>
+</span><span id="BasicHybridMLPClassifier-49"><a href="#BasicHybridMLPClassifier-49"><span class="linenos">49</span></a><span class="sd">            Parameters:  </span>
+</span><span id="BasicHybridMLPClassifier-50"><a href="#BasicHybridMLPClassifier-50"><span class="linenos">50</span></a><span class="sd">            -----------  </span>
+</span><span id="BasicHybridMLPClassifier-51"><a href="#BasicHybridMLPClassifier-51"><span class="linenos">51</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="BasicHybridMLPClassifier-52"><a href="#BasicHybridMLPClassifier-52"><span class="linenos">52</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="BasicHybridMLPClassifier-53"><a href="#BasicHybridMLPClassifier-53"><span class="linenos">53</span></a>
-</span><span id="BasicHybridMLPClassifier-54"><a href="#BasicHybridMLPClassifier-54"><span class="linenos">54</span></a><span class="sd">            Returns:</span>
-</span><span id="BasicHybridMLPClassifier-55"><a href="#BasicHybridMLPClassifier-55"><span class="linenos">55</span></a><span class="sd">            --------</span>
-</span><span id="BasicHybridMLPClassifier-56"><a href="#BasicHybridMLPClassifier-56"><span class="linenos">56</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="BasicHybridMLPClassifier-57"><a href="#BasicHybridMLPClassifier-57"><span class="linenos">57</span></a><span class="sd">                output from the torch model</span>
+</span><span id="BasicHybridMLPClassifier-54"><a href="#BasicHybridMLPClassifier-54"><span class="linenos">54</span></a><span class="sd">            Returns:  </span>
+</span><span id="BasicHybridMLPClassifier-55"><a href="#BasicHybridMLPClassifier-55"><span class="linenos">55</span></a><span class="sd">            --------  </span>
+</span><span id="BasicHybridMLPClassifier-56"><a href="#BasicHybridMLPClassifier-56"><span class="linenos">56</span></a><span class="sd">            - out : torch.Tensor  </span>
+</span><span id="BasicHybridMLPClassifier-57"><a href="#BasicHybridMLPClassifier-57"><span class="linenos">57</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="BasicHybridMLPClassifier-58"><a href="#BasicHybridMLPClassifier-58"><span class="linenos">58</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="BasicHybridMLPClassifier-59"><a href="#BasicHybridMLPClassifier-59"><span class="linenos">59</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="BasicHybridMLPClassifier-60"><a href="#BasicHybridMLPClassifier-60"><span class="linenos">60</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -371,20 +371,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
     <a class="headerlink" href="#BasicHybridMLPClassifier.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="BasicHybridMLPClassifier.__init__-16"><a href="#BasicHybridMLPClassifier.__init__-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BasicHybridMLPClassifier.__init__-17"><a href="#BasicHybridMLPClassifier.__init__-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicHybridMLPClassifier.__init__-18"><a href="#BasicHybridMLPClassifier.__init__-18"><span class="linenos">18</span></a><span class="sd">            BasicHybridMLPClassifier constructor.</span>
+</span><span id="BasicHybridMLPClassifier.__init__-18"><a href="#BasicHybridMLPClassifier.__init__-18"><span class="linenos">18</span></a><span class="sd">            BasicHybridMLPClassifier constructor.  </span>
 </span><span id="BasicHybridMLPClassifier.__init__-19"><a href="#BasicHybridMLPClassifier.__init__-19"><span class="linenos">19</span></a>
-</span><span id="BasicHybridMLPClassifier.__init__-20"><a href="#BasicHybridMLPClassifier.__init__-20"><span class="linenos">20</span></a><span class="sd">            Parameters:</span>
-</span><span id="BasicHybridMLPClassifier.__init__-21"><a href="#BasicHybridMLPClassifier.__init__-21"><span class="linenos">21</span></a><span class="sd">            -----------</span>
-</span><span id="BasicHybridMLPClassifier.__init__-22"><a href="#BasicHybridMLPClassifier.__init__-22"><span class="linenos">22</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="BasicHybridMLPClassifier.__init__-23"><a href="#BasicHybridMLPClassifier.__init__-23"><span class="linenos">23</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers</span>
-</span><span id="BasicHybridMLPClassifier.__init__-24"><a href="#BasicHybridMLPClassifier.__init__-24"><span class="linenos">24</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="BasicHybridMLPClassifier.__init__-25"><a href="#BasicHybridMLPClassifier.__init__-25"><span class="linenos">25</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="BasicHybridMLPClassifier.__init__-26"><a href="#BasicHybridMLPClassifier.__init__-26"><span class="linenos">26</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="BasicHybridMLPClassifier.__init__-27"><a href="#BasicHybridMLPClassifier.__init__-27"><span class="linenos">27</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="BasicHybridMLPClassifier.__init__-20"><a href="#BasicHybridMLPClassifier.__init__-20"><span class="linenos">20</span></a><span class="sd">            Parameters:  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-21"><a href="#BasicHybridMLPClassifier.__init__-21"><span class="linenos">21</span></a><span class="sd">            -----------  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-22"><a href="#BasicHybridMLPClassifier.__init__-22"><span class="linenos">22</span></a><span class="sd">            - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-23"><a href="#BasicHybridMLPClassifier.__init__-23"><span class="linenos">23</span></a><span class="sd">                hqm quantum circuit to be stacked between two fully connected layers  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-24"><a href="#BasicHybridMLPClassifier.__init__-24"><span class="linenos">24</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-25"><a href="#BasicHybridMLPClassifier.__init__-25"><span class="linenos">25</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-26"><a href="#BasicHybridMLPClassifier.__init__-26"><span class="linenos">26</span></a><span class="sd">            - ou_dim : int   </span>
+</span><span id="BasicHybridMLPClassifier.__init__-27"><a href="#BasicHybridMLPClassifier.__init__-27"><span class="linenos">27</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="BasicHybridMLPClassifier.__init__-28"><a href="#BasicHybridMLPClassifier.__init__-28"><span class="linenos">28</span></a><span class="sd">            </span>
-</span><span id="BasicHybridMLPClassifier.__init__-29"><a href="#BasicHybridMLPClassifier.__init__-29"><span class="linenos">29</span></a><span class="sd">            Returns:</span>
-</span><span id="BasicHybridMLPClassifier.__init__-30"><a href="#BasicHybridMLPClassifier.__init__-30"><span class="linenos">30</span></a><span class="sd">            --------</span>
-</span><span id="BasicHybridMLPClassifier.__init__-31"><a href="#BasicHybridMLPClassifier.__init__-31"><span class="linenos">31</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-29"><a href="#BasicHybridMLPClassifier.__init__-29"><span class="linenos">29</span></a><span class="sd">            Returns:  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-30"><a href="#BasicHybridMLPClassifier.__init__-30"><span class="linenos">30</span></a><span class="sd">            --------  </span>
+</span><span id="BasicHybridMLPClassifier.__init__-31"><a href="#BasicHybridMLPClassifier.__init__-31"><span class="linenos">31</span></a><span class="sd">            Nothing, a BasicHybridMLPClassifier object will be created.    </span>
 </span><span id="BasicHybridMLPClassifier.__init__-32"><a href="#BasicHybridMLPClassifier.__init__-32"><span class="linenos">32</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="BasicHybridMLPClassifier.__init__-33"><a href="#BasicHybridMLPClassifier.__init__-33"><span class="linenos">33</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="BasicHybridMLPClassifier.__init__-34"><a href="#BasicHybridMLPClassifier.__init__-34"><span class="linenos">34</span></a>
@@ -400,20 +400,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>BasicHybridMLPClassifier constructor.</p>
+            <div class="docstring"><p>BasicHybridMLPClassifier constructor.  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>qcircuit : <a href="../circuits/circuit.html#QuantumCircuit">hqm.circuits.circuit.QuantumCircuit</a>
-hqm quantum circuit to be stacked between two fully connected layers</li>
-<li>in_dim : int
-integer representing the input size for the first fully connected layer</li>
-<li>ou_dim : int
-integer representing the output size of the hybrid model</li>
+<li>qcircuit : <a href="../circuits/circuit.html#QuantumCircuit">hqm.circuits.circuit.QuantumCircuit</a> <br />
+hqm quantum circuit to be stacked between two fully connected layers  </li>
+<li>in_dim : int <br />
+integer representing the input size for the first fully connected layer  </li>
+<li>ou_dim : int <br />
+integer representing the output size of the hybrid model  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <p>Nothing, a BasicHybridMLPClassifier object will be created.</p>
 </div>
@@ -433,17 +433,17 @@ integer representing the output size of the hybrid model</li>
     <a class="headerlink" href="#BasicHybridMLPClassifier.forward"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="BasicHybridMLPClassifier.forward-45"><a href="#BasicHybridMLPClassifier.forward-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="BasicHybridMLPClassifier.forward-46"><a href="#BasicHybridMLPClassifier.forward-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicHybridMLPClassifier.forward-47"><a href="#BasicHybridMLPClassifier.forward-47"><span class="linenos">47</span></a><span class="sd">            Torch forward method</span>
+</span><span id="BasicHybridMLPClassifier.forward-47"><a href="#BasicHybridMLPClassifier.forward-47"><span class="linenos">47</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="BasicHybridMLPClassifier.forward-48"><a href="#BasicHybridMLPClassifier.forward-48"><span class="linenos">48</span></a>
-</span><span id="BasicHybridMLPClassifier.forward-49"><a href="#BasicHybridMLPClassifier.forward-49"><span class="linenos">49</span></a><span class="sd">            Parameters:</span>
-</span><span id="BasicHybridMLPClassifier.forward-50"><a href="#BasicHybridMLPClassifier.forward-50"><span class="linenos">50</span></a><span class="sd">            -----------</span>
-</span><span id="BasicHybridMLPClassifier.forward-51"><a href="#BasicHybridMLPClassifier.forward-51"><span class="linenos">51</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="BasicHybridMLPClassifier.forward-52"><a href="#BasicHybridMLPClassifier.forward-52"><span class="linenos">52</span></a><span class="sd">                input for the torch model</span>
+</span><span id="BasicHybridMLPClassifier.forward-49"><a href="#BasicHybridMLPClassifier.forward-49"><span class="linenos">49</span></a><span class="sd">            Parameters:  </span>
+</span><span id="BasicHybridMLPClassifier.forward-50"><a href="#BasicHybridMLPClassifier.forward-50"><span class="linenos">50</span></a><span class="sd">            -----------  </span>
+</span><span id="BasicHybridMLPClassifier.forward-51"><a href="#BasicHybridMLPClassifier.forward-51"><span class="linenos">51</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="BasicHybridMLPClassifier.forward-52"><a href="#BasicHybridMLPClassifier.forward-52"><span class="linenos">52</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="BasicHybridMLPClassifier.forward-53"><a href="#BasicHybridMLPClassifier.forward-53"><span class="linenos">53</span></a>
-</span><span id="BasicHybridMLPClassifier.forward-54"><a href="#BasicHybridMLPClassifier.forward-54"><span class="linenos">54</span></a><span class="sd">            Returns:</span>
-</span><span id="BasicHybridMLPClassifier.forward-55"><a href="#BasicHybridMLPClassifier.forward-55"><span class="linenos">55</span></a><span class="sd">            --------</span>
-</span><span id="BasicHybridMLPClassifier.forward-56"><a href="#BasicHybridMLPClassifier.forward-56"><span class="linenos">56</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="BasicHybridMLPClassifier.forward-57"><a href="#BasicHybridMLPClassifier.forward-57"><span class="linenos">57</span></a><span class="sd">                output from the torch model</span>
+</span><span id="BasicHybridMLPClassifier.forward-54"><a href="#BasicHybridMLPClassifier.forward-54"><span class="linenos">54</span></a><span class="sd">            Returns:  </span>
+</span><span id="BasicHybridMLPClassifier.forward-55"><a href="#BasicHybridMLPClassifier.forward-55"><span class="linenos">55</span></a><span class="sd">            --------  </span>
+</span><span id="BasicHybridMLPClassifier.forward-56"><a href="#BasicHybridMLPClassifier.forward-56"><span class="linenos">56</span></a><span class="sd">            - out : torch.Tensor  </span>
+</span><span id="BasicHybridMLPClassifier.forward-57"><a href="#BasicHybridMLPClassifier.forward-57"><span class="linenos">57</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="BasicHybridMLPClassifier.forward-58"><a href="#BasicHybridMLPClassifier.forward-58"><span class="linenos">58</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="BasicHybridMLPClassifier.forward-59"><a href="#BasicHybridMLPClassifier.forward-59"><span class="linenos">59</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="BasicHybridMLPClassifier.forward-60"><a href="#BasicHybridMLPClassifier.forward-60"><span class="linenos">60</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -455,19 +455,19 @@ integer representing the output size of the hybrid model</li>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Torch forward method</p>
+            <div class="docstring"><p>Torch forward method  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>x : torch.Tensor
-input for the torch model</li>
+<li>x : torch.Tensor <br />
+input for the torch model  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <ul>
-<li>out : torch.Tensor
+<li>out : torch.Tensor <br />
 output from the torch model</li>
 </ul>
 </div>
@@ -547,20 +547,20 @@ output from the torch model</li>
 </span><span id="MultiHybridMLPClassifier-73"><a href="#MultiHybridMLPClassifier-73"><span class="linenos"> 73</span></a>
 </span><span id="MultiHybridMLPClassifier-74"><a href="#MultiHybridMLPClassifier-74"><span class="linenos"> 74</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="MultiHybridMLPClassifier-75"><a href="#MultiHybridMLPClassifier-75"><span class="linenos"> 75</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMLPClassifier-76"><a href="#MultiHybridMLPClassifier-76"><span class="linenos"> 76</span></a><span class="sd">            MultiHybridMLPClassifier constructor.</span>
+</span><span id="MultiHybridMLPClassifier-76"><a href="#MultiHybridMLPClassifier-76"><span class="linenos"> 76</span></a><span class="sd">            MultiHybridMLPClassifier constructor.  </span>
 </span><span id="MultiHybridMLPClassifier-77"><a href="#MultiHybridMLPClassifier-77"><span class="linenos"> 77</span></a>
-</span><span id="MultiHybridMLPClassifier-78"><a href="#MultiHybridMLPClassifier-78"><span class="linenos"> 78</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMLPClassifier-79"><a href="#MultiHybridMLPClassifier-79"><span class="linenos"> 79</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMLPClassifier-80"><a href="#MultiHybridMLPClassifier-80"><span class="linenos"> 80</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="MultiHybridMLPClassifier-81"><a href="#MultiHybridMLPClassifier-81"><span class="linenos"> 81</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="MultiHybridMLPClassifier-82"><a href="#MultiHybridMLPClassifier-82"><span class="linenos"> 82</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="MultiHybridMLPClassifier-83"><a href="#MultiHybridMLPClassifier-83"><span class="linenos"> 83</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="MultiHybridMLPClassifier-84"><a href="#MultiHybridMLPClassifier-84"><span class="linenos"> 84</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="MultiHybridMLPClassifier-85"><a href="#MultiHybridMLPClassifier-85"><span class="linenos"> 85</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="MultiHybridMLPClassifier-78"><a href="#MultiHybridMLPClassifier-78"><span class="linenos"> 78</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMLPClassifier-79"><a href="#MultiHybridMLPClassifier-79"><span class="linenos"> 79</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMLPClassifier-80"><a href="#MultiHybridMLPClassifier-80"><span class="linenos"> 80</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="MultiHybridMLPClassifier-81"><a href="#MultiHybridMLPClassifier-81"><span class="linenos"> 81</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="MultiHybridMLPClassifier-82"><a href="#MultiHybridMLPClassifier-82"><span class="linenos"> 82</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="MultiHybridMLPClassifier-83"><a href="#MultiHybridMLPClassifier-83"><span class="linenos"> 83</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="MultiHybridMLPClassifier-84"><a href="#MultiHybridMLPClassifier-84"><span class="linenos"> 84</span></a><span class="sd">            - ou_dim : int  </span>
+</span><span id="MultiHybridMLPClassifier-85"><a href="#MultiHybridMLPClassifier-85"><span class="linenos"> 85</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="MultiHybridMLPClassifier-86"><a href="#MultiHybridMLPClassifier-86"><span class="linenos"> 86</span></a><span class="sd">            </span>
-</span><span id="MultiHybridMLPClassifier-87"><a href="#MultiHybridMLPClassifier-87"><span class="linenos"> 87</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMLPClassifier-88"><a href="#MultiHybridMLPClassifier-88"><span class="linenos"> 88</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMLPClassifier-89"><a href="#MultiHybridMLPClassifier-89"><span class="linenos"> 89</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.  </span>
+</span><span id="MultiHybridMLPClassifier-87"><a href="#MultiHybridMLPClassifier-87"><span class="linenos"> 87</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMLPClassifier-88"><a href="#MultiHybridMLPClassifier-88"><span class="linenos"> 88</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMLPClassifier-89"><a href="#MultiHybridMLPClassifier-89"><span class="linenos"> 89</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.    </span>
 </span><span id="MultiHybridMLPClassifier-90"><a href="#MultiHybridMLPClassifier-90"><span class="linenos"> 90</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMLPClassifier-91"><a href="#MultiHybridMLPClassifier-91"><span class="linenos"> 91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="MultiHybridMLPClassifier-92"><a href="#MultiHybridMLPClassifier-92"><span class="linenos"> 92</span></a>
@@ -578,17 +578,17 @@ output from the torch model</li>
 </span><span id="MultiHybridMLPClassifier-104"><a href="#MultiHybridMLPClassifier-104"><span class="linenos">104</span></a>
 </span><span id="MultiHybridMLPClassifier-105"><a href="#MultiHybridMLPClassifier-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="MultiHybridMLPClassifier-106"><a href="#MultiHybridMLPClassifier-106"><span class="linenos">106</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMLPClassifier-107"><a href="#MultiHybridMLPClassifier-107"><span class="linenos">107</span></a><span class="sd">            Torch forward method</span>
+</span><span id="MultiHybridMLPClassifier-107"><a href="#MultiHybridMLPClassifier-107"><span class="linenos">107</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="MultiHybridMLPClassifier-108"><a href="#MultiHybridMLPClassifier-108"><span class="linenos">108</span></a>
-</span><span id="MultiHybridMLPClassifier-109"><a href="#MultiHybridMLPClassifier-109"><span class="linenos">109</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMLPClassifier-110"><a href="#MultiHybridMLPClassifier-110"><span class="linenos">110</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMLPClassifier-111"><a href="#MultiHybridMLPClassifier-111"><span class="linenos">111</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMLPClassifier-112"><a href="#MultiHybridMLPClassifier-112"><span class="linenos">112</span></a><span class="sd">                input for the torch model</span>
+</span><span id="MultiHybridMLPClassifier-109"><a href="#MultiHybridMLPClassifier-109"><span class="linenos">109</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMLPClassifier-110"><a href="#MultiHybridMLPClassifier-110"><span class="linenos">110</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMLPClassifier-111"><a href="#MultiHybridMLPClassifier-111"><span class="linenos">111</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="MultiHybridMLPClassifier-112"><a href="#MultiHybridMLPClassifier-112"><span class="linenos">112</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="MultiHybridMLPClassifier-113"><a href="#MultiHybridMLPClassifier-113"><span class="linenos">113</span></a>
-</span><span id="MultiHybridMLPClassifier-114"><a href="#MultiHybridMLPClassifier-114"><span class="linenos">114</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMLPClassifier-115"><a href="#MultiHybridMLPClassifier-115"><span class="linenos">115</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMLPClassifier-116"><a href="#MultiHybridMLPClassifier-116"><span class="linenos">116</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="MultiHybridMLPClassifier-117"><a href="#MultiHybridMLPClassifier-117"><span class="linenos">117</span></a><span class="sd">                output from the torch model</span>
+</span><span id="MultiHybridMLPClassifier-114"><a href="#MultiHybridMLPClassifier-114"><span class="linenos">114</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMLPClassifier-115"><a href="#MultiHybridMLPClassifier-115"><span class="linenos">115</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMLPClassifier-116"><a href="#MultiHybridMLPClassifier-116"><span class="linenos">116</span></a><span class="sd">            - out : torch.Tensor   </span>
+</span><span id="MultiHybridMLPClassifier-117"><a href="#MultiHybridMLPClassifier-117"><span class="linenos">117</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="MultiHybridMLPClassifier-118"><a href="#MultiHybridMLPClassifier-118"><span class="linenos">118</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMLPClassifier-119"><a href="#MultiHybridMLPClassifier-119"><span class="linenos">119</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="MultiHybridMLPClassifier-120"><a href="#MultiHybridMLPClassifier-120"><span class="linenos">120</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -619,20 +619,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
     <a class="headerlink" href="#MultiHybridMLPClassifier.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiHybridMLPClassifier.__init__-74"><a href="#MultiHybridMLPClassifier.__init__-74"><span class="linenos"> 74</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="MultiHybridMLPClassifier.__init__-75"><a href="#MultiHybridMLPClassifier.__init__-75"><span class="linenos"> 75</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMLPClassifier.__init__-76"><a href="#MultiHybridMLPClassifier.__init__-76"><span class="linenos"> 76</span></a><span class="sd">            MultiHybridMLPClassifier constructor.</span>
+</span><span id="MultiHybridMLPClassifier.__init__-76"><a href="#MultiHybridMLPClassifier.__init__-76"><span class="linenos"> 76</span></a><span class="sd">            MultiHybridMLPClassifier constructor.  </span>
 </span><span id="MultiHybridMLPClassifier.__init__-77"><a href="#MultiHybridMLPClassifier.__init__-77"><span class="linenos"> 77</span></a>
-</span><span id="MultiHybridMLPClassifier.__init__-78"><a href="#MultiHybridMLPClassifier.__init__-78"><span class="linenos"> 78</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMLPClassifier.__init__-79"><a href="#MultiHybridMLPClassifier.__init__-79"><span class="linenos"> 79</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMLPClassifier.__init__-80"><a href="#MultiHybridMLPClassifier.__init__-80"><span class="linenos"> 80</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="MultiHybridMLPClassifier.__init__-81"><a href="#MultiHybridMLPClassifier.__init__-81"><span class="linenos"> 81</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="MultiHybridMLPClassifier.__init__-82"><a href="#MultiHybridMLPClassifier.__init__-82"><span class="linenos"> 82</span></a><span class="sd">            - in_dim : int</span>
-</span><span id="MultiHybridMLPClassifier.__init__-83"><a href="#MultiHybridMLPClassifier.__init__-83"><span class="linenos"> 83</span></a><span class="sd">                integer representing the input size for the first fully connected layer</span>
-</span><span id="MultiHybridMLPClassifier.__init__-84"><a href="#MultiHybridMLPClassifier.__init__-84"><span class="linenos"> 84</span></a><span class="sd">            - ou_dim : int</span>
-</span><span id="MultiHybridMLPClassifier.__init__-85"><a href="#MultiHybridMLPClassifier.__init__-85"><span class="linenos"> 85</span></a><span class="sd">                integer representing the output size of the hybrid model</span>
+</span><span id="MultiHybridMLPClassifier.__init__-78"><a href="#MultiHybridMLPClassifier.__init__-78"><span class="linenos"> 78</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-79"><a href="#MultiHybridMLPClassifier.__init__-79"><span class="linenos"> 79</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-80"><a href="#MultiHybridMLPClassifier.__init__-80"><span class="linenos"> 80</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-81"><a href="#MultiHybridMLPClassifier.__init__-81"><span class="linenos"> 81</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-82"><a href="#MultiHybridMLPClassifier.__init__-82"><span class="linenos"> 82</span></a><span class="sd">            - in_dim : int  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-83"><a href="#MultiHybridMLPClassifier.__init__-83"><span class="linenos"> 83</span></a><span class="sd">                integer representing the input size for the first fully connected layer  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-84"><a href="#MultiHybridMLPClassifier.__init__-84"><span class="linenos"> 84</span></a><span class="sd">            - ou_dim : int  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-85"><a href="#MultiHybridMLPClassifier.__init__-85"><span class="linenos"> 85</span></a><span class="sd">                integer representing the output size of the hybrid model  </span>
 </span><span id="MultiHybridMLPClassifier.__init__-86"><a href="#MultiHybridMLPClassifier.__init__-86"><span class="linenos"> 86</span></a><span class="sd">            </span>
-</span><span id="MultiHybridMLPClassifier.__init__-87"><a href="#MultiHybridMLPClassifier.__init__-87"><span class="linenos"> 87</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMLPClassifier.__init__-88"><a href="#MultiHybridMLPClassifier.__init__-88"><span class="linenos"> 88</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMLPClassifier.__init__-89"><a href="#MultiHybridMLPClassifier.__init__-89"><span class="linenos"> 89</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-87"><a href="#MultiHybridMLPClassifier.__init__-87"><span class="linenos"> 87</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-88"><a href="#MultiHybridMLPClassifier.__init__-88"><span class="linenos"> 88</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMLPClassifier.__init__-89"><a href="#MultiHybridMLPClassifier.__init__-89"><span class="linenos"> 89</span></a><span class="sd">            Nothing, a MultiHybridMLPClassifier object will be created.    </span>
 </span><span id="MultiHybridMLPClassifier.__init__-90"><a href="#MultiHybridMLPClassifier.__init__-90"><span class="linenos"> 90</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMLPClassifier.__init__-91"><a href="#MultiHybridMLPClassifier.__init__-91"><span class="linenos"> 91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="MultiHybridMLPClassifier.__init__-92"><a href="#MultiHybridMLPClassifier.__init__-92"><span class="linenos"> 92</span></a>
@@ -650,20 +650,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>MultiHybridMLPClassifier constructor.</p>
+            <div class="docstring"><p>MultiHybridMLPClassifier constructor.  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>qcircuits : list
-list of hqm quantum circuits to be stacked between two fully connected layers</li>
-<li>in_dim : int
-integer representing the input size for the first fully connected layer</li>
-<li>ou_dim : int
-integer representing the output size of the hybrid model</li>
+<li>qcircuits : list <br />
+list of hqm quantum circuits to be stacked between two fully connected layers  </li>
+<li>in_dim : int <br />
+integer representing the input size for the first fully connected layer  </li>
+<li>ou_dim : int <br />
+integer representing the output size of the hybrid model  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <p>Nothing, a MultiHybridMLPClassifier object will be created.</p>
 </div>
@@ -683,17 +683,17 @@ integer representing the output size of the hybrid model</li>
     <a class="headerlink" href="#MultiHybridMLPClassifier.forward"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiHybridMLPClassifier.forward-105"><a href="#MultiHybridMLPClassifier.forward-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="MultiHybridMLPClassifier.forward-106"><a href="#MultiHybridMLPClassifier.forward-106"><span class="linenos">106</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMLPClassifier.forward-107"><a href="#MultiHybridMLPClassifier.forward-107"><span class="linenos">107</span></a><span class="sd">            Torch forward method</span>
+</span><span id="MultiHybridMLPClassifier.forward-107"><a href="#MultiHybridMLPClassifier.forward-107"><span class="linenos">107</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="MultiHybridMLPClassifier.forward-108"><a href="#MultiHybridMLPClassifier.forward-108"><span class="linenos">108</span></a>
-</span><span id="MultiHybridMLPClassifier.forward-109"><a href="#MultiHybridMLPClassifier.forward-109"><span class="linenos">109</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMLPClassifier.forward-110"><a href="#MultiHybridMLPClassifier.forward-110"><span class="linenos">110</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMLPClassifier.forward-111"><a href="#MultiHybridMLPClassifier.forward-111"><span class="linenos">111</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMLPClassifier.forward-112"><a href="#MultiHybridMLPClassifier.forward-112"><span class="linenos">112</span></a><span class="sd">                input for the torch model</span>
+</span><span id="MultiHybridMLPClassifier.forward-109"><a href="#MultiHybridMLPClassifier.forward-109"><span class="linenos">109</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMLPClassifier.forward-110"><a href="#MultiHybridMLPClassifier.forward-110"><span class="linenos">110</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMLPClassifier.forward-111"><a href="#MultiHybridMLPClassifier.forward-111"><span class="linenos">111</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="MultiHybridMLPClassifier.forward-112"><a href="#MultiHybridMLPClassifier.forward-112"><span class="linenos">112</span></a><span class="sd">                input for the torch model  </span>
 </span><span id="MultiHybridMLPClassifier.forward-113"><a href="#MultiHybridMLPClassifier.forward-113"><span class="linenos">113</span></a>
-</span><span id="MultiHybridMLPClassifier.forward-114"><a href="#MultiHybridMLPClassifier.forward-114"><span class="linenos">114</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMLPClassifier.forward-115"><a href="#MultiHybridMLPClassifier.forward-115"><span class="linenos">115</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMLPClassifier.forward-116"><a href="#MultiHybridMLPClassifier.forward-116"><span class="linenos">116</span></a><span class="sd">            - out : torch.Tensor</span>
-</span><span id="MultiHybridMLPClassifier.forward-117"><a href="#MultiHybridMLPClassifier.forward-117"><span class="linenos">117</span></a><span class="sd">                output from the torch model</span>
+</span><span id="MultiHybridMLPClassifier.forward-114"><a href="#MultiHybridMLPClassifier.forward-114"><span class="linenos">114</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMLPClassifier.forward-115"><a href="#MultiHybridMLPClassifier.forward-115"><span class="linenos">115</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMLPClassifier.forward-116"><a href="#MultiHybridMLPClassifier.forward-116"><span class="linenos">116</span></a><span class="sd">            - out : torch.Tensor   </span>
+</span><span id="MultiHybridMLPClassifier.forward-117"><a href="#MultiHybridMLPClassifier.forward-117"><span class="linenos">117</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="MultiHybridMLPClassifier.forward-118"><a href="#MultiHybridMLPClassifier.forward-118"><span class="linenos">118</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMLPClassifier.forward-119"><a href="#MultiHybridMLPClassifier.forward-119"><span class="linenos">119</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="MultiHybridMLPClassifier.forward-120"><a href="#MultiHybridMLPClassifier.forward-120"><span class="linenos">120</span></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -706,19 +706,19 @@ integer representing the output size of the hybrid model</li>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Torch forward method</p>
+            <div class="docstring"><p>Torch forward method  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>x : torch.Tensor
-input for the torch model</li>
+<li>x : torch.Tensor <br />
+input for the torch model  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <ul>
-<li>out : torch.Tensor
+<li>out : torch.Tensor <br />
 output from the torch model</li>
 </ul>
 </div>
@@ -798,20 +798,20 @@ output from the torch model</li>
 </span><span id="MultiHybridMultiMLPClassifier-134"><a href="#MultiHybridMultiMLPClassifier-134"><span class="linenos">134</span></a>
 </span><span id="MultiHybridMultiMLPClassifier-135"><a href="#MultiHybridMultiMLPClassifier-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dims</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="MultiHybridMultiMLPClassifier-136"><a href="#MultiHybridMultiMLPClassifier-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMultiMLPClassifier-137"><a href="#MultiHybridMultiMLPClassifier-137"><span class="linenos">137</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.</span>
+</span><span id="MultiHybridMultiMLPClassifier-137"><a href="#MultiHybridMultiMLPClassifier-137"><span class="linenos">137</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.  </span>
 </span><span id="MultiHybridMultiMLPClassifier-138"><a href="#MultiHybridMultiMLPClassifier-138"><span class="linenos">138</span></a>
-</span><span id="MultiHybridMultiMLPClassifier-139"><a href="#MultiHybridMultiMLPClassifier-139"><span class="linenos">139</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMultiMLPClassifier-140"><a href="#MultiHybridMultiMLPClassifier-140"><span class="linenos">140</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMultiMLPClassifier-141"><a href="#MultiHybridMultiMLPClassifier-141"><span class="linenos">141</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="MultiHybridMultiMLPClassifier-142"><a href="#MultiHybridMultiMLPClassifier-142"><span class="linenos">142</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="MultiHybridMultiMLPClassifier-143"><a href="#MultiHybridMultiMLPClassifier-143"><span class="linenos">143</span></a><span class="sd">            - in_dims: list</span>
-</span><span id="MultiHybridMultiMLPClassifier-144"><a href="#MultiHybridMultiMLPClassifier-144"><span class="linenos">144</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)</span>
-</span><span id="MultiHybridMultiMLPClassifier-145"><a href="#MultiHybridMultiMLPClassifier-145"><span class="linenos">145</span></a><span class="sd">            - ou_dim : list</span>
-</span><span id="MultiHybridMultiMLPClassifier-146"><a href="#MultiHybridMultiMLPClassifier-146"><span class="linenos">146</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)</span>
+</span><span id="MultiHybridMultiMLPClassifier-139"><a href="#MultiHybridMultiMLPClassifier-139"><span class="linenos">139</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMultiMLPClassifier-140"><a href="#MultiHybridMultiMLPClassifier-140"><span class="linenos">140</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMultiMLPClassifier-141"><a href="#MultiHybridMultiMLPClassifier-141"><span class="linenos">141</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="MultiHybridMultiMLPClassifier-142"><a href="#MultiHybridMultiMLPClassifier-142"><span class="linenos">142</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="MultiHybridMultiMLPClassifier-143"><a href="#MultiHybridMultiMLPClassifier-143"><span class="linenos">143</span></a><span class="sd">            - in_dims: list  </span>
+</span><span id="MultiHybridMultiMLPClassifier-144"><a href="#MultiHybridMultiMLPClassifier-144"><span class="linenos">144</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)  </span>
+</span><span id="MultiHybridMultiMLPClassifier-145"><a href="#MultiHybridMultiMLPClassifier-145"><span class="linenos">145</span></a><span class="sd">            - ou_dim : list  </span>
+</span><span id="MultiHybridMultiMLPClassifier-146"><a href="#MultiHybridMultiMLPClassifier-146"><span class="linenos">146</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)  </span>
 </span><span id="MultiHybridMultiMLPClassifier-147"><a href="#MultiHybridMultiMLPClassifier-147"><span class="linenos">147</span></a><span class="sd">            </span>
-</span><span id="MultiHybridMultiMLPClassifier-148"><a href="#MultiHybridMultiMLPClassifier-148"><span class="linenos">148</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMultiMLPClassifier-149"><a href="#MultiHybridMultiMLPClassifier-149"><span class="linenos">149</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMultiMLPClassifier-150"><a href="#MultiHybridMultiMLPClassifier-150"><span class="linenos">150</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.  </span>
+</span><span id="MultiHybridMultiMLPClassifier-148"><a href="#MultiHybridMultiMLPClassifier-148"><span class="linenos">148</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMultiMLPClassifier-149"><a href="#MultiHybridMultiMLPClassifier-149"><span class="linenos">149</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMultiMLPClassifier-150"><a href="#MultiHybridMultiMLPClassifier-150"><span class="linenos">150</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.    </span>
 </span><span id="MultiHybridMultiMLPClassifier-151"><a href="#MultiHybridMultiMLPClassifier-151"><span class="linenos">151</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMultiMLPClassifier-152"><a href="#MultiHybridMultiMLPClassifier-152"><span class="linenos">152</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="MultiHybridMultiMLPClassifier-153"><a href="#MultiHybridMultiMLPClassifier-153"><span class="linenos">153</span></a>
@@ -831,17 +831,17 @@ output from the torch model</li>
 </span><span id="MultiHybridMultiMLPClassifier-167"><a href="#MultiHybridMultiMLPClassifier-167"><span class="linenos">167</span></a>
 </span><span id="MultiHybridMultiMLPClassifier-168"><a href="#MultiHybridMultiMLPClassifier-168"><span class="linenos">168</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="MultiHybridMultiMLPClassifier-169"><a href="#MultiHybridMultiMLPClassifier-169"><span class="linenos">169</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMultiMLPClassifier-170"><a href="#MultiHybridMultiMLPClassifier-170"><span class="linenos">170</span></a><span class="sd">            Torch forward method</span>
+</span><span id="MultiHybridMultiMLPClassifier-170"><a href="#MultiHybridMultiMLPClassifier-170"><span class="linenos">170</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="MultiHybridMultiMLPClassifier-171"><a href="#MultiHybridMultiMLPClassifier-171"><span class="linenos">171</span></a>
-</span><span id="MultiHybridMultiMLPClassifier-172"><a href="#MultiHybridMultiMLPClassifier-172"><span class="linenos">172</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMultiMLPClassifier-173"><a href="#MultiHybridMultiMLPClassifier-173"><span class="linenos">173</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMultiMLPClassifier-174"><a href="#MultiHybridMultiMLPClassifier-174"><span class="linenos">174</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMultiMLPClassifier-175"><a href="#MultiHybridMultiMLPClassifier-175"><span class="linenos">175</span></a><span class="sd">                input for the torch model</span>
-</span><span id="MultiHybridMultiMLPClassifier-176"><a href="#MultiHybridMultiMLPClassifier-176"><span class="linenos">176</span></a>
-</span><span id="MultiHybridMultiMLPClassifier-177"><a href="#MultiHybridMultiMLPClassifier-177"><span class="linenos">177</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMultiMLPClassifier-178"><a href="#MultiHybridMultiMLPClassifier-178"><span class="linenos">178</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMultiMLPClassifier-179"><a href="#MultiHybridMultiMLPClassifier-179"><span class="linenos">179</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMultiMLPClassifier-180"><a href="#MultiHybridMultiMLPClassifier-180"><span class="linenos">180</span></a><span class="sd">                output from the torch model</span>
+</span><span id="MultiHybridMultiMLPClassifier-172"><a href="#MultiHybridMultiMLPClassifier-172"><span class="linenos">172</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMultiMLPClassifier-173"><a href="#MultiHybridMultiMLPClassifier-173"><span class="linenos">173</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMultiMLPClassifier-174"><a href="#MultiHybridMultiMLPClassifier-174"><span class="linenos">174</span></a><span class="sd">            - x : torch.Tensor   </span>
+</span><span id="MultiHybridMultiMLPClassifier-175"><a href="#MultiHybridMultiMLPClassifier-175"><span class="linenos">175</span></a><span class="sd">                input for the torch model  </span>
+</span><span id="MultiHybridMultiMLPClassifier-176"><a href="#MultiHybridMultiMLPClassifier-176"><span class="linenos">176</span></a><span class="sd"> </span>
+</span><span id="MultiHybridMultiMLPClassifier-177"><a href="#MultiHybridMultiMLPClassifier-177"><span class="linenos">177</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMultiMLPClassifier-178"><a href="#MultiHybridMultiMLPClassifier-178"><span class="linenos">178</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMultiMLPClassifier-179"><a href="#MultiHybridMultiMLPClassifier-179"><span class="linenos">179</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="MultiHybridMultiMLPClassifier-180"><a href="#MultiHybridMultiMLPClassifier-180"><span class="linenos">180</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="MultiHybridMultiMLPClassifier-181"><a href="#MultiHybridMultiMLPClassifier-181"><span class="linenos">181</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMultiMLPClassifier-182"><a href="#MultiHybridMultiMLPClassifier-182"><span class="linenos">182</span></a>        
 </span><span id="MultiHybridMultiMLPClassifier-183"><a href="#MultiHybridMultiMLPClassifier-183"><span class="linenos">183</span></a>        <span class="k">for</span> <span class="n">fc</span><span class="p">,</span> <span class="n">qc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fcs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qcs</span><span class="p">):</span>
@@ -874,20 +874,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
     <a class="headerlink" href="#MultiHybridMultiMLPClassifier.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiHybridMultiMLPClassifier.__init__-135"><a href="#MultiHybridMultiMLPClassifier.__init__-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuits</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">in_dims</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">ou_dim</span> <span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-136"><a href="#MultiHybridMultiMLPClassifier.__init__-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-137"><a href="#MultiHybridMultiMLPClassifier.__init__-137"><span class="linenos">137</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.</span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-137"><a href="#MultiHybridMultiMLPClassifier.__init__-137"><span class="linenos">137</span></a><span class="sd">            MultiHybridMultiMLPClassifier constructor.  </span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-138"><a href="#MultiHybridMultiMLPClassifier.__init__-138"><span class="linenos">138</span></a>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-139"><a href="#MultiHybridMultiMLPClassifier.__init__-139"><span class="linenos">139</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-140"><a href="#MultiHybridMultiMLPClassifier.__init__-140"><span class="linenos">140</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-141"><a href="#MultiHybridMultiMLPClassifier.__init__-141"><span class="linenos">141</span></a><span class="sd">            - qcircuits : list</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-142"><a href="#MultiHybridMultiMLPClassifier.__init__-142"><span class="linenos">142</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-143"><a href="#MultiHybridMultiMLPClassifier.__init__-143"><span class="linenos">143</span></a><span class="sd">            - in_dims: list</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-144"><a href="#MultiHybridMultiMLPClassifier.__init__-144"><span class="linenos">144</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-145"><a href="#MultiHybridMultiMLPClassifier.__init__-145"><span class="linenos">145</span></a><span class="sd">            - ou_dim : list</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-146"><a href="#MultiHybridMultiMLPClassifier.__init__-146"><span class="linenos">146</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)</span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-139"><a href="#MultiHybridMultiMLPClassifier.__init__-139"><span class="linenos">139</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-140"><a href="#MultiHybridMultiMLPClassifier.__init__-140"><span class="linenos">140</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-141"><a href="#MultiHybridMultiMLPClassifier.__init__-141"><span class="linenos">141</span></a><span class="sd">            - qcircuits : list  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-142"><a href="#MultiHybridMultiMLPClassifier.__init__-142"><span class="linenos">142</span></a><span class="sd">                list of hqm quantum circuits to be stacked between two fully connected layers  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-143"><a href="#MultiHybridMultiMLPClassifier.__init__-143"><span class="linenos">143</span></a><span class="sd">            - in_dims: list  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-144"><a href="#MultiHybridMultiMLPClassifier.__init__-144"><span class="linenos">144</span></a><span class="sd">                list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-145"><a href="#MultiHybridMultiMLPClassifier.__init__-145"><span class="linenos">145</span></a><span class="sd">            - ou_dim : list  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-146"><a href="#MultiHybridMultiMLPClassifier.__init__-146"><span class="linenos">146</span></a><span class="sd">                list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)  </span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-147"><a href="#MultiHybridMultiMLPClassifier.__init__-147"><span class="linenos">147</span></a><span class="sd">            </span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-148"><a href="#MultiHybridMultiMLPClassifier.__init__-148"><span class="linenos">148</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-149"><a href="#MultiHybridMultiMLPClassifier.__init__-149"><span class="linenos">149</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMultiMLPClassifier.__init__-150"><a href="#MultiHybridMultiMLPClassifier.__init__-150"><span class="linenos">150</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-148"><a href="#MultiHybridMultiMLPClassifier.__init__-148"><span class="linenos">148</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-149"><a href="#MultiHybridMultiMLPClassifier.__init__-149"><span class="linenos">149</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMultiMLPClassifier.__init__-150"><a href="#MultiHybridMultiMLPClassifier.__init__-150"><span class="linenos">150</span></a><span class="sd">            Nothing, a MultiHybridMultiMLPClassifier object will be created.    </span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-151"><a href="#MultiHybridMultiMLPClassifier.__init__-151"><span class="linenos">151</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-152"><a href="#MultiHybridMultiMLPClassifier.__init__-152"><span class="linenos">152</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="MultiHybridMultiMLPClassifier.__init__-153"><a href="#MultiHybridMultiMLPClassifier.__init__-153"><span class="linenos">153</span></a>
@@ -907,20 +907,20 @@ The size of fully connected layers is set by means of in_dim and ou_dim.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>MultiHybridMultiMLPClassifier constructor.</p>
+            <div class="docstring"><p>MultiHybridMultiMLPClassifier constructor.  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>qcircuits : list
-list of hqm quantum circuits to be stacked between two fully connected layers</li>
-<li>in_dims: list
-list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)</li>
-<li>ou_dim : list
-list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)</li>
+<li>qcircuits : list <br />
+list of hqm quantum circuits to be stacked between two fully connected layers  </li>
+<li>in_dims: list <br />
+list of integers representing the input size for the i-th fully connected layer (first value should correspond to size of input data)  </li>
+<li>ou_dim : list <br />
+list of integers representing the output size for the i-th fully connected layer (last value should correspond to desired output size)  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <p>Nothing, a MultiHybridMultiMLPClassifier object will be created.</p>
 </div>
@@ -940,17 +940,17 @@ list of integers representing the output size for the i-th fully connected layer
     <a class="headerlink" href="#MultiHybridMultiMLPClassifier.forward"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiHybridMultiMLPClassifier.forward-168"><a href="#MultiHybridMultiMLPClassifier.forward-168"><span class="linenos">168</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span><span id="MultiHybridMultiMLPClassifier.forward-169"><a href="#MultiHybridMultiMLPClassifier.forward-169"><span class="linenos">169</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-170"><a href="#MultiHybridMultiMLPClassifier.forward-170"><span class="linenos">170</span></a><span class="sd">            Torch forward method</span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-170"><a href="#MultiHybridMultiMLPClassifier.forward-170"><span class="linenos">170</span></a><span class="sd">            Torch forward method  </span>
 </span><span id="MultiHybridMultiMLPClassifier.forward-171"><a href="#MultiHybridMultiMLPClassifier.forward-171"><span class="linenos">171</span></a>
-</span><span id="MultiHybridMultiMLPClassifier.forward-172"><a href="#MultiHybridMultiMLPClassifier.forward-172"><span class="linenos">172</span></a><span class="sd">            Parameters:</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-173"><a href="#MultiHybridMultiMLPClassifier.forward-173"><span class="linenos">173</span></a><span class="sd">            -----------</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-174"><a href="#MultiHybridMultiMLPClassifier.forward-174"><span class="linenos">174</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-175"><a href="#MultiHybridMultiMLPClassifier.forward-175"><span class="linenos">175</span></a><span class="sd">                input for the torch model</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-176"><a href="#MultiHybridMultiMLPClassifier.forward-176"><span class="linenos">176</span></a>
-</span><span id="MultiHybridMultiMLPClassifier.forward-177"><a href="#MultiHybridMultiMLPClassifier.forward-177"><span class="linenos">177</span></a><span class="sd">            Returns:</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-178"><a href="#MultiHybridMultiMLPClassifier.forward-178"><span class="linenos">178</span></a><span class="sd">            --------</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-179"><a href="#MultiHybridMultiMLPClassifier.forward-179"><span class="linenos">179</span></a><span class="sd">            - x : torch.Tensor</span>
-</span><span id="MultiHybridMultiMLPClassifier.forward-180"><a href="#MultiHybridMultiMLPClassifier.forward-180"><span class="linenos">180</span></a><span class="sd">                output from the torch model</span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-172"><a href="#MultiHybridMultiMLPClassifier.forward-172"><span class="linenos">172</span></a><span class="sd">            Parameters:  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-173"><a href="#MultiHybridMultiMLPClassifier.forward-173"><span class="linenos">173</span></a><span class="sd">            -----------  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-174"><a href="#MultiHybridMultiMLPClassifier.forward-174"><span class="linenos">174</span></a><span class="sd">            - x : torch.Tensor   </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-175"><a href="#MultiHybridMultiMLPClassifier.forward-175"><span class="linenos">175</span></a><span class="sd">                input for the torch model  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-176"><a href="#MultiHybridMultiMLPClassifier.forward-176"><span class="linenos">176</span></a><span class="sd"> </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-177"><a href="#MultiHybridMultiMLPClassifier.forward-177"><span class="linenos">177</span></a><span class="sd">            Returns:  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-178"><a href="#MultiHybridMultiMLPClassifier.forward-178"><span class="linenos">178</span></a><span class="sd">            --------  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-179"><a href="#MultiHybridMultiMLPClassifier.forward-179"><span class="linenos">179</span></a><span class="sd">            - x : torch.Tensor  </span>
+</span><span id="MultiHybridMultiMLPClassifier.forward-180"><a href="#MultiHybridMultiMLPClassifier.forward-180"><span class="linenos">180</span></a><span class="sd">                output from the torch model  </span>
 </span><span id="MultiHybridMultiMLPClassifier.forward-181"><a href="#MultiHybridMultiMLPClassifier.forward-181"><span class="linenos">181</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="MultiHybridMultiMLPClassifier.forward-182"><a href="#MultiHybridMultiMLPClassifier.forward-182"><span class="linenos">182</span></a>        
 </span><span id="MultiHybridMultiMLPClassifier.forward-183"><a href="#MultiHybridMultiMLPClassifier.forward-183"><span class="linenos">183</span></a>        <span class="k">for</span> <span class="n">fc</span><span class="p">,</span> <span class="n">qc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fcs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qcs</span><span class="p">):</span>
@@ -965,19 +965,19 @@ list of integers representing the output size for the i-th fully connected layer
 </span></pre></div>
 
 
-            <div class="docstring"><p>Torch forward method</p>
+            <div class="docstring"><p>Torch forward method  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>x : torch.Tensor
-input for the torch model</li>
+<li>x : torch.Tensor <br />
+input for the torch model  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:  </h2>
 
 <ul>
-<li>x : torch.Tensor
+<li>x : torch.Tensor <br />
 output from the torch model</li>
 </ul>
 </div>

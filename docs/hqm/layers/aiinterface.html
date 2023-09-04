@@ -73,22 +73,22 @@
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nd">@staticmethod</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            Parameters:</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            -----------</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">            - circuit : qml.qnode</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">                pennylane circuit to be embedded </span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">            - weight_shape : dict</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">            - n_qubits : int</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">                integer representing the number of qubits used for the circuit</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            - aiframeworkks : str</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            -----------  </span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            Returns:</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            --------</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            Returns:   </span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            --------  </span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -121,22 +121,22 @@
 </span><span id="AIInterface-11"><a href="#AIInterface-11"><span class="linenos">11</span></a>    <span class="nd">@staticmethod</span>
 </span><span id="AIInterface-12"><a href="#AIInterface-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
 </span><span id="AIInterface-13"><a href="#AIInterface-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="AIInterface-14"><a href="#AIInterface-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.</span>
+</span><span id="AIInterface-14"><a href="#AIInterface-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
 </span><span id="AIInterface-15"><a href="#AIInterface-15"><span class="linenos">15</span></a>
-</span><span id="AIInterface-16"><a href="#AIInterface-16"><span class="linenos">16</span></a><span class="sd">            Parameters:</span>
-</span><span id="AIInterface-17"><a href="#AIInterface-17"><span class="linenos">17</span></a><span class="sd">            -----------</span>
-</span><span id="AIInterface-18"><a href="#AIInterface-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode</span>
-</span><span id="AIInterface-19"><a href="#AIInterface-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded </span>
-</span><span id="AIInterface-20"><a href="#AIInterface-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict</span>
-</span><span id="AIInterface-21"><a href="#AIInterface-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="AIInterface-22"><a href="#AIInterface-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int</span>
-</span><span id="AIInterface-23"><a href="#AIInterface-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit</span>
-</span><span id="AIInterface-24"><a href="#AIInterface-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str</span>
-</span><span id="AIInterface-25"><a href="#AIInterface-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;</span>
+</span><span id="AIInterface-16"><a href="#AIInterface-16"><span class="linenos">16</span></a><span class="sd">            Parameters:  </span>
+</span><span id="AIInterface-17"><a href="#AIInterface-17"><span class="linenos">17</span></a><span class="sd">            -----------  </span>
+</span><span id="AIInterface-18"><a href="#AIInterface-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="AIInterface-19"><a href="#AIInterface-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="AIInterface-20"><a href="#AIInterface-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="AIInterface-21"><a href="#AIInterface-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="AIInterface-22"><a href="#AIInterface-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="AIInterface-23"><a href="#AIInterface-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="AIInterface-24"><a href="#AIInterface-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="AIInterface-25"><a href="#AIInterface-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
 </span><span id="AIInterface-26"><a href="#AIInterface-26"><span class="linenos">26</span></a>
-</span><span id="AIInterface-27"><a href="#AIInterface-27"><span class="linenos">27</span></a><span class="sd">            Returns:</span>
-</span><span id="AIInterface-28"><a href="#AIInterface-28"><span class="linenos">28</span></a><span class="sd">            --------</span>
-</span><span id="AIInterface-29"><a href="#AIInterface-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer</span>
+</span><span id="AIInterface-27"><a href="#AIInterface-27"><span class="linenos">27</span></a><span class="sd">            Returns:   </span>
+</span><span id="AIInterface-28"><a href="#AIInterface-28"><span class="linenos">28</span></a><span class="sd">            --------  </span>
+</span><span id="AIInterface-29"><a href="#AIInterface-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
 </span><span id="AIInterface-30"><a href="#AIInterface-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="AIInterface-31"><a href="#AIInterface-31"><span class="linenos">31</span></a>
 </span><span id="AIInterface-32"><a href="#AIInterface-32"><span class="linenos">32</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -168,22 +168,22 @@ Pytorch and Tensorflow.</p>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AIInterface.network_layer-11"><a href="#AIInterface.network_layer-11"><span class="linenos">11</span></a>    <span class="nd">@staticmethod</span>
 </span><span id="AIInterface.network_layer-12"><a href="#AIInterface.network_layer-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
 </span><span id="AIInterface.network_layer-13"><a href="#AIInterface.network_layer-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="AIInterface.network_layer-14"><a href="#AIInterface.network_layer-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.</span>
+</span><span id="AIInterface.network_layer-14"><a href="#AIInterface.network_layer-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
 </span><span id="AIInterface.network_layer-15"><a href="#AIInterface.network_layer-15"><span class="linenos">15</span></a>
-</span><span id="AIInterface.network_layer-16"><a href="#AIInterface.network_layer-16"><span class="linenos">16</span></a><span class="sd">            Parameters:</span>
-</span><span id="AIInterface.network_layer-17"><a href="#AIInterface.network_layer-17"><span class="linenos">17</span></a><span class="sd">            -----------</span>
-</span><span id="AIInterface.network_layer-18"><a href="#AIInterface.network_layer-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode</span>
-</span><span id="AIInterface.network_layer-19"><a href="#AIInterface.network_layer-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded </span>
-</span><span id="AIInterface.network_layer-20"><a href="#AIInterface.network_layer-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict</span>
-</span><span id="AIInterface.network_layer-21"><a href="#AIInterface.network_layer-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit</span>
-</span><span id="AIInterface.network_layer-22"><a href="#AIInterface.network_layer-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int</span>
-</span><span id="AIInterface.network_layer-23"><a href="#AIInterface.network_layer-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit</span>
-</span><span id="AIInterface.network_layer-24"><a href="#AIInterface.network_layer-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str</span>
-</span><span id="AIInterface.network_layer-25"><a href="#AIInterface.network_layer-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;</span>
+</span><span id="AIInterface.network_layer-16"><a href="#AIInterface.network_layer-16"><span class="linenos">16</span></a><span class="sd">            Parameters:  </span>
+</span><span id="AIInterface.network_layer-17"><a href="#AIInterface.network_layer-17"><span class="linenos">17</span></a><span class="sd">            -----------  </span>
+</span><span id="AIInterface.network_layer-18"><a href="#AIInterface.network_layer-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="AIInterface.network_layer-19"><a href="#AIInterface.network_layer-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="AIInterface.network_layer-20"><a href="#AIInterface.network_layer-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="AIInterface.network_layer-21"><a href="#AIInterface.network_layer-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="AIInterface.network_layer-22"><a href="#AIInterface.network_layer-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="AIInterface.network_layer-23"><a href="#AIInterface.network_layer-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="AIInterface.network_layer-24"><a href="#AIInterface.network_layer-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="AIInterface.network_layer-25"><a href="#AIInterface.network_layer-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
 </span><span id="AIInterface.network_layer-26"><a href="#AIInterface.network_layer-26"><span class="linenos">26</span></a>
-</span><span id="AIInterface.network_layer-27"><a href="#AIInterface.network_layer-27"><span class="linenos">27</span></a><span class="sd">            Returns:</span>
-</span><span id="AIInterface.network_layer-28"><a href="#AIInterface.network_layer-28"><span class="linenos">28</span></a><span class="sd">            --------</span>
-</span><span id="AIInterface.network_layer-29"><a href="#AIInterface.network_layer-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer</span>
+</span><span id="AIInterface.network_layer-27"><a href="#AIInterface.network_layer-27"><span class="linenos">27</span></a><span class="sd">            Returns:   </span>
+</span><span id="AIInterface.network_layer-28"><a href="#AIInterface.network_layer-28"><span class="linenos">28</span></a><span class="sd">            --------  </span>
+</span><span id="AIInterface.network_layer-29"><a href="#AIInterface.network_layer-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
 </span><span id="AIInterface.network_layer-30"><a href="#AIInterface.network_layer-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span><span id="AIInterface.network_layer-31"><a href="#AIInterface.network_layer-31"><span class="linenos">31</span></a>
 </span><span id="AIInterface.network_layer-32"><a href="#AIInterface.network_layer-32"><span class="linenos">32</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -195,22 +195,22 @@ Pytorch and Tensorflow.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Static methods that embedd quantum layer into a torch or a keras layer.</p>
+            <div class="docstring"><p>Static methods that embedd quantum layer into a torch or a keras layer.  </p>
 
-<h2 id="parameters">Parameters:</h2>
+<h2 id="parameters">Parameters:  </h2>
 
 <ul>
-<li>circuit : qml.qnode
-pennylane circuit to be embedded </li>
-<li>weight_shape : dict
-shape of the trainalbe weights, it is derived from <a href="../circuits/circuit.html#QuantumCircuit">hqm.circuits.circuit.QuantumCircuit</a></li>
-<li>n_qubits : int
-integer representing the number of qubits used for the circuit</li>
-<li>aiframeworkks : str
-string representing which in wich ai framework the circuit will be embedded, can be 'torch' or 'keras'</li>
+<li>circuit : qml.qnode <br />
+pennylane circuit to be embedded   </li>
+<li>weight_shape : dict <br />
+shape of the trainalbe weights, it is derived from <a href="../circuits/circuit.html#QuantumCircuit">hqm.circuits.circuit.QuantumCircuit</a>  </li>
+<li>n_qubits : int <br />
+integer representing the number of qubits used for the circuit  </li>
+<li>aiframeworkks : str <br />
+string representing which in wich ai framework the circuit will be embedded, can be 'torch' or 'keras'  </li>
 </ul>
 
-<h2 id="returns">Returns:</h2>
+<h2 id="returns">Returns:   </h2>
 
 <ul>
 <li>qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer</li>
