@@ -1,7 +1,7 @@
 import sys
 sys.path += ['.', './hqm/']
 
-from hqm.circuits.angleencoding import BasicEntangledCircuit, StronglyEntangledCircuit
+from hqm.circuits.angleencoding import BasicEntangledCircuit, StronglyEntangledCircuit, RandomCircuit
 from hqm.regression.hmlp import BasicHybridMLPRegressor, MultiHybridMLPRegressor, MultiHybridMultiMLPRegressor
 from hqm.utils.printer import Printer
 
@@ -93,8 +93,8 @@ if __name__ == '__main__':
     if EPOCHS < 1:         raise Exception('epochs must be greater than 0, found {EPOCHS}')
     if REGRESSOR not in ['BasicHybridMLPRegressor', 'MultiHybridMLPRegressor', 'MultiHybridMultiMLPRegressor']:
          raise Exception('regressor can be ''BasicHybridMLPRegressor'', ''MultiHybridMLPRegressor'' or ''MultiHybridMultiMLPRegressor'', found {REGRESSOR}')
-    if CIRCUIT not in ['BasicEntangledCircuit', 'StronglyEntangledCircuit']:
-         raise Exception('circuit can be ''BasicEntangledCircuit'' or ''StronglyEntangledCircuit'', found {CIRCUIT}')
+    if CIRCUIT not in ['BasicEntangledCircuit', 'StronglyEntangledCircuit', 'RandomCircuit']:
+         raise Exception('circuit can be ''BasicEntangledCircuit'', ''StronglyEntangledCircuit'', ''RandomCircuit'', found {CIRCUIT}')
 
     #=======================================================================
     # Load Dataset
@@ -114,6 +114,7 @@ if __name__ == '__main__':
 
     if   CIRCUIT == 'BasicEntangledCircuit':    qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
     elif CIRCUIT == 'StronglyEntangledCircuit': qcircuit = StronglyEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
+    elif CIRCUIT == 'RandomCircuit':            qcircuit = RandomCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
 
     if   REGRESSOR == 'BasicHybridMLPRegressor':      model = BasicHybridMLPRegressor(qcircuit, in_dim=IN_DIM, ou_dim=OU_DIM)
     elif REGRESSOR == 'MultiHybridMLPRegressor':      model = MultiHybridMLPRegressor([qcircuit,qcircuit], in_dim=IN_DIM, ou_dim=OU_DIM)
