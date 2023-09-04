@@ -7,7 +7,7 @@ import sys
 sys.path += ['.', './layers/']
 
 from .circuit import QuantumCircuit
-from hqm.layers.ai_interface import ai_interface
+from hqm.layers.aiinterface import AIInterface
 
 class BasicEntangledCircuit(QuantumCircuit):
     '''
@@ -40,13 +40,13 @@ class BasicEntangledCircuit(QuantumCircuit):
                
         self.weight_shape = {"weights": (n_layers, n_qubits)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = ai_interface(circuit      = self.circuit, 
+        self.qlayer       = AIInterface.network_layer(circuit = self.circuit, 
                                          weight_shape = self.weight_shape, 
                                          n_qubits     = self.n_qubits, 
                                          aiframework  = self.aiframework)
 
     @staticmethod
-    def circ(dev : qml.device, n_qubits : int) -> FunctionType:
+    def circ(dev : qml.devices, n_qubits : int) -> FunctionType:
         '''
             BasicEntangledCircuit static method that implements the quantum circuit.  
 
@@ -120,13 +120,13 @@ class StronglyEntangledCircuit(QuantumCircuit):
         
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = ai_interface(circuit      = self.circuit, 
+        self.qlayer       = AIInterface.network_layer(circuit = self.circuit, 
                                          weight_shape = self.weight_shape, 
                                          n_qubits     = self.n_qubits, 
                                          aiframework  = self.aiframework)
         
     @staticmethod
-    def circ(dev : qml.device, n_qubits : int) -> FunctionType:
+    def circ(dev : qml.devices, n_qubits : int) -> FunctionType:
         '''
             StronglyEntangledCircuit static method that implements the quantum circuit.  
 

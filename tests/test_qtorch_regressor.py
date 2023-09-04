@@ -1,7 +1,7 @@
 import sys
 sys.path += ['.', './hqm/']
 
-from hqm.circuits.angle_encoding import BasicEntangledCircuit, StronglyEntangledCircuit
+from hqm.circuits.angleencoding import BasicEntangledCircuit, StronglyEntangledCircuit
 from hqm.regression.hmlp import BasicHybridMLPRegressor, MultiHybridMLPRegressor, MultiHybridMultiMLPRegressor
 from hqm.utils.printer import print_circuit
 
