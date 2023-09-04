@@ -2,19 +2,25 @@ import pennylane as qml
 
 class AIInterface:
     '''
-
+        This class implements the inteface between quantum circuits implemented in PennyLane and the two most popular DL libraries,
+        Pytorch and Tensorflow. 
     '''
 
     @staticmethod
     def network_layer(circuit : qml.qnode, weight_shape : dict, n_qubits : int, aiframework : str) -> qml.qnn.TorchLayer | qml.qnn.KerasLayer:
         '''
+            Static methods that embedd quantum layer into a torch or a keras layer.
 
             Parameters:
             -----------
             - circuit : qml.qnode
+                pennylane circuit to be embedded 
             - weight_shape : dict
+                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit
             - n_qubits : int
+                integer representing the number of qubits used for the circuit
             - aiframeworkks : str
+                string representing which in wich ai framework the circuit will be embedded, can be 'torch' or 'keras'
 
             Returns:
             --------
