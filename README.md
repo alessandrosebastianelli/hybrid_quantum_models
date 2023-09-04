@@ -3,7 +3,9 @@
 ![GitHub issues](https://img.shields.io/github/issues/alessandrosebastianelli/hybrid_quantum_models?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/alessandrosebastianelli/hybrid_quantum_models?style=flat-square)
 
-# Hybrid Quantum Models - HQM
+# Hybrid Quantum Models
 ![](../docs/logo.png)
+
+
 
 
