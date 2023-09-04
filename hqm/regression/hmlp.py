@@ -51,7 +51,7 @@ class BasicHybridMLPRegressor(torch.nn.Module):
 
             Returns:
             --------
-            - x : torch.Tensor
+            - out : torch.Tensor
                 output from the torch model
         '''
         x = self.fc_1(x)
@@ -92,12 +92,12 @@ class MultiHybridMLPRegressor(torch.nn.Module):
         if ou_dim < 1: raise Exception(f"The parameter ou_dim must be greater than 1, found {ou_dim}")
         if len(qcircuits) < 1: raise Exception(f"Size of qcircuis must be greater than 1, found {len(qcircuits)}")
 
-        n_qubits_0  = qcircuits[0].n_qubits
-        n_qubits_1  = qcircuits[-1].n_qubits
-        self.fc_1 = torch.nn.Linear(in_dim, n_qubits_0)
-        self.qcs = [circ.qlayer for circ in qcircuits]
-        self.fc_2 = torch.nn.Linear(n_qubits_1, ou_dim)
-        self.tanh = torch.nn.Tanh()
+        n_qubits_0 = qcircuits[0].n_qubits
+        n_qubits_1 = qcircuits[-1].n_qubits
+        self.fc_1  = torch.nn.Linear(in_dim, n_qubits_0)
+        self.qcs   = [circ.qlayer for circ in qcircuits]
+        self.fc_2  = torch.nn.Linear(n_qubits_1, ou_dim)
+        self.tanh  = torch.nn.Tanh()
 
     def forward(self, x : torch.Tensor):
         '''
@@ -110,7 +110,7 @@ class MultiHybridMLPRegressor(torch.nn.Module):
 
             Returns:
             --------
-            - x : torch.Tensor
+            - out : torch.Tensor
                 output from the torch model
         '''
         x = self.fc_1(x)
@@ -119,7 +119,6 @@ class MultiHybridMLPRegressor(torch.nn.Module):
             x = qc(x)
             x = self.tanh(x)
         x = self.fc_2(x)
-        x = self.tanh(x)
         out = self.tanh(x)
         return out
 
