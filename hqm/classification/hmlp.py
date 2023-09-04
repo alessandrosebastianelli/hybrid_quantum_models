@@ -41,7 +41,7 @@ class BasicHybridMLPClassifier(torch.nn.Module):
         self.tanh    = torch.nn.Tanh()
         self.softmax = torch.nn.Softmax(dim=1)
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 
@@ -101,7 +101,7 @@ class MultiHybridMLPClassifier(torch.nn.Module):
         self.tanh    = torch.nn.Tanh()
         self.softmax = torch.nn.Softmax(dim=1)
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 
@@ -164,7 +164,7 @@ class MultiHybridMultiMLPClassifier(torch.nn.Module):
         self.tanh    = torch.nn.Tanh()
         self.softmax = torch.nn.Softmax(dim=1)
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 

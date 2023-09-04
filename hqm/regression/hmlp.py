@@ -40,7 +40,7 @@ class BasicHybridMLPRegressor(torch.nn.Module):
         self.fc_2 = torch.nn.Linear(n_qubits, ou_dim)
         self.tanh = torch.nn.Tanh()
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 
@@ -99,7 +99,7 @@ class MultiHybridMLPRegressor(torch.nn.Module):
         self.fc_2  = torch.nn.Linear(n_qubits_1, ou_dim)
         self.tanh  = torch.nn.Tanh()
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 
@@ -161,7 +161,7 @@ class MultiHybridMultiMLPRegressor(torch.nn.Module):
         self.qcs  = [circ.qlayer for circ in qcircuits]
         self.tanh = torch.nn.Tanh()
 
-    def forward(self, x : torch.Tensor):
+    def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method
 
