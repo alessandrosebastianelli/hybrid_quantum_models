@@ -35,25 +35,26 @@ class HybridLeNet5(torch.nn.Module):
         if ou_dim < 1: raise Exception(f"The parameter ou_dim must be greater than 1, found {ou_dim}")
         
         w, h, c = in_shape
-
-        self.conv_1    = torch.nn.Conv2d(in_channels=c, out_channels=6, kernel_size=5, padding=2)
+        
+        c1 = 6
+        self.conv_1    = torch.nn.Conv2d(in_channels=c, out_channels=c1, kernel_size=5, padding=2, stride=1)
         w1 = self.size_flat_features(w, kernel_size=5, padding=2, stride=1)
         h1 = self.size_flat_features(h, kernel_size=5, padding=2, stride=1)
         
-        self.max_pool1 = torch.nn.functional.max_pool2d(kernel_size = (2,2))
-        w2 = self.size_flat_features(w1, kernel_size=2, padding=0, stride=1)
-        h2 = self.size_flat_features(h1, kernel_size=2, padding=0, stride=1)
-        c1 = 6
+        self.max_pool1 = torch.nn.MaxPool2d(kernel_size = (2,2), stride=(2,2))
+        w2 = self.size_flat_features(w1, kernel_size=2, padding=0, stride=2)
+        h2 = self.size_flat_features(h1, kernel_size=2, padding=0, stride=2)
         
-        self.conv_2  = torch.nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5)
-        w3 = self.size_flat_features(w2, kernel_size=5, padding=2, stride=1)
-        h3 = self.size_flat_features(h2, kernel_size=5, padding=2, stride=1)
-
-        self.max_pool2 = torch.nn.functional.max_pool2d(kernel_size = (2,2))
-        w4 = self.size_flat_features(w3, kernel_size=2, padding=0, stride=1)
-        h4 = self.size_flat_features(h3, kernel_size=2, padding=0, stride=1)
-
         c2 = 16
+        self.conv_2  = torch.nn.Conv2d(in_channels=c1, out_channels=c2, kernel_size=5,  stride=1)
+        w3 = self.size_flat_features(w2, kernel_size=5, padding=0, stride=1)
+        h3 = self.size_flat_features(h2, kernel_size=5, padding=0, stride=1)
+
+        self.max_pool2 = torch.nn.MaxPool2d(kernel_size = (2,2), stride=(2,2))
+        w4 = self.size_flat_features(w3, kernel_size=2, padding=0, stride=2)
+        h4 = self.size_flat_features(h3, kernel_size=2, padding=0, stride=2)
+
+        
 
         self.flatten_size = w4 * h4 * c2
         fc_2_size = int(self.flatten_size * 30 / 100)
@@ -86,7 +87,7 @@ class HybridLeNet5(torch.nn.Module):
                 size after conv2D and Maxpool  
         '''
 
-        size = [(s - kernel_size + 2 * padding)/stride] + 1
+        size = int(((s - kernel_size + 2 * padding)/stride) + 1)
         return size
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
@@ -109,6 +110,6 @@ class HybridLeNet5(torch.nn.Module):
         x = self.relu(self.fc_1(x))
         x = self.relu(self.fc_2(x))
         x = self.relu(self.qc_1(x))
-        x = self.fc_2(x)
+        x = self.fc_3(x)
         out = self.softmax(x)
         return out
