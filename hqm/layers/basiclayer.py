@@ -1,6 +1,3 @@
-from types import FunctionType
-import pennylane as qml
-import numpy as np
 import sys
 
 sys.path += ['.', './utils/', '/circuits/']
@@ -23,7 +20,7 @@ class BasicLayer:
         Parameters:  
         -----------  
         - qcircuit : hqm.circuits.circuit.QuantumCircuit  
-            QuantumCircuit object to   
+            QuantumCircuit object to be embedded into the quantum layer
         - aiframework : str    
             string representing the AI framework in use, can be 'torch' or 'keras'. This will create  
             a compatible trainable layer for the framework.   
