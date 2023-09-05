@@ -62,7 +62,7 @@ def dataset(path : str, channelfirst : bool) -> tuple[np.array, np.array]:
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Test Torch Quantum MLP Regressor')
+    parser = argparse.ArgumentParser(description='Test Torch Quantum CNN Classifier')
     # Model's arguments
     parser.add_argument('--n_qubits',               type=int,   default=4)
     parser.add_argument('--n_layers',               type=int,   default=2)
