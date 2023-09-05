@@ -4,8 +4,5 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/alessandrosebastianelli/hybrid_quantum_models?style=flat-square)
 
 # Hybrid Quantum Models
-![](../docs/logo.png)
 
-
-
-
+<button title="Documentation" class="action primary tocart" onclick=" window.open('https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm.html', '_blank'); return false;">Documentation</button>
