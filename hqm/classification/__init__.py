@@ -3,3 +3,4 @@
 """
 
 from .hmlp import *
+from .hcnn import *
