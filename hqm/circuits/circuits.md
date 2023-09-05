@@ -32,3 +32,6 @@ Layers consisting of single qubit rotations and entanglers, inspired by the circ
 <img src="../circuits/strongly_entangler_circuit.png" width="400" height="200" />
 
 [PennyLane Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.StronglyEntanglingLayers.html)
+
+
+## Data Reuploading
