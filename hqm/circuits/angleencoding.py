@@ -6,7 +6,6 @@ import sys
 sys.path += ['.', './utils/']
 
 from .circuit import QuantumCircuit
-from hqm.utils.aiinterface import AIInterface
 
 class BasicEntangledCircuit(QuantumCircuit):
     '''
@@ -14,7 +13,7 @@ class BasicEntangledCircuit(QuantumCircuit):
         circuit. 
     '''
     
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, dev : qml.devices = None) -> None:
         '''
             BasicEntangledCircuit constructor.  
 
@@ -24,9 +23,6 @@ class BasicEntangledCircuit(QuantumCircuit):
                 number of qubits for the quantum circuit  
             - n_layers : int  
                 number of layers for the quantum circuit  
-            - aiframework : str  
-                string representing the AI framework in use, can be 'torch' or 'keras'. This will create  
-                a compatible trainable layer for the framework.   
             - dev : qml.device  
                 PennyLane device on wich run quantum operations (dafault : None). When None it will be set
                 to 'default.qubit'  
@@ -35,14 +31,11 @@ class BasicEntangledCircuit(QuantumCircuit):
             --------  
             Nothing, a BasicEntangledCircuit object will be created.  
         '''
-        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
                
         self.weight_shape = {"weights": (n_layers, n_qubits)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = AIInterface.network_layer(circuit = self.circuit, 
-                                        weight_shape = self.weight_shape, 
-                                        n_qubits     = self.n_qubits, 
-                                        aiframework  = self.aiframework)
+        
 
     @staticmethod
     def circ(dev : qml.devices, n_qubits : int) -> FunctionType:
@@ -94,7 +87,7 @@ class StronglyEntangledCircuit(QuantumCircuit):
         circuit.
     '''
 
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, dev : qml.devices = None) -> None:
         '''
             StronglyEntangledCircuit constructor.  
 
@@ -103,10 +96,7 @@ class StronglyEntangledCircuit(QuantumCircuit):
             - n_qubits : int  
                 number of qubits for the quantum circuit  
             - n_layers : int  
-                number of layers for the quantum circuit  
-            - aiframework : str  
-                string representing the AI framework in use, can be 'torch' or 'keras'. This will create
-                a compatible trainable layer for the framework.  
+                number of layers for the quantum circuit    
             - dev : qml.device  
                 PennyLane device on wich run quantum operations (dafault : None). When None it will be set
                 to 'default.qubit'  
@@ -115,15 +105,10 @@ class StronglyEntangledCircuit(QuantumCircuit):
             --------  
             Nothing, a StronglyEntangledCircuit object will be created.  
         '''        
-        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
         
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = AIInterface.network_layer(
-                                        circuit = self.circuit, 
-                                        weight_shape = self.weight_shape, 
-                                        n_qubits     = self.n_qubits, 
-                                        aiframework  = self.aiframework)
         
     @staticmethod
     def circ(dev : qml.devices, n_qubits : int) -> FunctionType:
@@ -175,7 +160,7 @@ class RandomCircuit(QuantumCircuit):
         circuit. 
     '''
     
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, dev : qml.devices = None) -> None:
         '''
             RandomCircuit constructor.  
 
@@ -185,9 +170,6 @@ class RandomCircuit(QuantumCircuit):
                 number of qubits for the quantum circuit  
             - n_layers : int  
                 number of layers for the quantum circuit  
-            - aiframework : str  
-                string representing the AI framework in use, can be 'torch' or 'keras'. This will create  
-                a compatible trainable layer for the framework.   
             - dev : qml.device  
                 PennyLane device on wich run quantum operations (dafault : None). When None it will be set
                 to 'default.qubit'  
@@ -196,15 +178,10 @@ class RandomCircuit(QuantumCircuit):
             --------  
             Nothing, a RandomCircuit object will be created.  
         '''
-        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
                
         self.weight_shape = {"weights": (n_layers, n_qubits)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = AIInterface.network_layer(
-                                        circuit = self.circuit, 
-                                        weight_shape = self.weight_shape, 
-                                        n_qubits     = self.n_qubits, 
-                                        aiframework  = self.aiframework)
 
     @staticmethod
     def circ(dev : qml.devices, n_qubits : int) -> FunctionType:

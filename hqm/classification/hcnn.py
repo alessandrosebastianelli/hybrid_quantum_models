@@ -1,8 +1,7 @@
 import sys
-sys.path += ['.', './circuits/']
+sys.path += ['.', './layers/']
 
-from hqm.circuits.circuit import QuantumCircuit
-import numpy as np
+from hqm.layers.basiclayer import BasicLayer
 import torch
 
 class HybridLeNet5(torch.nn.Module):
@@ -12,14 +11,14 @@ class HybridLeNet5(torch.nn.Module):
         The size of the network output is defined by ou_dim.
     '''
 
-    def __init__(self, qcircuit : QuantumCircuit, in_shape : tuple, ou_dim : int) -> None:
+    def __init__(self, qlayer : BasicLayer, in_shape : tuple, ou_dim : int) -> None:
         '''
             HybridLeNet5 constructor.  
 
             Parameters:  
             -----------  
-            - qcircuit : hqm.circuits.circuit.QuantumCircuit  
-                hqm quantum circuit to be stacked between two fully connected layers  
+            - qlayer : hqm.layers.basilayer.BasicLayer  
+                hqm quantum layer to be stacked between two fully connected layers  
             - in_shape : tuple  
                 tuple representing the shape of the input image  
             - ou_dim : int  
@@ -60,9 +59,9 @@ class HybridLeNet5(torch.nn.Module):
         fc_2_size = int(self.flatten_size * 30 / 100)
 
         self.fc_1    = torch.nn.Linear(self.flatten_size, fc_2_size)
-        self.fc_2    = torch.nn.Linear(fc_2_size, qcircuit.n_qubits)
-        self.qc_1    = qcircuit.qlayer
-        self.fc_3    = torch.nn.Linear(qcircuit.n_qubits, ou_dim)
+        self.fc_2    = torch.nn.Linear(fc_2_size, qlayer.n_qubits)
+        self.qc_1    = qlayer.qlayer
+        self.fc_3    = torch.nn.Linear(qlayer.n_qubits, ou_dim)
         self.relu    = torch.nn.ReLU()
         self.softmax = torch.nn.Softmax(dim=1)
     

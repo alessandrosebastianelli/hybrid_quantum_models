@@ -3,6 +3,7 @@ sys.path += ['.', './hqm/']
 
 from hqm.circuits.angleencoding import BasicEntangledCircuit
 from hqm.classification.hcnn import HybridLeNet5
+from hqm.layers.basiclayer import BasicLayer
 from hqm.utils.printer import Printer
 
 import matplotlib.pyplot as plt
@@ -103,8 +104,8 @@ if __name__ == '__main__':
     print('Initializing hybrid model', '\n')
     dev = qml.device("default.qubit", wires=N_QUBITS)
 
-    qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
-    model = HybridLeNet5(qcircuit=qcircuit, in_shape=(64,64,3), ou_dim=10)
+    qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
+    model = HybridLeNet5(qcircuit=BasicLayer(qcircuit, aiframework='torch'), in_shape=(64,64,3), ou_dim=10)
     
     
     Printer.draw_circuit(qcircuit)

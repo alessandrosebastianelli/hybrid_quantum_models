@@ -3,6 +3,7 @@ sys.path += ['.', './hqm/']
 
 from hqm.circuits.angleencoding import BasicEntangledCircuit, StronglyEntangledCircuit, RandomCircuit
 from hqm.regression.hmlp import BasicHybridMLPRegressor, MultiHybridMLPRegressor, MultiHybridMultiMLPRegressor
+from hqm.layers.basiclayer import BasicLayer
 from hqm.utils.printer import Printer
 
 import matplotlib.pyplot as plt
@@ -112,13 +113,13 @@ if __name__ == '__main__':
     print('Initializing hybrid model', '\n')
     dev = qml.device("default.qubit", wires=N_QUBITS)
 
-    if   CIRCUIT == 'BasicEntangledCircuit':    qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
-    elif CIRCUIT == 'StronglyEntangledCircuit': qcircuit = StronglyEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
-    elif CIRCUIT == 'RandomCircuit':            qcircuit = RandomCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, aiframework='torch', dev=dev)
+    if   CIRCUIT == 'BasicEntangledCircuit':    qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
+    elif CIRCUIT == 'StronglyEntangledCircuit': qcircuit = StronglyEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
+    elif CIRCUIT == 'RandomCircuit':            qcircuit = RandomCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
 
-    if   REGRESSOR == 'BasicHybridMLPRegressor':      model = BasicHybridMLPRegressor(qcircuit, in_dim=IN_DIM, ou_dim=OU_DIM)
-    elif REGRESSOR == 'MultiHybridMLPRegressor':      model = MultiHybridMLPRegressor([qcircuit,qcircuit], in_dim=IN_DIM, ou_dim=OU_DIM)
-    elif REGRESSOR == 'MultiHybridMultiMLPRegressor': model = MultiHybridMultiMLPRegressor([qcircuit, qcircuit], in_dims=[IN_DIM, N_QUBITS], ou_dim=OU_DIM)
+    if   REGRESSOR == 'BasicHybridMLPRegressor':      model = BasicHybridMLPRegressor(BasicLayer(qcircuit,aiframework='torch'), in_dim=IN_DIM, ou_dim=OU_DIM)
+    elif REGRESSOR == 'MultiHybridMLPRegressor':      model = MultiHybridMLPRegressor([BasicLayer(qcircuit,aiframework='torch'),BasicLayer(qcircuit,aiframework='torch')], in_dim=IN_DIM, ou_dim=OU_DIM)
+    elif REGRESSOR == 'MultiHybridMultiMLPRegressor': model = MultiHybridMultiMLPRegressor([BasicLayer(qcircuit,aiframework='torch'), BasicLayer(qcircuit,aiframework='torch')], in_dims=[IN_DIM, N_QUBITS], ou_dim=OU_DIM)
     
     Printer.draw_circuit(qcircuit)
 

@@ -13,7 +13,7 @@ class VariationalUniversalClassifier(QuantumCircuit):
         This class implements a torch/keras quantum layer using a variational universal classifier. 
     '''
     
-    def __init__(self, n_qubits : int, n_layers : int, aiframework : str, dev : qml.devices = None) -> None:
+    def __init__(self, n_qubits : int, n_layers : int, dev : qml.devices = None) -> None:
         '''
             VariationalUniversalClassifier constructor.  
 
@@ -34,14 +34,10 @@ class VariationalUniversalClassifier(QuantumCircuit):
             --------  
             Nothing, a VariationalUniversalClassifier object will be created.  
         '''
-        super().__init__(n_qubits=n_qubits, n_layers=n_layers, aiframework=aiframework, dev=dev)
+        super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
                
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
         self.circuit      = self.circ(self.dev, self.n_qubits)
-        self.qlayer       = AIInterface.network_layer(circuit = self.circuit, 
-                                        weight_shape = self.weight_shape, 
-                                        n_qubits     = self.n_qubits, 
-                                        aiframework  = self.aiframework)
 
     @staticmethod
     def circ(dev : qml.devices, n_qubits : int) -> FunctionType:
