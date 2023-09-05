@@ -2,7 +2,7 @@ import sys
 sys.path += ['.', './hqm/']
 
 from hqm.circuits.angleencoding import BasicEntangledCircuit
-from hqm.classification.cnn import HybridLeNet5
+from hqm.classification.hcnn import HybridLeNet5
 from hqm.utils.printer import Printer
 
 import matplotlib.pyplot as plt
