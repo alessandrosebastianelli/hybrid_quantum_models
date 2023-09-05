@@ -3,10 +3,10 @@ import pennylane as qml
 import numpy as np
 import sys
 
-sys.path += ['.', './layers/']
+sys.path += ['.', './utils/']
 
 from .circuit import QuantumCircuit
-from hqm.layers.aiinterface import AIInterface
+from hqm.utils.aiinterface import AIInterface
 
 class VariationalUniversalClassifier(QuantumCircuit):
     '''
