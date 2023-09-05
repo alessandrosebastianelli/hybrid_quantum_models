@@ -1,12 +1,13 @@
 [build-system]
 requires = [
             "numpy==1.23.5", 
-            "pennylane==0.28.0"
+            "pennylane==0.28.0",
+            "torch==2.0.1"
             ]
 
 [project]
 name = "hqm"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Alessandro Sebastianelli", email="alessandro.sebastianelli1995@gmail.com" },
 ]
@@ -21,7 +22,8 @@ classifiers = [
 ]
 dependencies = [
   "numpy==1.23.5", 
-  "pennylane==0.28.0"
+  "pennylane==0.28.0",
+  "torch==2.0.1"
 ]
 
 [project.urls]

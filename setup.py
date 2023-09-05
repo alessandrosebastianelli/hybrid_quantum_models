@@ -16,7 +16,7 @@ def readme():
 # Package 
 HERE = pathlib.Path(__file__).parent
 PACKAGE_NAME  = 'hqm'
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 AUTHOR = 'Alessandro Sebastianelli'
 AUTHOR_EMAIL = 'alessandro.sebastianelli1995@gmail.com'
 URL = 'https://github.com/alessandrosebastianelli/hybrid_quantum_models.git'
@@ -28,8 +28,9 @@ LONG_DESC_TYPE = 'text/markdown'
 
 
 INSTALL_REQUIRES = [
-	'numpy',
-	'pennylane',
+	"numpy==1.23.5", 
+	"pennylane==0.28.0",
+	"torch==2.0.1"
 ]
 
 

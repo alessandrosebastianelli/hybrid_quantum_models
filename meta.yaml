@@ -1,6 +1,6 @@
 package:
   name: hqm
-  version: "0.0.3"
+  version: "0.0.4"
 
 source:
   path: ./
@@ -16,9 +16,10 @@ requirements:
     - setuptools
 
   run:
-    - python
-    - numpy
-    - pennylane
+    - python==3.9.17
+    - numpy==1.23.5, 
+    - pennylane==0.28.0,
+    - torch==2.0.1
 
 test:
   imports:

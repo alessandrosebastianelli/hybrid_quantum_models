@@ -16,11 +16,11 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>            <a class="pdoc-button module-list-button" href="../circuits.html">
+        <div>            <a class="pdoc-button module-list-button" href="../utils.html">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-</svg>                &nbsp;hqm.circuits</a>
+</svg>                &nbsp;hqm.utils</a>
 
             <img src="logo.png" class="logo" alt="project logo"/>
 
@@ -32,10 +32,10 @@
             <h2>Functions</h2>
                 <ul class="memberlist">
             <li>
-                    <a class="class" href="#QuantumCircuit">QuantumCircuit</a>
+                    <a class="class" href="#AIInterface">AIInterface</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#QuantumCircuit.__init__">QuantumCircuit</a>
+                                <a class="function" href="#AIInterface.network_layer">network_layer</a>
                         </li>
                 </ul>
 
@@ -54,168 +54,167 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../../hqm.html">hqm</a><wbr>.<a href="./../circuits.html">circuits</a><wbr>.circuit    </h1>
+<a href="./../../hqm.html">hqm</a><wbr>.<a href="./../utils.html">utils</a><wbr>.aiinterface    </h1>
 
                 
-                        <input id="mod-circuit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <input id="mod-aiinterface-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <label class="view-source-button" for="mod-circuit-view-source"><span>View Source</span></label>
+                        <label class="view-source-button" for="mod-aiinterface-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">warnings</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="n">quantumcircuit</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;quantumcircuit&quot;</span><span class="p">)</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="k">class</span> <span class="nc">QuantumCircuit</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">quantumcircuit</span><span class="p">]):</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="sd">        Basic QuantumCircuit object.</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">    &#39;&#39;&#39;</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">            QuantumCircuit parent class.  </span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">            Parameters:  </span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            -----------</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            - n_qubits : int  </span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">            - n_layers : int  </span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">                number of layers for the quantum circuit  </span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">            - dev : qml.device  </span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            </span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            Returns:  </span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">            --------  </span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="c1"># Checking for exceptions  </span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">typing</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="k">class</span> <span class="nc">AIInterface</span><span class="p">:</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">        This class implements the inteface between quantum circuits implemented in PennyLane and the two most popular DL libraries,</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">        Pytorch and Tensorflow. </span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="sd">    &#39;&#39;&#39;</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            -----------  </span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            Returns:   </span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            --------  </span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;torch&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">)</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">elif</span> <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;keras&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Framerwork can be only torch or keras, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>        
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="k">return</span> <span class="n">qlayer</span>
 </span></pre></div>
 
 
             </section>
-                <section id="QuantumCircuit">
-                            <input id="QuantumCircuit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                <section id="AIInterface">
+                            <input id="AIInterface-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">QuantumCircuit</span><wbr>(<span class="base">typing.Generic[~quantumcircuit]</span>):
+    <span class="name">AIInterface</span>:
 
-                <label class="view-source-button" for="QuantumCircuit-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="AIInterface-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#QuantumCircuit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="QuantumCircuit-7"><a href="#QuantumCircuit-7"><span class="linenos"> 7</span></a><span class="k">class</span> <span class="nc">QuantumCircuit</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">quantumcircuit</span><span class="p">]):</span>
-</span><span id="QuantumCircuit-8"><a href="#QuantumCircuit-8"><span class="linenos"> 8</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit-9"><a href="#QuantumCircuit-9"><span class="linenos"> 9</span></a><span class="sd">        Basic QuantumCircuit object.</span>
-</span><span id="QuantumCircuit-10"><a href="#QuantumCircuit-10"><span class="linenos">10</span></a><span class="sd">    &#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit-11"><a href="#QuantumCircuit-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="QuantumCircuit-12"><a href="#QuantumCircuit-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit-13"><a href="#QuantumCircuit-13"><span class="linenos">13</span></a><span class="sd">            QuantumCircuit parent class.  </span>
-</span><span id="QuantumCircuit-14"><a href="#QuantumCircuit-14"><span class="linenos">14</span></a>
-</span><span id="QuantumCircuit-15"><a href="#QuantumCircuit-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
-</span><span id="QuantumCircuit-16"><a href="#QuantumCircuit-16"><span class="linenos">16</span></a><span class="sd">            -----------</span>
-</span><span id="QuantumCircuit-17"><a href="#QuantumCircuit-17"><span class="linenos">17</span></a><span class="sd">            - n_qubits : int  </span>
-</span><span id="QuantumCircuit-18"><a href="#QuantumCircuit-18"><span class="linenos">18</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
-</span><span id="QuantumCircuit-19"><a href="#QuantumCircuit-19"><span class="linenos">19</span></a><span class="sd">            - n_layers : int  </span>
-</span><span id="QuantumCircuit-20"><a href="#QuantumCircuit-20"><span class="linenos">20</span></a><span class="sd">                number of layers for the quantum circuit  </span>
-</span><span id="QuantumCircuit-21"><a href="#QuantumCircuit-21"><span class="linenos">21</span></a><span class="sd">            - dev : qml.device  </span>
-</span><span id="QuantumCircuit-22"><a href="#QuantumCircuit-22"><span class="linenos">22</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
-</span><span id="QuantumCircuit-23"><a href="#QuantumCircuit-23"><span class="linenos">23</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
-</span><span id="QuantumCircuit-24"><a href="#QuantumCircuit-24"><span class="linenos">24</span></a><span class="sd">            </span>
-</span><span id="QuantumCircuit-25"><a href="#QuantumCircuit-25"><span class="linenos">25</span></a><span class="sd">            Returns:  </span>
-</span><span id="QuantumCircuit-26"><a href="#QuantumCircuit-26"><span class="linenos">26</span></a><span class="sd">            --------  </span>
-</span><span id="QuantumCircuit-27"><a href="#QuantumCircuit-27"><span class="linenos">27</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
-</span><span id="QuantumCircuit-28"><a href="#QuantumCircuit-28"><span class="linenos">28</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit-29"><a href="#QuantumCircuit-29"><span class="linenos">29</span></a>        <span class="c1"># Checking for exceptions  </span>
-</span><span id="QuantumCircuit-30"><a href="#QuantumCircuit-30"><span class="linenos">30</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit-31"><a href="#QuantumCircuit-31"><span class="linenos">31</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit-32"><a href="#QuantumCircuit-32"><span class="linenos">32</span></a>
-</span><span id="QuantumCircuit-33"><a href="#QuantumCircuit-33"><span class="linenos">33</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
-</span><span id="QuantumCircuit-34"><a href="#QuantumCircuit-34"><span class="linenos">34</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
-</span><span id="QuantumCircuit-35"><a href="#QuantumCircuit-35"><span class="linenos">35</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="QuantumCircuit-36"><a href="#QuantumCircuit-36"><span class="linenos">36</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit-37"><a href="#QuantumCircuit-37"><span class="linenos">37</span></a>
-</span><span id="QuantumCircuit-38"><a href="#QuantumCircuit-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
-</span><span id="QuantumCircuit-39"><a href="#QuantumCircuit-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
-</span><span id="QuantumCircuit-40"><a href="#QuantumCircuit-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
+    <a class="headerlink" href="#AIInterface"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AIInterface-5"><a href="#AIInterface-5"><span class="linenos"> 5</span></a><span class="k">class</span> <span class="nc">AIInterface</span><span class="p">:</span>
+</span><span id="AIInterface-6"><a href="#AIInterface-6"><span class="linenos"> 6</span></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="AIInterface-7"><a href="#AIInterface-7"><span class="linenos"> 7</span></a><span class="sd">        This class implements the inteface between quantum circuits implemented in PennyLane and the two most popular DL libraries,</span>
+</span><span id="AIInterface-8"><a href="#AIInterface-8"><span class="linenos"> 8</span></a><span class="sd">        Pytorch and Tensorflow. </span>
+</span><span id="AIInterface-9"><a href="#AIInterface-9"><span class="linenos"> 9</span></a><span class="sd">    &#39;&#39;&#39;</span>
+</span><span id="AIInterface-10"><a href="#AIInterface-10"><span class="linenos">10</span></a>
+</span><span id="AIInterface-11"><a href="#AIInterface-11"><span class="linenos">11</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="AIInterface-12"><a href="#AIInterface-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
+</span><span id="AIInterface-13"><a href="#AIInterface-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="AIInterface-14"><a href="#AIInterface-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
+</span><span id="AIInterface-15"><a href="#AIInterface-15"><span class="linenos">15</span></a>
+</span><span id="AIInterface-16"><a href="#AIInterface-16"><span class="linenos">16</span></a><span class="sd">            Parameters:  </span>
+</span><span id="AIInterface-17"><a href="#AIInterface-17"><span class="linenos">17</span></a><span class="sd">            -----------  </span>
+</span><span id="AIInterface-18"><a href="#AIInterface-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="AIInterface-19"><a href="#AIInterface-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="AIInterface-20"><a href="#AIInterface-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="AIInterface-21"><a href="#AIInterface-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="AIInterface-22"><a href="#AIInterface-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="AIInterface-23"><a href="#AIInterface-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="AIInterface-24"><a href="#AIInterface-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="AIInterface-25"><a href="#AIInterface-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
+</span><span id="AIInterface-26"><a href="#AIInterface-26"><span class="linenos">26</span></a>
+</span><span id="AIInterface-27"><a href="#AIInterface-27"><span class="linenos">27</span></a><span class="sd">            Returns:   </span>
+</span><span id="AIInterface-28"><a href="#AIInterface-28"><span class="linenos">28</span></a><span class="sd">            --------  </span>
+</span><span id="AIInterface-29"><a href="#AIInterface-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
+</span><span id="AIInterface-30"><a href="#AIInterface-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="AIInterface-31"><a href="#AIInterface-31"><span class="linenos">31</span></a>
+</span><span id="AIInterface-32"><a href="#AIInterface-32"><span class="linenos">32</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="AIInterface-33"><a href="#AIInterface-33"><span class="linenos">33</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;torch&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">)</span>
+</span><span id="AIInterface-34"><a href="#AIInterface-34"><span class="linenos">34</span></a>        <span class="k">elif</span> <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;keras&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="AIInterface-35"><a href="#AIInterface-35"><span class="linenos">35</span></a>        <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Framerwork can be only torch or keras, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</span><span id="AIInterface-36"><a href="#AIInterface-36"><span class="linenos">36</span></a>        
+</span><span id="AIInterface-37"><a href="#AIInterface-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="n">qlayer</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Basic QuantumCircuit object.</p>
+            <div class="docstring"><p>This class implements the inteface between quantum circuits implemented in PennyLane and the two most popular DL libraries,
+Pytorch and Tensorflow.</p>
 </div>
 
 
-                            <div id="QuantumCircuit.__init__" class="classattr">
-                                        <input id="QuantumCircuit.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="AIInterface.network_layer" class="classattr">
+                                        <input id="AIInterface.network_layer-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
-            
-        <span class="name">QuantumCircuit</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">n_layers</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dev</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;pennylane.devices&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/home/asebastianelli/anaconda3/envs/quantum/lib/python3.9/site-packages/pennylane/devices/__init__.py&#39;</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+                    <div class="decorator">@staticmethod</div>
 
-                <label class="view-source-button" for="QuantumCircuit.__init__-view-source"><span>View Source</span></label>
+        <span class="def">def</span>
+        <span class="name">network_layer</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">circuit</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;&gt;</span>,</span><span class="param">	<span class="n">weight_shape</span><span class="p">:</span> <span class="nb">dict</span>,</span><span class="param">	<span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">aiframework</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Union</span><span class="p">[</span><span class="n">pennylane</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">pennylane</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="AIInterface.network_layer-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#QuantumCircuit.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="QuantumCircuit.__init__-11"><a href="#QuantumCircuit.__init__-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_layers</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="QuantumCircuit.__init__-12"><a href="#QuantumCircuit.__init__-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit.__init__-13"><a href="#QuantumCircuit.__init__-13"><span class="linenos">13</span></a><span class="sd">            QuantumCircuit parent class.  </span>
-</span><span id="QuantumCircuit.__init__-14"><a href="#QuantumCircuit.__init__-14"><span class="linenos">14</span></a>
-</span><span id="QuantumCircuit.__init__-15"><a href="#QuantumCircuit.__init__-15"><span class="linenos">15</span></a><span class="sd">            Parameters:  </span>
-</span><span id="QuantumCircuit.__init__-16"><a href="#QuantumCircuit.__init__-16"><span class="linenos">16</span></a><span class="sd">            -----------</span>
-</span><span id="QuantumCircuit.__init__-17"><a href="#QuantumCircuit.__init__-17"><span class="linenos">17</span></a><span class="sd">            - n_qubits : int  </span>
-</span><span id="QuantumCircuit.__init__-18"><a href="#QuantumCircuit.__init__-18"><span class="linenos">18</span></a><span class="sd">                number of qubits for the quantum circuit  </span>
-</span><span id="QuantumCircuit.__init__-19"><a href="#QuantumCircuit.__init__-19"><span class="linenos">19</span></a><span class="sd">            - n_layers : int  </span>
-</span><span id="QuantumCircuit.__init__-20"><a href="#QuantumCircuit.__init__-20"><span class="linenos">20</span></a><span class="sd">                number of layers for the quantum circuit  </span>
-</span><span id="QuantumCircuit.__init__-21"><a href="#QuantumCircuit.__init__-21"><span class="linenos">21</span></a><span class="sd">            - dev : qml.device  </span>
-</span><span id="QuantumCircuit.__init__-22"><a href="#QuantumCircuit.__init__-22"><span class="linenos">22</span></a><span class="sd">                PennyLane device on wich run quantum operations (dafault : None). When None it will be set</span>
-</span><span id="QuantumCircuit.__init__-23"><a href="#QuantumCircuit.__init__-23"><span class="linenos">23</span></a><span class="sd">                to &#39;default.qubit&#39;  </span>
-</span><span id="QuantumCircuit.__init__-24"><a href="#QuantumCircuit.__init__-24"><span class="linenos">24</span></a><span class="sd">            </span>
-</span><span id="QuantumCircuit.__init__-25"><a href="#QuantumCircuit.__init__-25"><span class="linenos">25</span></a><span class="sd">            Returns:  </span>
-</span><span id="QuantumCircuit.__init__-26"><a href="#QuantumCircuit.__init__-26"><span class="linenos">26</span></a><span class="sd">            --------  </span>
-</span><span id="QuantumCircuit.__init__-27"><a href="#QuantumCircuit.__init__-27"><span class="linenos">27</span></a><span class="sd">            Nothing, a QuantumCircuit object will be created.  </span>
-</span><span id="QuantumCircuit.__init__-28"><a href="#QuantumCircuit.__init__-28"><span class="linenos">28</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="QuantumCircuit.__init__-29"><a href="#QuantumCircuit.__init__-29"><span class="linenos">29</span></a>        <span class="c1"># Checking for exceptions  </span>
-</span><span id="QuantumCircuit.__init__-30"><a href="#QuantumCircuit.__init__-30"><span class="linenos">30</span></a>        <span class="k">if</span> <span class="n">n_qubits</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of qubits must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_qubits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit.__init__-31"><a href="#QuantumCircuit.__init__-31"><span class="linenos">31</span></a>        <span class="k">if</span> <span class="n">n_layers</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers must be greater or equal than 1, found </span><span class="si">{</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit.__init__-32"><a href="#QuantumCircuit.__init__-32"><span class="linenos">32</span></a>
-</span><span id="QuantumCircuit.__init__-33"><a href="#QuantumCircuit.__init__-33"><span class="linenos">33</span></a>        <span class="c1"># Set dev to &#39;default.qubit&#39; if dev is None  </span>
-</span><span id="QuantumCircuit.__init__-34"><a href="#QuantumCircuit.__init__-34"><span class="linenos">34</span></a>        <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
-</span><span id="QuantumCircuit.__init__-35"><a href="#QuantumCircuit.__init__-35"><span class="linenos">35</span></a>            <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
-</span><span id="QuantumCircuit.__init__-36"><a href="#QuantumCircuit.__init__-36"><span class="linenos">36</span></a>            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev has been set to None, setting it to </span><span class="si">{</span><span class="n">dev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="QuantumCircuit.__init__-37"><a href="#QuantumCircuit.__init__-37"><span class="linenos">37</span></a>
-</span><span id="QuantumCircuit.__init__-38"><a href="#QuantumCircuit.__init__-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">n_qubits</span>
-</span><span id="QuantumCircuit.__init__-39"><a href="#QuantumCircuit.__init__-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span>     <span class="o">=</span> <span class="n">n_layers</span>
-</span><span id="QuantumCircuit.__init__-40"><a href="#QuantumCircuit.__init__-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dev</span>          <span class="o">=</span> <span class="n">dev</span>
+    <a class="headerlink" href="#AIInterface.network_layer"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AIInterface.network_layer-11"><a href="#AIInterface.network_layer-11"><span class="linenos">11</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="AIInterface.network_layer-12"><a href="#AIInterface.network_layer-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="nf">network_layer</span><span class="p">(</span><span class="n">circuit</span> <span class="p">:</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">,</span> <span class="n">weight_shape</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">n_qubits</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">,</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">]:</span>
+</span><span id="AIInterface.network_layer-13"><a href="#AIInterface.network_layer-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+</span><span id="AIInterface.network_layer-14"><a href="#AIInterface.network_layer-14"><span class="linenos">14</span></a><span class="sd">            Static methods that embedd quantum layer into a torch or a keras layer.  </span>
+</span><span id="AIInterface.network_layer-15"><a href="#AIInterface.network_layer-15"><span class="linenos">15</span></a>
+</span><span id="AIInterface.network_layer-16"><a href="#AIInterface.network_layer-16"><span class="linenos">16</span></a><span class="sd">            Parameters:  </span>
+</span><span id="AIInterface.network_layer-17"><a href="#AIInterface.network_layer-17"><span class="linenos">17</span></a><span class="sd">            -----------  </span>
+</span><span id="AIInterface.network_layer-18"><a href="#AIInterface.network_layer-18"><span class="linenos">18</span></a><span class="sd">            - circuit : qml.qnode  </span>
+</span><span id="AIInterface.network_layer-19"><a href="#AIInterface.network_layer-19"><span class="linenos">19</span></a><span class="sd">                pennylane circuit to be embedded   </span>
+</span><span id="AIInterface.network_layer-20"><a href="#AIInterface.network_layer-20"><span class="linenos">20</span></a><span class="sd">            - weight_shape : dict  </span>
+</span><span id="AIInterface.network_layer-21"><a href="#AIInterface.network_layer-21"><span class="linenos">21</span></a><span class="sd">                shape of the trainalbe weights, it is derived from hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="AIInterface.network_layer-22"><a href="#AIInterface.network_layer-22"><span class="linenos">22</span></a><span class="sd">            - n_qubits : int  </span>
+</span><span id="AIInterface.network_layer-23"><a href="#AIInterface.network_layer-23"><span class="linenos">23</span></a><span class="sd">                integer representing the number of qubits used for the circuit  </span>
+</span><span id="AIInterface.network_layer-24"><a href="#AIInterface.network_layer-24"><span class="linenos">24</span></a><span class="sd">            - aiframeworkks : str  </span>
+</span><span id="AIInterface.network_layer-25"><a href="#AIInterface.network_layer-25"><span class="linenos">25</span></a><span class="sd">                string representing which in wich ai framework the circuit will be embedded, can be &#39;torch&#39; or &#39;keras&#39;  </span>
+</span><span id="AIInterface.network_layer-26"><a href="#AIInterface.network_layer-26"><span class="linenos">26</span></a>
+</span><span id="AIInterface.network_layer-27"><a href="#AIInterface.network_layer-27"><span class="linenos">27</span></a><span class="sd">            Returns:   </span>
+</span><span id="AIInterface.network_layer-28"><a href="#AIInterface.network_layer-28"><span class="linenos">28</span></a><span class="sd">            --------  </span>
+</span><span id="AIInterface.network_layer-29"><a href="#AIInterface.network_layer-29"><span class="linenos">29</span></a><span class="sd">            - qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer  </span>
+</span><span id="AIInterface.network_layer-30"><a href="#AIInterface.network_layer-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="AIInterface.network_layer-31"><a href="#AIInterface.network_layer-31"><span class="linenos">31</span></a>
+</span><span id="AIInterface.network_layer-32"><a href="#AIInterface.network_layer-32"><span class="linenos">32</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="AIInterface.network_layer-33"><a href="#AIInterface.network_layer-33"><span class="linenos">33</span></a>        <span class="k">if</span>   <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;torch&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">TorchLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">)</span>
+</span><span id="AIInterface.network_layer-34"><a href="#AIInterface.network_layer-34"><span class="linenos">34</span></a>        <span class="k">elif</span> <span class="n">aiframework</span> <span class="o">==</span> <span class="s2">&quot;keras&quot;</span><span class="p">:</span> <span class="n">qlayer</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">qnn</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">n_qubits</span><span class="p">)</span>
+</span><span id="AIInterface.network_layer-35"><a href="#AIInterface.network_layer-35"><span class="linenos">35</span></a>        <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Framerwork can be only torch or keras, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</span><span id="AIInterface.network_layer-36"><a href="#AIInterface.network_layer-36"><span class="linenos">36</span></a>        
+</span><span id="AIInterface.network_layer-37"><a href="#AIInterface.network_layer-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="n">qlayer</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>QuantumCircuit parent class.  </p>
+            <div class="docstring"><p>Static methods that embedd quantum layer into a torch or a keras layer.  </p>
 
 <h2 id="parameters">Parameters:  </h2>
 
 <ul>
+<li>circuit : qml.qnode <br />
+pennylane circuit to be embedded   </li>
+<li>weight_shape : dict <br />
+shape of the trainalbe weights, it is derived from <a href="../circuits/circuit.html#QuantumCircuit">hqm.circuits.circuit.QuantumCircuit</a>  </li>
 <li>n_qubits : int <br />
-number of qubits for the quantum circuit  </li>
-<li>n_layers : int <br />
-number of layers for the quantum circuit  </li>
-<li>dev : qml.device <br />
-PennyLane device on wich run quantum operations (dafault : None). When None it will be set
-to 'default.qubit'  </li>
+integer representing the number of qubits used for the circuit  </li>
+<li>aiframeworkks : str <br />
+string representing which in wich ai framework the circuit will be embedded, can be 'torch' or 'keras'  </li>
 </ul>
 
-<h2 id="returns">Returns:  </h2>
+<h2 id="returns">Returns:   </h2>
 
-<p>Nothing, a QuantumCircuit object will be created.</p>
+<ul>
+<li>qlayer : qml.qnn.TorchLayer or qml.qnn.KerasLayer</li>
+</ul>
 </div>
 
 
