@@ -1,7 +1,6 @@
 from types import FunctionType
 import pennylane as qml
 import numpy as np
-import warnings
 import sys
 
 sys.path += ['.', './layers/']
