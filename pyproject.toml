@@ -1,8 +1,7 @@
 [build-system]
 requires = [
             "numpy==1.23.5", 
-            "pennylane==0.28.0",
-            "torch==2.0.1"
+            "pennylane==0.28.0"
             ]
 
 [project]
@@ -22,8 +21,7 @@ classifiers = [
 ]
 dependencies = [
   "numpy==1.23.5", 
-  "pennylane==0.28.0",
-  "torch==2.0.1"
+  "pennylane==0.28.0"
 ]
 
 [project.urls]

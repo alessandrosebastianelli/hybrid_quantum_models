@@ -30,7 +30,6 @@ LONG_DESC_TYPE = 'text/markdown'
 INSTALL_REQUIRES = [
 	"numpy==1.23.5", 
 	"pennylane==0.28.0",
-	"torch==2.0.1"
 ]
 
 
