@@ -15,7 +15,7 @@ os.mkdir("./docs/hqm/")
 os.system("pdoc ./hqm -o ./docs --docformat numpy --logo logo.png -t ./docs_assets/") 
 shutil.copy2("./docs_assets/logo.png", "./docs/logo.png")
 shutil.copy2("./docs_assets/logo.png", "./docs/hqm/logo.png")
-#shutil.copy2("./docs_assets/favicon.ico", "./docs/favicon.ico")
+shutil.copy2("./docs_assets/main-hqm.png", "./docs/main-hqm.png")
 
 for p in glob.glob("./docs/hqm/*/"):
     shutil.copy2("./docs_assets/logo.png", p+"/logo.png")
