@@ -8,7 +8,7 @@ from hqm.circuits.circuit import QuantumCircuit
 from hqm.utils.aiinterface import AIInterface
 
 
-class Quanvolution2D:
+class Quanvolution2D(torch.nn.Module):
     '''
         Quanvolution2D layer.
 
@@ -37,7 +37,8 @@ class Quanvolution2D:
         --------     
         Nothing, a Quanvolution2D object will be created.  
         '''
-        
+        super().__init__()
+
         if aiframework not in ['torch', 'keras']: raise Exception(f"Quanvolution2D curently supports only 'torch' as framework, found {aiframework}")
         if kernelsize < 1:                        raise Exception(f"kernelsize must be greater than 1, found {kernelsize}")
         if stride < 1:                            raise Exception(f"stride must be greater than 1, found {stride}")
