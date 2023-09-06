@@ -25,7 +25,7 @@ This package is stored on [PyPi](https://pypi.org/project/hqm/), you can easily 
 pip install --upgrade hqm
 ```
 
-Despite some components of this library being based on toch or tensorflow, these two packages are not listed in the library requirements, so they will not be installed. Recommended versions for torch and tensorflow are:
+Although certain elements of this library draw from PyTorch or TensorFlow, these two packages are not included in the library's prerequisites, and therefore, they will not be automatically installed. It is advisable to use the following recommended versions for PyTorch and TensorFlow:
 
 ```bash
 pip install tensorflow==2.13.0
@@ -37,7 +37,14 @@ pip install torch==2.0.1
 
 ## Usage
 
-The main idea behind this package is depicted below
+The central concept of this package is illustrated in the figure below. In essence, the package generates an embedding of a user-defined quantum circuit (chosen from the available options) into a quantum layer, which is also customizable by the user. This quantum layer can subsequently be converted into a Keras layer or a Torch layer, allowing it to be seamlessly combined with other classical or quantum layers.
 
 ![](../docs/main-hqm.png)
 ![](docs/main-hqm.png)
+
+A full description of each module can be found here
+
+| Module   |                  Readme                 |                                         Documentation                                         |
+|----------|:---------------------------------------:|:---------------------------------------------------------------------------------------------:|
+| Circuits | [circuits.md](hqm/circuits/circuits.md) | [circuits](https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/circuits.html) |
+| Layers   |    [layers.md](hqm/layers/layers.md)    |   [layers](https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/layers.html)   |
