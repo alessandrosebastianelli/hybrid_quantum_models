@@ -19,7 +19,7 @@ Layers consisting of one-parameter single-qubit rotations on each qubit, followe
 The ring of CNOT gates connects every qubit with its neighbor, with the last qubit being considered as a neighbor to the first qubit.
 
 
-<img src="../circuits/basic_entangler_circuit.png" width="400" height="200" />
+<img src="../circuits/basic_entangler_circuit.png" width="80%"/>
 
 When using a single wire, the template only applies the single qubit gates in each layer.
 
@@ -29,9 +29,17 @@ When using a single wire, the template only applies the single qubit gates in ea
 
 Layers consisting of single qubit rotations and entanglers, inspired by the circuit-centric classifier design arXiv:1804.00633.
 
-<img src="../circuits/strongly_entangler_circuit.png" width="400" height="200" />
+<img src="../circuits/strongly_entangler_circuit.png" width="80%"/>
 
 [PennyLane Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.StronglyEntanglingLayers.html)
+
+### Randoms Circuit
+
+Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, acting on randomly chosen qubits.
+
+<img src="../circuits/random_circuit.png" width="80%"/>
+
+[PennyLane Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.RandomLayers.html)
 
 
 ## Data Reuploading
