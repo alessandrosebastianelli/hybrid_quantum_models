@@ -86,7 +86,7 @@ hqm    </h1>
 </code></pre>
 </div>
 
-<p>Despite some components of this library being based on toch or tensorflow, these two packages are not listed in the library requirements, so they will not be installed. Recommended versions for torch and tensorflow are:</p>
+<p>Although certain elements of this library draw from PyTorch or TensorFlow, these two packages are not included in the library's prerequisites, and therefore, they will not be automatically installed. It is advisable to use the following recommended versions for PyTorch and TensorFlow:</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">tensorflow</span><span class="o">==</span><span class="m">2</span>.13.0
@@ -100,10 +100,34 @@ hqm    </h1>
 
 <h2 id="usage">Usage</h2>
 
-<p>The main idea behind this package is depicted below</p>
+<p>The central concept of this package is illustrated in the figure below. In essence, the package generates an embedding of a user-defined quantum circuit (chosen from the available options) into a quantum layer, which is also customizable by the user. This quantum layer can subsequently be converted into a Keras layer or a Torch layer, allowing it to be seamlessly combined with other classical or quantum layers.</p>
 
 <p><img src="../docs/main-hqm.png" alt="" />
 <img src="docs/main-hqm.png" alt="" /></p>
+
+<p>A full description of each module can be found here</p>
+
+<table>
+<thead>
+<tr>
+  <th>Module</th>
+  <th style="text-align:center;">Readme</th>
+  <th style="text-align:center;">Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Circuits</td>
+  <td style="text-align:center;"><a href="hqm/circuits/circuits.md">circuits.md</a></td>
+  <td style="text-align:center;"><a href="https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/circuits.html">circuits</a></td>
+</tr>
+<tr>
+  <td>Layers</td>
+  <td style="text-align:center;"><a href="hqm/layers/layers.md">layers.md</a></td>
+  <td style="text-align:center;"><a href="https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/layers.html">layers</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 
                         <input id="mod-hqm-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
