@@ -42,9 +42,4 @@ The central concept of this package is illustrated in the figure below. In essen
 ![](../docs/main-hqm.png)
 ![](docs/main-hqm.png)
 
-A full description of each module can be found here
-
-| Module   |                  Readme                 |                                         Documentation                                         |
-|----------|:---------------------------------------:|:---------------------------------------------------------------------------------------------:|
-| Circuits | [circuits.md](hqm/circuits/circuits.md) | [circuits](https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/circuits.html) |
-| Layers   |    [layers.md](hqm/layers/layers.md)    |   [layers](https://alessandrosebastianelli.github.io/hybrid_quantum_models/hqm/layers.html)   |
+A full description of each module can be found in the documentation.

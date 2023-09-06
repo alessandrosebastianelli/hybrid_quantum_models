@@ -33,7 +33,7 @@ Layers consisting of single qubit rotations and entanglers, inspired by the circ
 
 [PennyLane Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.StronglyEntanglingLayers.html)
 
-### Randoms Circuit
+### Random Circuit
 
 Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, acting on randomly chosen qubits.
 
