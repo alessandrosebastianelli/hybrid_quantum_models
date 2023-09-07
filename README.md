@@ -39,6 +39,6 @@ pip install torch==2.0.1
 The central concept of this package is illustrated in the figure below. In essence, the package generates an embedding of a user-defined quantum circuit (chosen from the available options) into a quantum layer, which is also customizable by the user. This quantum layer can subsequently be converted into a Keras layer or a Torch layer, allowing it to be seamlessly combined with other classical or quantum layers.
 
 ![](docs/main-hqm.png)
-![](../main-hqm.png)
+![](main-hqm.png)
 
 A full description of each module can be found in the documentation.
