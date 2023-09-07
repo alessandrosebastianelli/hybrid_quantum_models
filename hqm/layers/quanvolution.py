@@ -75,7 +75,7 @@ class Quanvolution2D(torch.nn.Module):
         '''
 
 
-        if len(x.shape) != 4: raise Exception(f"x must be a tensor of 4 elements (batch, channels, width, height), found {x}")
+        if len(x.shape) != 4: raise Exception(f"x must be a tensor of 4 elements (batch, channels, width, height), found {len(x.shape)}")
 
         # Calculates the image shape after the convolution
         bs, ch, h, w = x.shape
