@@ -6,7 +6,6 @@ from hqm.circuits.circuit import QuantumCircuit
 from hqm.utils.aiinterface import AIInterface
 
 
-
 class BasicLayer:
     '''
         Basic Quantum Layer
