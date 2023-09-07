@@ -81,8 +81,6 @@ if __name__ == '__main__':
     EPOCHS        = int(args.epochs)
 
 
-    if N_QUBITS < 1:       raise Exception('n_qubits must be greater than 1, found {N_QUBITS}')
-    if N_LAYERS < 1:       raise Exception('n_layers must be greater than 1, found {N_LAYERS}')
     if BATCH_SIZE < 1:     raise Exception('batch_size must be greater than 1, found {BATCH_SIZE}')
     if LEARNING_RATE <= 0: raise Exception('learning_rate must be greater than 0, found {LEARNING_RATE}')
     if EPOCHS < 1:         raise Exception('epochs must be greater than 0, found {EPOCHS}')
