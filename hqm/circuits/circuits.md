@@ -42,4 +42,8 @@ Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, a
 [PennyLane Documentation](https://docs.pennylane.ai/en/stable/code/api/pennylane.RandomLayers.html)
 
 
-## Data Reuploading
+## Amplitude Encoding 
+
+Please refer to the previous section, the circuits are the same but the encoding scheme is different and follows the [Amplitude Encoding Strategy](https://docs.pennylane.ai/en/stable/code/api/pennylane.AmplitudeEmbedding.html).
+
+## Custom Circuits
