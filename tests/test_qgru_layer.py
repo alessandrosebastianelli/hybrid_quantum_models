@@ -20,7 +20,7 @@ def test_qgru_output():
     BATCH_SIZE    = 16
 
     #=======================================================================
-    # Inizialize Hybrid Model
+    # Inizialize QGRU layer
     #=======================================================================
     dev = qml.device("lightning.qubit", wires=N_QUBITS, shots = 1000)
 
@@ -32,6 +32,9 @@ def test_qgru_output():
     
     qgru      = QGRU(qcircuits=qcircuits, inputsize=INPUTSIZE, hiddensize=HIDDENSIZE)
 
+    #=======================================================================
+    # Applying QGRU
+    #=======================================================================
     x = torch.rand(size=(BATCH_SIZE,TIME_DIM,INPUTSIZE))
     o =  qgru(x)
 
