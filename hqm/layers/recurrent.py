@@ -84,9 +84,9 @@ class QGRU(torch.nn.Module):
             qgru input
         '''
 
-        if len(x.shape) != 3: raise Exception(f"x must be a tensor of 3 elements (batch, sequencelenght, hidden size), found {len(x.shape)}")
+        if len(x.shape) != 3: raise Exception(f"x must be a tensor of 3 elements (batch, sequencelenght, featuressize), found {len(x.shape)}")
 
-        batch_size, seq_length, features_size = x.size()            
+        batch_size, seq_length, featuressize = x.size()            
         hidden_seq = []
         h_t = torch.zeros(batch_size, self.hiddensize)
         
