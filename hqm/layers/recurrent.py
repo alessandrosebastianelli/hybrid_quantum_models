@@ -12,6 +12,13 @@ class QGRU(torch.nn.Module):
         Quantum Gradient Recurrent Unit layer.
 
         Currently supports only Torch.
+
+        Reference
+        ---------
+        A. Ceschini, A. Rosato and M. Panella, "Hybrid Quantum-Classical Recurrent  
+        Neural Networks for Time Series Prediction," 2022 International Joint Conference  
+        on Neural Networks (IJCNN), Padua, Italy, 2022, pp. 1-8,   
+        doi: 10.1109/IJCNN55064.2022.9892441.
     '''
 
     def __init__(self, qcircuits : list[QuantumCircuit], inputsize : int, hiddensize : int, aiframework : str = 'torch') -> None:
@@ -19,11 +26,16 @@ class QGRU(torch.nn.Module):
         QGRU constructor.  
 
         Parameters:  
-        -----------  
-        - qcircuits : list of QuantumCircuit
-        - inputsize : int
-        - hiddensize : int
-        - aiframework : str
+        -----------   
+        - qcircuits : list of QuantumCircuit  
+            list containing three quantum circuits in this exact order: 1) Quantum Layer Reset, 2) Quantum Layer Update, 3) Quantum Layer Output
+        - inputsize : int  
+            integer representing the number of variable (channels) in the input date
+        - hiddensize : int  
+            integer size representing the recurrent filters
+        - aiframework : str  
+            string representing the AI framework in use, can be 'torch' or 'keras'. This will create  
+            a compatible trainable layer for the framework.
 
         Returns:    
         --------     
