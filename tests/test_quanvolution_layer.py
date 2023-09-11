@@ -10,37 +10,31 @@ import numpy as np
 import argparse
 import torch
 
-# Set random seeds
-torch.manual_seed(42)
-np.random.seed(42)
 
-if __name__ == '__main__':
-
-    parser = argparse.ArgumentParser(description='Test Quanvolution layer')
-    # Model's arguments
-    parser.add_argument('--n_qubits',               type=int,   default=9)
-    parser.add_argument('--n_layers',               type=int,   default=1)
-
-    # Reading arguments
-    args = parser.parse_args()
-    
-    N_QUBITS      = int(args.n_qubits)
-    N_LAYERS      = int(args.n_layers)
+def test_quanvolution_output():
+    N_QUBITS      = 9
+    N_LAYERS      = 1
+    FITLERS       = 9
+    KERNELSIZE    = 3
+    STRIDE        = 1
+    IMG_SIZE      = 16
+    BATCH_SIZE    = 2
+    CHANNELS      = 3
 
     #=======================================================================
-    # Inizialize Hybrid Model
+    # InizializeQuanvolution2D
     #=======================================================================
     print('Initializing hybrid model', '\n')
     dev = qml.device("lightning.qubit", wires=N_QUBITS)
 
     qcircuit = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
-    quanv    = Quanvolution2D(qcircuit=qcircuit, filters=9, kernelsize=3, stride=1)
-    Printer.draw_circuit(qcircuit)
+    quanv    = Quanvolution2D(qcircuit=qcircuit, filters=FITLERS, kernelsize=KERNELSIZE, stride=STRIDE)
 
     #=======================================================================
     # Applying Quanvolution2D
     #=======================================================================
-    print('\nApplying Quanvolution2D', '\n')
-    x = torch.rand(size=(2,3,16,16))
+
+    x = torch.rand(size=(BATCH_SIZE,CHANNELS,IMG_SIZE,IMG_SIZE))
     o =  quanv(x)
-    print('Input Shape', x.shape, 'Output shape', o.shape)
+
+    assert o.shape == (BATCH_SIZE, FITLERS, int((IMG_SIZE - KERNELSIZE)/STRIDE + 1), int((IMG_SIZE - KERNELSIZE)/STRIDE + 1))
