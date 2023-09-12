@@ -204,5 +204,3 @@ class RealAmplitudesCircuit(QuantumCircuit):
             return measurements
     
         return qnode
-
-class LadderLikeCircuit(QuantumCircuit): pass
