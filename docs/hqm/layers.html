@@ -27,6 +27,16 @@
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
 
+            <h2>Overview</h2>
+            <ul>
+  <li><a href="#quantum-layers">Quantum Layers</a>
+  <ul>
+    <li><a href="#basic-layer">Basic Layer</a></li>
+    <li><a href="#quanvolution-layers">Quanvolution Layers</a></li>
+    <li><a href="#recurrent-layer">Recurrent Layer</a></li>
+  </ul></li>
+</ul>
+
 
             <h2>Packages</h2>
             <ul>
@@ -52,7 +62,33 @@
                     <h1 class="modulename">
 <a href="./../hqm.html">hqm</a><wbr>.layers    </h1>
 
-                        <div class="docstring"><p></p>
+                        <div class="docstring"><h1 id="quantum-layers">Quantum Layers</h1>
+
+<p>This package contains the implementations for quantum layers, in other words, deep learning layers that contain user-defined quantum circuits.</p>
+
+<h2 id="basic-layer">Basic Layer</h2>
+
+<p>This class serves as a foundational layer without any specific functionalities, primarily designed to facilitate the integration of quantum circuits with Torch or Keras layers. Its main purpose is to establish a bridge between the quantum computing framework and deep learning libraries such as Torch or Keras.</p>
+
+<h2 id="quanvolution-layers">Quanvolution Layers</h2>
+
+<p>Derived from the basic layer, this specific layer is designed to perform quantum convolutions, often referred to as "quanvolutions." It's important to note that, as of now, this layer is exclusively accessible and compatible with Torch-based models.</p>
+
+<p><img src="../layers/quanvolution.png" width="80%"/></p>
+
+<p><strong>Reference</strong>  </p>
+
+<p>Henderson, M., Shakya, S., Pradhan, S., &amp; Cook, T. (2020). Quanvolutional neural networks: powering image recognition with quantum circuits. Quantum Machine Intelligence, 2(1), 2.</p>
+
+<h2 id="recurrent-layer">Recurrent Layer</h2>
+
+<p>Derived from the basic layer, this particular layer serves as an implementation of a recurrent neural layer. It's essential to note that, at the moment, this layer is exclusively accessible and compatible with Torch-based models.</p>
+
+<p><img src="../layers/qgru.png" width="80%"/></p>
+
+<p><strong>Reference</strong>  </p>
+
+<p>A. Ceschini, A. Rosato and M. Panella, "Hybrid Quantum-Classical Recurrent Neural Networks for Time Series Prediction," 2022 International Joint Conference on Neural Networks (IJCNN), Padua, Italy, 2022, pp. 1-8, doi: 10.1109/IJCNN55064.2022.9892441.</p>
 </div>
 
                         <input id="mod-layers-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
