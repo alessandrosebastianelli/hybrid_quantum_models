@@ -1,7 +1,9 @@
 import sys
-sys.path += ['.', './layers/']
+sys.path += ['.', './layers/', './utils/']
 
 from hqm.layers.basiclayer import BasicLayer
+from hqm.utils.sizes import size_conv_layer
+
 import torch
 
 class HybridLeNet5(torch.nn.Module):
@@ -37,23 +39,21 @@ class HybridLeNet5(torch.nn.Module):
         
         c1 = 6
         self.conv_1    = torch.nn.Conv2d(in_channels=c, out_channels=c1, kernel_size=5, padding=2, stride=1)
-        w1 = self.size_flat_features(w, kernel_size=5, padding=2, stride=1)
-        h1 = self.size_flat_features(h, kernel_size=5, padding=2, stride=1)
+        w1 = size_conv_layer(w, kernel_size=5, padding=2, stride=1)
+        h1 = size_conv_layer(h, kernel_size=5, padding=2, stride=1)
         
         self.max_pool1 = torch.nn.MaxPool2d(kernel_size = (2,2), stride=(2,2))
-        w2 = self.size_flat_features(w1, kernel_size=2, padding=0, stride=2)
-        h2 = self.size_flat_features(h1, kernel_size=2, padding=0, stride=2)
+        w2 = size_conv_layer(w1, kernel_size=2, padding=0, stride=2)
+        h2 = size_conv_layer(h1, kernel_size=2, padding=0, stride=2)
         
         c2 = 16
         self.conv_2  = torch.nn.Conv2d(in_channels=c1, out_channels=c2, kernel_size=5,  stride=1)
-        w3 = self.size_flat_features(w2, kernel_size=5, padding=0, stride=1)
-        h3 = self.size_flat_features(h2, kernel_size=5, padding=0, stride=1)
+        w3 = size_conv_layer(w2, kernel_size=5, padding=0, stride=1)
+        h3 = size_conv_layer(h2, kernel_size=5, padding=0, stride=1)
 
         self.max_pool2 = torch.nn.MaxPool2d(kernel_size = (2,2), stride=(2,2))
-        w4 = self.size_flat_features(w3, kernel_size=2, padding=0, stride=2)
-        h4 = self.size_flat_features(h3, kernel_size=2, padding=0, stride=2)
-
-        
+        w4 = size_conv_layer(w3, kernel_size=2, padding=0, stride=2)
+        h4 = size_conv_layer(h3, kernel_size=2, padding=0, stride=2)
 
         self.flatten_size = w4 * h4 * c2
         fc_2_size = int(self.flatten_size * 30 / 100)
@@ -65,30 +65,6 @@ class HybridLeNet5(torch.nn.Module):
         self.relu    = torch.nn.ReLU()
         self.softmax = torch.nn.Softmax(dim=1)
     
-    def size_flat_features(self, s : int, kernel_size : int, padding : int, stride : int) -> int:
-        '''
-            Get the number of features in a batch of tensor 'x'.  
-
-            Parameters:  
-            -----------  
-            - s : int  
-                integer represeting the size of one axis of the image  
-            - kernel_size : int  
-                integer represeting the size of the convolutional kernel  
-            - padding : int  
-                integer represeting the padding size  
-            - stride : int  
-                integer representing the stride size  
-  
-            Returns:  
-            --------  
-            - size : int  
-                size after conv2D and Maxpool  
-        '''
-
-        size = int(((s - kernel_size + 2 * padding)/stride) + 1)
-        return size
-
     def forward(self, x : torch.Tensor) -> torch.Tensor:
         '''
             Torch forward method  
