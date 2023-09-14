@@ -42,3 +42,7 @@ The central concept of this package is illustrated in the figure below. In essen
 ![](main-hqm.png)
 
 A full description of each module can be found in the documentation.
+
+## How to contribute
+
+[Click here](https://github.com/alessandrosebastianelli/hybrid_quantum_models/issues/1)
