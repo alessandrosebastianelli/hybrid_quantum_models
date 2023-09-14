@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "hqm"
-version = "0.0.7"
+version = "0.0.8"
 authors = [
   { name="Alessandro Sebastianelli", email="alessandro.sebastianelli1995@gmail.com" },
 ]
@@ -27,3 +27,4 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://github.com/alessandrosebastianelli/hybrid_quantum_models"
 "Bug Tracker" = "https://github.com/alessandrosebastianelli/hybrid_quantum_models/issues"
+"How to contribute" = "https://github.com/alessandrosebastianelli/hybrid_quantum_models/issues/1"
