@@ -33,7 +33,6 @@ def test_RealAmplitudesCircuitt_angle_output():
     out      = circ(cinput, cweights)
     assert len(out) == n_qubits
 
-
 def test_RealAmplitudesCircuit_amplitude_output():
     n_qubits = 2
     n_layers = 1

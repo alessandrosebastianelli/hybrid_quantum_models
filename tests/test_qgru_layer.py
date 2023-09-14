@@ -19,22 +19,12 @@ def test_qgru_output():
     TIME_DIM      = 20
     BATCH_SIZE    = 16
 
-    #=======================================================================
-    # Inizialize QGRU layer
-    #=======================================================================
     dev = qml.device("lightning.qubit", wires=N_QUBITS, shots = 1000)
-
     qcircuit1 = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
     qcircuit2 = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
     qcircuit3 = BasicEntangledCircuit(n_qubits=N_QUBITS, n_layers=N_LAYERS, dev=dev)
-
     qcircuits = [qcircuit1, qcircuit2, qcircuit3]
-    
     qgru      = QGRU(qcircuits=qcircuits, inputsize=INPUTSIZE, hiddensize=HIDDENSIZE)
-
-    #=======================================================================
-    # Applying QGRU
-    #=======================================================================
     x = torch.rand(size=(BATCH_SIZE,TIME_DIM,INPUTSIZE))
     o =  qgru(x)
 
