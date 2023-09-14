@@ -1,4 +1,4 @@
-def size_conv_layer(self, s : int, kernel_size : int, padding : int, stride : int) -> int:
+def size_conv_layer(s : int, kernel_size : int, padding : int, stride : int) -> int:
         '''
             Calculate the size of the image after convolution layer
 
