@@ -1,4 +1,4 @@
-# Regression
+# Classification
 
 ## hmlp - hybrid multi-layer perceptron
 
@@ -19,4 +19,8 @@ This class implements a hybrid multilayer perceptron with multiple quantum circu
 This class implements a hybrid multilayer perceptron with multiple quantum circuits for classification purposes. MultiHybridMultiMLPClassifier is composed of several quantum layers stacked between alternating fully connected layers. The size of fully connected layers is set by means of in_dim and ou_dim.
 
 <img src="../classification/MultiHybridMultiMLPClassifier.png" width="80%"/>
-    
+
+## hcnns - hybrid convolutional neural networks
+
+### Hybrid LeNet-5
+TO-DO
