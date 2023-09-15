@@ -76,32 +76,31 @@
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="sd">&#39;&#39;&#39;</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        BasicLayer constructor.  </span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        Parameters:  </span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        -----------  </span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">        - aiframework : str    </span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        Returns:    </span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        --------     </span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>                            <span class="p">)</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        BasicLayer constructor.  </span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        Parameters:  </span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        -----------  </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        - aiframework : str    </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        Returns:    </span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        --------     </span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>        
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>                            <span class="p">)</span>
 </span></pre></div>
 
 
@@ -124,32 +123,31 @@
 </span><span id="BasicLayer-14"><a href="#BasicLayer-14"><span class="linenos">14</span></a>
 </span><span id="BasicLayer-15"><a href="#BasicLayer-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BasicLayer-16"><a href="#BasicLayer-16"><span class="linenos">16</span></a>        <span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicLayer-17"><a href="#BasicLayer-17"><span class="linenos">17</span></a>
-</span><span id="BasicLayer-18"><a href="#BasicLayer-18"><span class="linenos">18</span></a><span class="sd">        BasicLayer constructor.  </span>
-</span><span id="BasicLayer-19"><a href="#BasicLayer-19"><span class="linenos">19</span></a>
-</span><span id="BasicLayer-20"><a href="#BasicLayer-20"><span class="linenos">20</span></a><span class="sd">        Parameters:  </span>
-</span><span id="BasicLayer-21"><a href="#BasicLayer-21"><span class="linenos">21</span></a><span class="sd">        -----------  </span>
-</span><span id="BasicLayer-22"><a href="#BasicLayer-22"><span class="linenos">22</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
-</span><span id="BasicLayer-23"><a href="#BasicLayer-23"><span class="linenos">23</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
-</span><span id="BasicLayer-24"><a href="#BasicLayer-24"><span class="linenos">24</span></a><span class="sd">        - aiframework : str    </span>
-</span><span id="BasicLayer-25"><a href="#BasicLayer-25"><span class="linenos">25</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
-</span><span id="BasicLayer-26"><a href="#BasicLayer-26"><span class="linenos">26</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
-</span><span id="BasicLayer-27"><a href="#BasicLayer-27"><span class="linenos">27</span></a>
-</span><span id="BasicLayer-28"><a href="#BasicLayer-28"><span class="linenos">28</span></a><span class="sd">        Returns:    </span>
-</span><span id="BasicLayer-29"><a href="#BasicLayer-29"><span class="linenos">29</span></a><span class="sd">        --------     </span>
-</span><span id="BasicLayer-30"><a href="#BasicLayer-30"><span class="linenos">30</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
-</span><span id="BasicLayer-31"><a href="#BasicLayer-31"><span class="linenos">31</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="BasicLayer-32"><a href="#BasicLayer-32"><span class="linenos">32</span></a>        
-</span><span id="BasicLayer-33"><a href="#BasicLayer-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="BasicLayer-34"><a href="#BasicLayer-34"><span class="linenos">34</span></a>
-</span><span id="BasicLayer-35"><a href="#BasicLayer-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
-</span><span id="BasicLayer-36"><a href="#BasicLayer-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="BasicLayer-37"><a href="#BasicLayer-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
-</span><span id="BasicLayer-38"><a href="#BasicLayer-38"><span class="linenos">38</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
-</span><span id="BasicLayer-39"><a href="#BasicLayer-39"><span class="linenos">39</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
-</span><span id="BasicLayer-40"><a href="#BasicLayer-40"><span class="linenos">40</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
-</span><span id="BasicLayer-41"><a href="#BasicLayer-41"><span class="linenos">41</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
-</span><span id="BasicLayer-42"><a href="#BasicLayer-42"><span class="linenos">42</span></a>                            <span class="p">)</span>
+</span><span id="BasicLayer-17"><a href="#BasicLayer-17"><span class="linenos">17</span></a><span class="sd">        BasicLayer constructor.  </span>
+</span><span id="BasicLayer-18"><a href="#BasicLayer-18"><span class="linenos">18</span></a>
+</span><span id="BasicLayer-19"><a href="#BasicLayer-19"><span class="linenos">19</span></a><span class="sd">        Parameters:  </span>
+</span><span id="BasicLayer-20"><a href="#BasicLayer-20"><span class="linenos">20</span></a><span class="sd">        -----------  </span>
+</span><span id="BasicLayer-21"><a href="#BasicLayer-21"><span class="linenos">21</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="BasicLayer-22"><a href="#BasicLayer-22"><span class="linenos">22</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
+</span><span id="BasicLayer-23"><a href="#BasicLayer-23"><span class="linenos">23</span></a><span class="sd">        - aiframework : str    </span>
+</span><span id="BasicLayer-24"><a href="#BasicLayer-24"><span class="linenos">24</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="BasicLayer-25"><a href="#BasicLayer-25"><span class="linenos">25</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
+</span><span id="BasicLayer-26"><a href="#BasicLayer-26"><span class="linenos">26</span></a>
+</span><span id="BasicLayer-27"><a href="#BasicLayer-27"><span class="linenos">27</span></a><span class="sd">        Returns:    </span>
+</span><span id="BasicLayer-28"><a href="#BasicLayer-28"><span class="linenos">28</span></a><span class="sd">        --------     </span>
+</span><span id="BasicLayer-29"><a href="#BasicLayer-29"><span class="linenos">29</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
+</span><span id="BasicLayer-30"><a href="#BasicLayer-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="BasicLayer-31"><a href="#BasicLayer-31"><span class="linenos">31</span></a>        
+</span><span id="BasicLayer-32"><a href="#BasicLayer-32"><span class="linenos">32</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="BasicLayer-33"><a href="#BasicLayer-33"><span class="linenos">33</span></a>
+</span><span id="BasicLayer-34"><a href="#BasicLayer-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="BasicLayer-35"><a href="#BasicLayer-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="BasicLayer-36"><a href="#BasicLayer-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
+</span><span id="BasicLayer-37"><a href="#BasicLayer-37"><span class="linenos">37</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
+</span><span id="BasicLayer-38"><a href="#BasicLayer-38"><span class="linenos">38</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
+</span><span id="BasicLayer-39"><a href="#BasicLayer-39"><span class="linenos">39</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
+</span><span id="BasicLayer-40"><a href="#BasicLayer-40"><span class="linenos">40</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
+</span><span id="BasicLayer-41"><a href="#BasicLayer-41"><span class="linenos">41</span></a>                            <span class="p">)</span>
 </span></pre></div>
 
 
@@ -169,32 +167,31 @@
     <a class="headerlink" href="#BasicLayer.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="BasicLayer.__init__-15"><a href="#BasicLayer.__init__-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcircuit</span> <span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">aiframework</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BasicLayer.__init__-16"><a href="#BasicLayer.__init__-16"><span class="linenos">16</span></a>        <span class="sd">&#39;&#39;&#39;</span>
-</span><span id="BasicLayer.__init__-17"><a href="#BasicLayer.__init__-17"><span class="linenos">17</span></a>
-</span><span id="BasicLayer.__init__-18"><a href="#BasicLayer.__init__-18"><span class="linenos">18</span></a><span class="sd">        BasicLayer constructor.  </span>
-</span><span id="BasicLayer.__init__-19"><a href="#BasicLayer.__init__-19"><span class="linenos">19</span></a>
-</span><span id="BasicLayer.__init__-20"><a href="#BasicLayer.__init__-20"><span class="linenos">20</span></a><span class="sd">        Parameters:  </span>
-</span><span id="BasicLayer.__init__-21"><a href="#BasicLayer.__init__-21"><span class="linenos">21</span></a><span class="sd">        -----------  </span>
-</span><span id="BasicLayer.__init__-22"><a href="#BasicLayer.__init__-22"><span class="linenos">22</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
-</span><span id="BasicLayer.__init__-23"><a href="#BasicLayer.__init__-23"><span class="linenos">23</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
-</span><span id="BasicLayer.__init__-24"><a href="#BasicLayer.__init__-24"><span class="linenos">24</span></a><span class="sd">        - aiframework : str    </span>
-</span><span id="BasicLayer.__init__-25"><a href="#BasicLayer.__init__-25"><span class="linenos">25</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
-</span><span id="BasicLayer.__init__-26"><a href="#BasicLayer.__init__-26"><span class="linenos">26</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
-</span><span id="BasicLayer.__init__-27"><a href="#BasicLayer.__init__-27"><span class="linenos">27</span></a>
-</span><span id="BasicLayer.__init__-28"><a href="#BasicLayer.__init__-28"><span class="linenos">28</span></a><span class="sd">        Returns:    </span>
-</span><span id="BasicLayer.__init__-29"><a href="#BasicLayer.__init__-29"><span class="linenos">29</span></a><span class="sd">        --------     </span>
-</span><span id="BasicLayer.__init__-30"><a href="#BasicLayer.__init__-30"><span class="linenos">30</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
-</span><span id="BasicLayer.__init__-31"><a href="#BasicLayer.__init__-31"><span class="linenos">31</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="BasicLayer.__init__-32"><a href="#BasicLayer.__init__-32"><span class="linenos">32</span></a>        
-</span><span id="BasicLayer.__init__-33"><a href="#BasicLayer.__init__-33"><span class="linenos">33</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="BasicLayer.__init__-34"><a href="#BasicLayer.__init__-34"><span class="linenos">34</span></a>
-</span><span id="BasicLayer.__init__-35"><a href="#BasicLayer.__init__-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
-</span><span id="BasicLayer.__init__-36"><a href="#BasicLayer.__init__-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
-</span><span id="BasicLayer.__init__-37"><a href="#BasicLayer.__init__-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
-</span><span id="BasicLayer.__init__-38"><a href="#BasicLayer.__init__-38"><span class="linenos">38</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
-</span><span id="BasicLayer.__init__-39"><a href="#BasicLayer.__init__-39"><span class="linenos">39</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
-</span><span id="BasicLayer.__init__-40"><a href="#BasicLayer.__init__-40"><span class="linenos">40</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
-</span><span id="BasicLayer.__init__-41"><a href="#BasicLayer.__init__-41"><span class="linenos">41</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
-</span><span id="BasicLayer.__init__-42"><a href="#BasicLayer.__init__-42"><span class="linenos">42</span></a>                            <span class="p">)</span>
+</span><span id="BasicLayer.__init__-17"><a href="#BasicLayer.__init__-17"><span class="linenos">17</span></a><span class="sd">        BasicLayer constructor.  </span>
+</span><span id="BasicLayer.__init__-18"><a href="#BasicLayer.__init__-18"><span class="linenos">18</span></a>
+</span><span id="BasicLayer.__init__-19"><a href="#BasicLayer.__init__-19"><span class="linenos">19</span></a><span class="sd">        Parameters:  </span>
+</span><span id="BasicLayer.__init__-20"><a href="#BasicLayer.__init__-20"><span class="linenos">20</span></a><span class="sd">        -----------  </span>
+</span><span id="BasicLayer.__init__-21"><a href="#BasicLayer.__init__-21"><span class="linenos">21</span></a><span class="sd">        - qcircuit : hqm.circuits.circuit.QuantumCircuit  </span>
+</span><span id="BasicLayer.__init__-22"><a href="#BasicLayer.__init__-22"><span class="linenos">22</span></a><span class="sd">            QuantumCircuit object to be embedded into the quantum layer</span>
+</span><span id="BasicLayer.__init__-23"><a href="#BasicLayer.__init__-23"><span class="linenos">23</span></a><span class="sd">        - aiframework : str    </span>
+</span><span id="BasicLayer.__init__-24"><a href="#BasicLayer.__init__-24"><span class="linenos">24</span></a><span class="sd">            string representing the AI framework in use, can be &#39;torch&#39; or &#39;keras&#39;. This will create  </span>
+</span><span id="BasicLayer.__init__-25"><a href="#BasicLayer.__init__-25"><span class="linenos">25</span></a><span class="sd">            a compatible trainable layer for the framework.   </span>
+</span><span id="BasicLayer.__init__-26"><a href="#BasicLayer.__init__-26"><span class="linenos">26</span></a>
+</span><span id="BasicLayer.__init__-27"><a href="#BasicLayer.__init__-27"><span class="linenos">27</span></a><span class="sd">        Returns:    </span>
+</span><span id="BasicLayer.__init__-28"><a href="#BasicLayer.__init__-28"><span class="linenos">28</span></a><span class="sd">        --------     </span>
+</span><span id="BasicLayer.__init__-29"><a href="#BasicLayer.__init__-29"><span class="linenos">29</span></a><span class="sd">        Nothing, a BasicLayer object will be created.  </span>
+</span><span id="BasicLayer.__init__-30"><a href="#BasicLayer.__init__-30"><span class="linenos">30</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="BasicLayer.__init__-31"><a href="#BasicLayer.__init__-31"><span class="linenos">31</span></a>        
+</span><span id="BasicLayer.__init__-32"><a href="#BasicLayer.__init__-32"><span class="linenos">32</span></a>        <span class="k">if</span> <span class="n">aiframework</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;keras&#39;</span><span class="p">]:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted values for framerwork are &#39;torch&#39; or &#39;keras&#39;, found </span><span class="si">{</span><span class="n">aiframework</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="BasicLayer.__init__-33"><a href="#BasicLayer.__init__-33"><span class="linenos">33</span></a>
+</span><span id="BasicLayer.__init__-34"><a href="#BasicLayer.__init__-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span> <span class="o">=</span> <span class="n">aiframework</span>
+</span><span id="BasicLayer.__init__-35"><a href="#BasicLayer.__init__-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_qubits</span>    <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span>
+</span><span id="BasicLayer.__init__-36"><a href="#BasicLayer.__init__-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">qlayer</span>      <span class="o">=</span> <span class="n">AIInterface</span><span class="o">.</span><span class="n">network_layer</span><span class="p">(</span>
+</span><span id="BasicLayer.__init__-37"><a href="#BasicLayer.__init__-37"><span class="linenos">37</span></a>                                <span class="n">circuit</span>      <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> 
+</span><span id="BasicLayer.__init__-38"><a href="#BasicLayer.__init__-38"><span class="linenos">38</span></a>                                <span class="n">weight_shape</span> <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">weight_shape</span><span class="p">,</span> 
+</span><span id="BasicLayer.__init__-39"><a href="#BasicLayer.__init__-39"><span class="linenos">39</span></a>                                <span class="n">n_qubits</span>     <span class="o">=</span> <span class="n">qcircuit</span><span class="o">.</span><span class="n">n_qubits</span><span class="p">,</span> 
+</span><span id="BasicLayer.__init__-40"><a href="#BasicLayer.__init__-40"><span class="linenos">40</span></a>                                <span class="n">aiframework</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aiframework</span>
+</span><span id="BasicLayer.__init__-41"><a href="#BasicLayer.__init__-41"><span class="linenos">41</span></a>                            <span class="p">)</span>
 </span></pre></div>
 
 
