@@ -13,7 +13,6 @@ class BasicLayer:
 
     def __init__(self, qcircuit : QuantumCircuit, aiframework : str) -> None:
         '''
-
         BasicLayer constructor.  
 
         Parameters:  
