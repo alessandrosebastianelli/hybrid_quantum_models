@@ -22,7 +22,7 @@ class HybridLeNet5(torch.nn.Module):
             - qlayer : hqm.layers.basilayer.BasicLayer  
                 hqm quantum layer to be stacked between two fully connected layers  
             - in_shape : tuple  
-                tuple representing the shape of the input image  
+                tuple representing the shape of the input image (channels, widht, height)  
             - ou_dim : int  
                 integer representing the output size of the hybrid model  
             
@@ -33,10 +33,10 @@ class HybridLeNet5(torch.nn.Module):
 
         super().__init__()
 
-        if len(in_shape) != 3: raise Exception(f"The parameter in_shape must be a tuple of three elements, found {in_shape}")
+        if len(in_shape) != 3: raise Exception(f"The parameter in_shape must be a tuple of four elements (channels, widht, height), found {in_shape}")
         if ou_dim < 1: raise Exception(f"The parameter ou_dim must be greater than 1, found {ou_dim}")
         
-        w, h, c = in_shape
+        c, w, h = in_shape
         
         c1 = 6
         self.conv_1    = torch.nn.Conv2d(in_channels=c, out_channels=c1, kernel_size=5, padding=2, stride=1)
