@@ -36,6 +36,7 @@ class BellmanCircuit(QuantumCircuit):
             --------  
             Nothing, a BellmanCircuit object will be created.  
         '''
+        
         super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
 
         if encoding not in ['angle', 'amplitude']: raise(f"encoding can be angle or amplitude, found {encoding}")
@@ -85,6 +86,7 @@ class BellmanCircuit(QuantumCircuit):
                 - measurements : list  
                     list of values measured from the quantum circuits  
             '''
+
             if encoding == 'angle':     qml.AngleEmbedding(inputs, wires=range(n_qubits))
             if encoding == 'amplitude': qml.AmplitudeEmbedding(features=inputs, wires=range(n_qubits), normalize=True)
 
@@ -183,7 +185,6 @@ class RealAmplitudesCircuit(QuantumCircuit):
                     list of values measured from the quantum circuits  
             '''
 
-        
             if encoding == 'angle':     qml.AngleEmbedding(inputs, wires=range(n_qubits))
             if encoding == 'amplitude': qml.AmplitudeEmbedding(features=inputs, wires=range(n_qubits), normalize=True)
 
