@@ -31,6 +31,7 @@ class BasicEntangledCircuit(QuantumCircuit):
             --------  
             Nothing, a BasicEntangledCircuit object will be created.  
         '''
+
         super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
                
         self.weight_shape = {"weights": (n_layers, n_qubits)}
@@ -55,6 +56,7 @@ class BasicEntangledCircuit(QuantumCircuit):
             - qnode : qml.qnode  
                 the actual PennyLane circuit   
         '''
+
         @qml.qnode(dev)
         def qnode(inputs : np.ndarray, weights : np.ndarray) -> list:
             '''
@@ -105,6 +107,7 @@ class StronglyEntangledCircuit(QuantumCircuit):
             --------  
             Nothing, a StronglyEntangledCircuit object will be created.  
         '''        
+
         super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
         
         self.weight_shape = {"weights": (n_layers, n_qubits, 3)}
@@ -147,6 +150,7 @@ class StronglyEntangledCircuit(QuantumCircuit):
                 - measurements : list   
                     list of values measured from the quantum circuits  
             '''
+
             qml.AngleEmbedding(inputs, wires=range(n_qubits))
             qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
             measurements = [qml.expval(qml.PauliZ(wires=i)) for i in range(n_qubits)]
@@ -178,6 +182,7 @@ class RandomCircuit(QuantumCircuit):
             --------  
             Nothing, a RandomCircuit object will be created.  
         '''
+
         super().__init__(n_qubits=n_qubits, n_layers=n_layers, dev=dev)
                
         self.weight_shape = {"weights": (n_layers, n_qubits)}
@@ -201,6 +206,7 @@ class RandomCircuit(QuantumCircuit):
             - qnode : qml.qnode  
                 the actual PennyLane circuit   
         '''
+
         @qml.qnode(dev)
         def qnode(inputs : np.ndarray, weights : np.ndarray) -> list:
             '''
@@ -220,6 +226,7 @@ class RandomCircuit(QuantumCircuit):
                 - measurements : list  
                     list of values measured from the quantum circuits  
             '''
+            
             qml.AngleEmbedding(inputs, wires=range(n_qubits))
             qml.RandomLayers(weights, wires=range(n_qubits))
             measurements = [qml.expval(qml.PauliZ(wires=i)) for i in range(n_qubits)]
