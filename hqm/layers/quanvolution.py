@@ -37,6 +37,7 @@ class Quanvolution2D(torch.nn.Module):
         --------     
         Nothing, a Quanvolution2D object will be created.  
         '''
+
         super().__init__()
 
         if aiframework not in ['torch', 'keras']: raise Exception(f"Quanvolution2D curently supports only 'torch' as framework, found {aiframework}")
@@ -73,7 +74,6 @@ class Quanvolution2D(torch.nn.Module):
         - out : torch.Tensor
             quanvoluted input
         '''
-
 
         if len(x.shape) != 4: raise Exception(f"x must be a tensor of 4 elements (batch, channels, width, height), found {len(x.shape)}")
 
