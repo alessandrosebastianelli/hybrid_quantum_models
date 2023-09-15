@@ -29,6 +29,7 @@ class BasicHybridMLPRegressor(torch.nn.Module):
             --------  
             Nothing, a BasicHybridMLPRegressor object will be created.    
         '''
+
         super().__init__()
 
         if in_dim < 1: raise Exception(f"The parameter in_dim must be greater than 1, found {in_dim}")
@@ -54,6 +55,7 @@ class BasicHybridMLPRegressor(torch.nn.Module):
             - out : torch.Tensor  
                 output from the torch model  
         '''
+
         x = self.fc_1(x)
         x = self.tanh(x)
         x = self.qc_1(x)
@@ -86,6 +88,7 @@ class MultiHybridMLPRegressor(torch.nn.Module):
             --------  
             Nothing, a MultiHybridMLPRegressor object will be created.    
         '''
+
         super().__init__()
 
         if in_dim < 1: raise Exception(f"The parameter in_dim must be greater than 1, found {in_dim}")
@@ -113,6 +116,7 @@ class MultiHybridMLPRegressor(torch.nn.Module):
             - out : torch.Tensor  
                 output from the torch model  
         '''
+
         x = self.fc_1(x)
         x = self.tanh(x)
         for qc in self.qcs: 
@@ -146,6 +150,7 @@ class MultiHybridMultiMLPRegressor(torch.nn.Module):
             --------  
             Nothing, a MultiHybridMLPRegressor object will be created.    
         '''
+        
         super().__init__()
 
         if len(in_dims) < 1: raise Exception(f"Size in_dims must be greater than 1, found {len(in_dims)}")
