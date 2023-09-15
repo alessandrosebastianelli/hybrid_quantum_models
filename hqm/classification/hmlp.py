@@ -86,6 +86,7 @@ class MultiHybridMLPClassifier(torch.nn.Module):
             --------  
             Nothing, a MultiHybridMLPClassifier object will be created.    
         '''
+
         super().__init__()
 
         if in_dim < 1: raise Exception(f"The parameter in_dim must be greater than 1, found {in_dim}")
@@ -114,6 +115,7 @@ class MultiHybridMLPClassifier(torch.nn.Module):
             - out : torch.Tensor   
                 output from the torch model  
         '''
+
         x = self.fc_1(x)
         x = self.tanh(x)
         for qc in self.qcs: 
@@ -147,6 +149,7 @@ class MultiHybridMultiMLPClassifier(torch.nn.Module):
             --------  
             Nothing, a MultiHybridMultiMLPClassifier object will be created.    
         '''
+        
         super().__init__()
 
         if len(in_dims) < 1: raise Exception(f"Size in_dims must be greater than 1, found {len(in_dims)}")
