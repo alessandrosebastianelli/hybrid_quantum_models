@@ -25,6 +25,7 @@ class QuantumCircuit(Generic[quantumcircuit]):
             --------  
             Nothing, a QuantumCircuit object will be created.  
         '''
+        
         # Checking for exceptions  
         if n_qubits < 1: raise Exception(f"Number of qubits must be greater or equal than 1, found {n_qubits}")
         if n_layers < 1: raise Exception(f"Number of layers must be greater or equal than 1, found {n_layers}")
