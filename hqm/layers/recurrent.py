@@ -41,6 +41,7 @@ class QGRU(torch.nn.Module):
         --------     
         Nothing, a QGRU object will be created.  
         '''
+        
         super().__init__()
 
         if aiframework not in ['torch', 'keras']: raise Exception(f"Quanvolution2D curently supports only 'torch' as framework, found {aiframework}")
