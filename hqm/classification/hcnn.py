@@ -30,6 +30,7 @@ class HybridLeNet5(torch.nn.Module):
             --------  
             Nothing, a HybridLeNet5 object will be created.    
         '''
+
         super().__init__()
 
         if len(in_shape) != 3: raise Exception(f"The parameter in_shape must be a tuple of three elements, found {in_shape}")
@@ -79,6 +80,7 @@ class HybridLeNet5(torch.nn.Module):
             - out : torch.Tensor  
                 output from the torch model  
         '''
+        
         x = self.max_pool1(self.relu(self.conv_1(x)))
         x = self.max_pool2(self.relu(self.conv_2(x)))
         x = x.view(-1, self.flatten_size)
