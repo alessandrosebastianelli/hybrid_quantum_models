@@ -2,8 +2,9 @@
    .. include:: ../README.md
 """
 
-from .circuits import *
 from .classification import *
-from .layers import *
 from .regression import *
+from .encoding import *
+from .circuits import *
+from .layers import *
 from .utils import *
