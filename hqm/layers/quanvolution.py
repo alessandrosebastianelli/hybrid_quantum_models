@@ -15,7 +15,7 @@ class Quanvolution2D(torch.nn.Module):
         Currently supports only Torch.
     '''
 
-    def __init__(self, qcircuit : QuantumCircuit, filters : int, kernelsize : int = 3, stride : int = 1, aiframework : str = 'torch') -> None:
+    def __init__(self, qcircuit : QuantumCircuit, filters : int, kernelsize : int = 3, stride : int = 1, padding : str = 'same', aiframework : str = 'torch') -> None:
         '''
         Quanvolution2D constructor.  
 
@@ -29,6 +29,8 @@ class Quanvolution2D(torch.nn.Module):
             size of quanvolution kernel
         - stride : int
             stride for quanvolution operation
+        - padding : str
+            padding mode, same of valid
         - aiframework : str    
             string representing the AI framework in use, can be 'torch' or 'keras'. This will create  
             a compatible trainable layer for the framework.
@@ -53,6 +55,7 @@ class Quanvolution2D(torch.nn.Module):
         self.filters    = filters 
         self.kernelsize = kernelsize
         self.stride     = stride
+        self.padding    = padding
         self.qlayer     = AIInterface.network_layer(
                                 circuit      = qcircuit.circuit, 
                                 weight_shape = qcircuit.weight_shape, 
@@ -82,6 +85,14 @@ class Quanvolution2D(torch.nn.Module):
         
         h_out = int(((h-self.kernelsize) / self.stride) +1)
         w_out = int(((w-self.kernelsize) / self.stride) +1)
+        
+        if self.padding == 'same':
+            w_pad = int((w - w_out)/2)
+            h_pad = int((h - h_out)/2)
+        
+        if self.padding == 'valid':
+            h_pad = 0
+            w_pad = 0 
 
         out = torch.zeros((bs, self.filters, h_out, w_out, ch))
 
@@ -101,5 +112,6 @@ class Quanvolution2D(torch.nn.Module):
                             out[b, f, j // self.kernelsize, k // self.kernelsize, c] = q_results[f]
 
         out = torch.mean(out, axis=-1)
+        out = torch.nn.functional.pad(out, (h_pad, h_pad, w_pad, w_pad), "constant", 0)
 
         return out
