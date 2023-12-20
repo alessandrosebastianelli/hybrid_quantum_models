@@ -109,12 +109,14 @@ class Quanvolution2D(torch.nn.Module):
                         q_results = self.qlayer(p)
 
                         for f in range(self.filters):
-                            out[b, f, j // self.kernelsize, k // self.kernelsize, c] = q_results[f]
+                            #out[b, f, j // self.kernelsize, k // self.kernelsize, c] = q_results[f]
+                            out[b, f, j:j+self.kernelsize, k:k+self.kernelsize, c] = q_results[f]
 
         out = torch.mean(out, axis=-1)
-        out = torch.nn.functional.pad(out, (h_pad, h_pad, w_pad, w_pad), "constant", 0)
         
-        if self.padding=='same':
+        
+        if self.padding == 'same':
+            out = torch.nn.functional.pad(out, (h_pad, h_pad, w_pad, w_pad), "constant", 0)
             out = torchvision.transforms.Resize([w,h])(out)
 
         return out

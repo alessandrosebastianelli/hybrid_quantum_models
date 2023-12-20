@@ -3,13 +3,9 @@ sys.path += ['.', './hqm/']
 
 from hqm.circuits.angleencoding import BasicEntangledCircuit
 from hqm.layers.quanvolution import Quanvolution2D
-from hqm.utils.printer import Printer
 
 import pennylane as qml
-import numpy as np
-import argparse
 import torch
-
 
 def test_quanvolution_padding_same_output():
     N_QUBITS      = 4
