@@ -1,4 +1,4 @@
-import numpy as np
+import torchvision
 import torch
 import sys
 
@@ -87,8 +87,8 @@ class Quanvolution2D(torch.nn.Module):
         w_out = int(((w-self.kernelsize) / self.stride) +1)
         
         if self.padding == 'same':
-            w_pad = int((w - w_out)/2)
-            h_pad = int((h - h_out)/2)
+            w_pad = int(round((w - w_out)/2))
+            h_pad = int(round((h - h_out)/2))
         
         if self.padding == 'valid':
             h_pad = 0
@@ -113,5 +113,8 @@ class Quanvolution2D(torch.nn.Module):
 
         out = torch.mean(out, axis=-1)
         out = torch.nn.functional.pad(out, (h_pad, h_pad, w_pad, w_pad), "constant", 0)
+        
+        if self.padding=='same':
+            out = torchvision.transforms.Resize([w,h])(out)
 
         return out
