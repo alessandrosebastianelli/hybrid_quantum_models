@@ -29,21 +29,16 @@
 
             <h2>Overview</h2>
             <ul>
-  <li><a href="#quantum-circuits">Quantum Circuits</a>
+  <li><a href="#quantum-noise-generator">Quantum Noise Generator</a>
   <ul>
-    <li><a href="#angle-encoding">Angle Encoding</a></li>
-    <li><a href="#amplitude-encoding">Amplitude Encoding</a></li>
-    <li><a href="#custom-circuits">Custom Circuits</a></li>
+    <li><a href="#gaussianlike">GaussianLike</a></li>
   </ul></li>
 </ul>
 
 
             <h2>Packages</h2>
             <ul>
-                    <li><a href="circuits/amplitudeencoding.html">amplitudeencoding</a></li>
-                    <li><a href="circuits/angleencoding.html">angleencoding</a></li>
-                    <li><a href="circuits/circuit.html">circuit</a></li>
-                    <li><a href="circuits/customcircuits.html">customcircuits</a></li>
+                    <li><a href="noise/gaussianlike.html">gaussianlike</a></li>
             </ul>
                     <h2>All Functions</h2>
                     <ul>
@@ -62,67 +57,27 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../hqm.html">hqm</a><wbr>.circuits    </h1>
+<a href="./../hqm.html">hqm</a><wbr>.noise    </h1>
 
-                        <div class="docstring"><h1 id="quantum-circuits">Quantum Circuits</h1>
+                        <div class="docstring"><h1 id="quantum-noise-generator">Quantum Noise Generator</h1>
 
-<p>This package contains the implementations for basic, advanced and custom quantum circuits based on PennyLane. The implementation consists of wrappers that encapsulate PennyLane circuits in order to make them compatible with Keras or Pytorch. </p>
+<p>This package contains the implementations for quantum noise generation.
+This package is built in collaboration with Artur Miroszewski.</p>
 
-<h2 id="angle-encoding">Angle Encoding</h2>
+<h2 id="gaussianlike">GaussianLike</h2>
 
-<p>This section relates to circuits that use angle embedding as a feature embedding strategy. This is done by means of the PennyLane operator <em>AngleEmbedding</em>.</p>
-
-<p>This operator encodes $N$ features into the rotation angles of $n$ qubits, where $N\leq n$. The length of features has to be smaller or equal to the number of qubits. If there are fewer entries in features than rotations, the circuit does not apply the remaining rotation gates.</p>
-
-<p>The following circuits have this operator as the first layer.</p>
-
-<p><a href="https://docs.pennylane.ai/en/stable/code/api/pennylane.AngleEmbedding.html">PennyLane Documentation</a></p>
-
-<h3 id="basic-entangler-circuit">Basic Entangler Circuit</h3>
-
-<p>Layers consisting of one-parameter single-qubit rotations on each qubit, followed by a closed chain or ring of CNOT gates.</p>
-
-<p>The ring of CNOT gates connects every qubit with its neighbor, with the last qubit being considered as a neighbor to the first qubit.</p>
-
-<p><img src="../circuits/basic_entangler_circuit.png" width="80%"/></p>
-
-<p>When using a single wire, the template only applies the single qubit gates in each layer.</p>
-
-<p><a href="https://docs.pennylane.ai/en/stable/code/api/pennylane.BasicEntanglerLayers.html">PennyLane Documentation</a></p>
-
-<h3 id="strongly-entangling-circuit">Strongly Entangling Circuit</h3>
-
-<p>Layers consisting of single qubit rotations and entanglers, inspired by the circuit-centric classifier design arXiv:1804.00633.</p>
-
-<p><img src="../circuits/strongly_entangler_circuit.png" width="80%"/></p>
-
-<p><a href="https://docs.pennylane.ai/en/stable/code/api/pennylane.StronglyEntanglingLayers.html">PennyLane Documentation</a></p>
-
-<h3 id="random-circuit">Random Circuit</h3>
-
-<p>Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, acting on randomly chosen qubits.</p>
-
-<p><img src="../circuits/random_circuit.png" width="80%"/></p>
-
-<p><a href="https://docs.pennylane.ai/en/stable/code/api/pennylane.RandomLayers.html">PennyLane Documentation</a></p>
-
-<h2 id="amplitude-encoding">Amplitude Encoding</h2>
-
-<p>Please refer to the previous section, the circuits are the same but the encoding scheme is different and follows the <a href="https://docs.pennylane.ai/en/stable/code/api/pennylane.AmplitudeEmbedding.html">Amplitude Encoding Strategy</a>.</p>
-
-<h2 id="custom-circuits">Custom Circuits</h2>
+<p>Implementation for Quantum Noise Generator that returns observables withing a gaussian-like distribution.</p>
 </div>
 
-                        <input id="mod-circuits-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <input id="mod-noise-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <label class="view-source-button" for="mod-circuits-view-source"><span>View Source</span></label>
+                        <label class="view-source-button" for="mod-noise-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="sd">   .. include:: ./circuits.md</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="sd">   .. include:: ./noise.md</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a><span class="kn">from</span> <span class="nn">.angleencoding</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a><span class="kn">from</span> <span class="nn">.customcircuits</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a><span class="kn">from</span> <span class="nn">.gaussianlike</span> <span class="kn">import</span> <span class="o">*</span>
 </span></pre></div>
 
 

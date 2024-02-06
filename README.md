@@ -22,18 +22,10 @@ In summary, this library serves as a versatile bridge between the realms of quan
 This package is stored on [PyPi](https://pypi.org/project/hqm/), you can easily install it using pip
 
 ```bash
-pip install --upgrade hqm
+pip install --upgrade hqm --no-deps
 ```
 
-Although certain elements of this library draw from PyTorch or TensorFlow, these two packages are not included in the library's prerequisites, and therefore, they will not be automatically installed. It is advisable to use the following recommended versions for PyTorch and TensorFlow:
-
-```bash
-pip install tensorflow==2.13.0
-```
-
-```bash
-pip install torch==2.0.1
-```
+Although certain elements of this library draw from PyTorch or TensorFlow and Pennylane, these packages are not included in the library's prerequisites, and therefore, they will not be automatically installed.
 
 ## Usage
 The central concept of this package is illustrated in the figure below. In essence, the package generates an embedding of a user-defined quantum circuit (chosen from the available options) into a quantum layer, which is also customizable by the user. This quantum layer can subsequently be converted into a Keras layer or a Torch layer, allowing it to be seamlessly combined with other classical or quantum layers.
