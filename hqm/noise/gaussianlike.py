@@ -9,8 +9,8 @@ from hqm.circuits.circuit import QuantumCircuit
 
 class GaussianLikeNoiseGenerator(QuantumCircuit):
     '''
-        This class implements a torch/keras quantum layer using a basic entangler
-        circuit. 
+        This class implements a qantum noise generator, with a distribution is 
+        close to Gaussian.
     '''
     
     def __init__(self, location : float, scale : float, dev : qml.devices = None) -> None:
