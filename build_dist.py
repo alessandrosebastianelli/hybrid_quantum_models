@@ -13,4 +13,4 @@ shutil.rmtree('./pyosv.egg-info/', ignore_errors=True)
 # Build distribuition
 os.system("python build_doc.py")
 os.system("python setup.py sdist bdist_wheel")
-os.system("python3 -m twine upload dist/* --verbose")
+os.system("python -m twine upload dist/* --verbose")
